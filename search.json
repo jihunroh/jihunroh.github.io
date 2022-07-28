@@ -1,0 +1,99 @@
+[
+  
+    {
+      "title"    : "내가 글을 웹에 올리는 방법은?",
+      "category" : "",
+      "tags"     : "Jekyll",
+      "url"      : "/2022/07/10/%ED%95%9C%EB%AC%BC-%EA%B0%84%EA%B2%83-%EA%B0%99%EC%9D%80-Jekyll%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8/",
+      "date"     : "2022년 07월 10일"
+    } ,
+  
+    {
+      "title"    : "탄소중립을 위한 행동은 왜 어려울까",
+      "category" : "",
+      "tags"     : "탄소중립",
+      "url"      : "/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%96%89%EB%8F%99%EC%9D%80-%EC%99%9C-%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C/",
+      "date"     : "2021년 10월 04일"
+    } ,
+  
+    {
+      "title"    : "월패드 원격제어를 위한 RS485 패킷 분석 준비",
+      "category" : "",
+      "tags"     : "IoT",
+      "url"      : "/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/",
+      "date"     : "2020년 10월 03일"
+    } ,
+  
+    {
+      "title"    : "해수어항에서의 질소순환 과정",
+      "category" : "",
+      "tags"     : "Reef",
+      "url"      : "/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98-%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98-%EA%B3%BC%EC%A0%95/",
+      "date"     : "2020년 08월 16일"
+    } ,
+  
+    {
+      "title"    : "기계적으로 어항물 보충을 자동화하기",
+      "category" : "",
+      "tags"     : "Reef",
+      "url"      : "/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/",
+      "date"     : "2020년 07월 26일"
+    } ,
+  
+    {
+      "title"    : "라즈베리파이4에 Quad Sata KIT 입히기",
+      "category" : "",
+      "tags"     : "IoT and RaspberryPi",
+      "url"      : "/2020/05/31/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90-Quad-Sata-KIT-%EC%9E%85%ED%9E%88%EA%B8%B0/",
+      "date"     : "2020년 05월 31일"
+    } ,
+  
+    {
+      "title"    : "라즈베리파이4에서 USB3.0을 이용한 SSD 연결문제",
+      "category" : "",
+      "tags"     : "RaspberryPi",
+      "url"      : "/2020/05/02/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90%EC%84%9C-USB3.0%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-SSD-%EC%97%B0%EA%B2%B0%EB%AC%B8%EC%A0%9C/",
+      "date"     : "2020년 05월 02일"
+    } ,
+  
+    {
+      "title"    : "해수어항 장비별 소비전력 측정결과",
+      "category" : "",
+      "tags"     : "Reef",
+      "url"      : "/2020/01/04/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD-%EC%9E%A5%EB%B9%84%EB%B3%84-%EC%86%8C%EB%B9%84%EC%A0%84%EB%A0%A5-%EC%B8%A1%EC%A0%95%EA%B2%B0%EA%B3%BC/",
+      "date"     : "2020년 01월 04일"
+    } ,
+  
+    {
+      "title"    : "다른 한 아이의 성별 추정 문제",
+      "category" : "",
+      "tags"     : "베이즈정리, 확률, and 통계학",
+      "url"      : "/2018/03/25/%EB%8B%A4%EB%A5%B8-%ED%95%9C-%EC%95%84%EC%9D%B4%EC%9D%98-%EC%84%B1%EB%B3%84-%EC%B6%94%EC%A0%95-%EB%AC%B8%EC%A0%9C/",
+      "date"     : "2018년 03월 25일"
+    } ,
+  
+    {
+      "title"    : "A Dialogue on Personal Identity and Immortality 논평",
+      "category" : "",
+      "tags"     : "논평 and 동일성",
+      "url"      : "/2010/11/23/A-Dialogue-on-Personal-Identity-and-Immortality-%EB%85%BC%ED%8F%89/",
+      "date"     : "2010년 11월 23일"
+    } ,
+  
+    {
+      "title"    : "A Beautiful Supertask 논평",
+      "category" : "",
+      "tags"     : "논평, 뉴턴역학, and 비결정성",
+      "url"      : "/2010/11/03/A-Beautiful-Supertask-%EB%85%BC%ED%8F%89/",
+      "date"     : "2010년 11월 03일"
+    } ,
+  
+    {
+      "title"    : "과학저널 크로스로드 기고, &#39;끝내지 말아야 할 우리들의 소통&#39;",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/2010/03/01/%EA%B3%BC%ED%95%99%EC%A0%80%EB%84%90-%ED%81%AC%EB%A1%9C%EC%8A%A4%EB%A1%9C%EB%93%9C-%EA%B8%B0%EA%B3%A0,-'%EB%81%9D%EB%82%B4%EC%A7%80-%EB%A7%90%EC%95%84%EC%95%BC-%ED%95%A0-%EC%9A%B0%EB%A6%AC%EB%93%A4%EC%9D%98-%EC%86%8C%ED%86%B5'/",
+      "date"     : "2010년 03월 01일"
+    } 
+  
+]

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>해수어항 장비별 소비전력 측정결과</title>
+  <meta name='description' content=''>
+
+  <link rel="canonical" href="https://jihunroh.github.io/2020/01/04/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD-%EC%9E%A5%EB%B9%84%EB%B3%84-%EC%86%8C%EB%B9%84%EC%A0%84%EB%A0%A5-%EC%B8%A1%EC%A0%95%EA%B2%B0%EA%B3%BC/">
+  <link rel="alternate" type="application/rss+xml" title="JiHun Roh" href="/feed.xml">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Domine:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap" rel="stylesheet">
+
+  <!-- Ionicons -->
+  <link href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" rel="stylesheet">
+
+  <style>
+  
+  .block{display:block}.inline-block{display:inline-block}.inline{display:inline}.show{display:block}.hide{display:none}.invisible{visibility:hidden}.list-reset{list-style-type:none;margin:0;padding:0}.clearfix::after,.clearfix ::before{content:"";display:table;clear:both}.screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px;word-wrap:normal !important}/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:0.35em 0.75em 0.625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,dl,dd,ol,ul,fieldset,legend,figure,hr{margin:0;padding:0}li>ul,li>ol{margin-bottom:0}table{border-collapse:collapse;border-spacing:0}h1,h2,h3,h4,h5,h6,ul,ol,dl,blockquote,p,address,hr,table,fieldset,figure,pre{margin-bottom:30px}ul,ol,dd{margin-left:20px}.box{border:1px dotted #c5d2d9;border-radius:3px;font-size:60%;font-family:Consolas,"Courier New",Courier,"Nanum Gothic Coding",monospace;background-color:#e5eff5;color:#232527}code{font-family:Consolas,"Courier New",Courier,"Nanum Gothic Coding",monospace}code.highlighter-rouge{margin:0;padding:0.2em 0.4em;color:#d14;background-color:whitesmoke;font-size:80%;border:1px solid #e8e8e8;border-radius:3px}.highlight table td{padding:5px}.highlight table pre{margin:0}.highlight,.highlight .w{color:#f8f8f2;background-color:#272822;border-radius:3px;line-height:1.5;margin-bottom:30px}.highlight .err{color:#272822;background-color:#f92672}.highlight .c,.highlight .ch,.highlight .cd,.highlight .cm,.highlight .cpf,.highlight .c1,.highlight .cs{color:#75715e}.highlight .cp{color:#f4bf75}.highlight .nt{color:#f4bf75}.highlight .o,.highlight .ow{color:#f8f8f2}.highlight .p,.highlight .pi{color:#f8f8f2}.highlight .gi{color:#a6e22e}.highlight .gd{color:#f92672}.highlight .gh{color:#66d9ef;background-color:#272822;font-weight:bold}.highlight .k,.highlight .kn,.highlight .kp,.highlight .kr,.highlight .kv{color:#ae81ff}.highlight .kc{color:#fd971f}.highlight .kt{color:#fd971f}.highlight .kd{color:#fd971f}.highlight .s,.highlight .sb,.highlight .sc,.highlight .dl,.highlight .sd,.highlight .s2,.highlight .sh,.highlight .sx,.highlight .s1{color:#a6e22e}.highlight .sa{color:#ae81ff}.highlight .sr{color:#a1efe4}.highlight .si{color:#cc6633}.highlight .se{color:#cc6633}.highlight .nn{color:#f4bf75}.highlight .nc{color:#f4bf75}.highlight .no{color:#f4bf75}.highlight .na{color:#66d9ef}.highlight .m,.highlight .mb,.highlight .mf,.highlight .mh,.highlight .mi,.highlight .il,.highlight .mo,.highlight .mx{color:#a6e22e}.highlight .ss{color:#a6e22e}.container{max-width:992px;padding-left:30px;padding-right:30px;margin:0 auto}.container-full{max-width:100%;padding-left:30px;padding-right:30px;margin:0 auto}.row{display:flex;flex-wrap:wrap;flex:0 1 auto;flex-direction:row;box-sizing:border-box;margin-left:-30px;margin-right:-30px}.col{padding-left:30px;padding-right:30px}[class^="col-"]{flex:auto}.col-0{width:0%}.col-1{width:8.3333333333%}.col-2{width:16.6666666667%}.col-3{width:25%}.col-4{width:33.3333333333%}.col-5{width:41.6666666667%}.col-6{width:50%}.col-7{width:58.3333333333%}.col-8{width:66.6666666667%}.col-9{width:75%}.col-10{width:83.3333333333%}.col-11{width:91.6666666667%}.col-12{width:100%}.push-0{margin-left:0%}.push-1{margin-left:8.3333333333%}.push-2{margin-left:16.6666666667%}.push-3{margin-left:25%}.push-4{margin-left:33.3333333333%}.push-5{margin-left:41.6666666667%}.push-6{margin-left:50%}.push-7{margin-left:58.3333333333%}.push-8{margin-left:66.6666666667%}.push-9{margin-left:75%}.push-10{margin-left:83.3333333333%}.push-11{margin-left:91.6666666667%}.push-12{margin-left:100%}.pull-0{margin-right:0%}.pull-1{margin-right:8.3333333333%}.pull-2{margin-right:16.6666666667%}.pull-3{margin-right:25%}.pull-4{margin-right:33.3333333333%}.pull-5{margin-right:41.6666666667%}.pull-6{margin-right:50%}.pull-7{margin-right:58.3333333333%}.pull-8{margin-right:66.6666666667%}.pull-9{margin-right:75%}.pull-10{margin-right:83.3333333333%}.pull-11{margin-right:91.6666666667%}.pull-12{margin-right:100%}@media (max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}@media (max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}@media (max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}img[data-action="zoom"]{cursor:pointer;cursor:-webkit-zoom-in;cursor:-moz-zoom-in}.zoom-img,.zoom-img-wrap{position:relative;z-index:666;-webkit-transition:all 300ms;-o-transition:all 300ms;transition:all 300ms}img.zoom-img{cursor:pointer;cursor:-webkit-zoom-out;cursor:-moz-zoom-out}.zoom-overlay{z-index:420;background:#fff;position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:0;-webkit-transition:opacity 300ms;-o-transition:opacity 300ms;transition:opacity 300ms}.zoom-overlay-open .zoom-overlay{opacity:1}.zoom-overlay-open,.zoom-overlay-transitioning{cursor:default}html{transition:margin-right 50ms}html.hide-scroll{margin-right:-14px;overflow:hidden}*,*::after,*::before{box-sizing:border-box}body{font-family:"Domine","Noto Serif KR","Times New Roman",serif;font-size:16px;line-height:32px;color:#232527;background-color:#fff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body.is-in::after{visibility:hidden;opacity:0;pointer-events:none}body::after{content:"";position:fixed;left:0;top:0;width:100%;height:100%;background-color:#fff;z-index:15;transition:1s}body input,body textarea{border:1px solid #b7b9c2;outline:none}body input:focus:required:invalid,body textarea:focus:required:invalid{border-color:#e02f40}body input:required:valid,body textarea:required:valid{border-color:#34a74e}@media only screen and (max-width: 576px){body{font-size:16px;line-height:29px}}::placeholder{color:#666}*::selection{background-color:rgba(0,0,0,0.1)}h1,h2,h3,h4,h5,h6{font-family:"Domine","Noto Serif KR","Times New Roman",serif;font-weight:700;line-height:1.3;color:#232527}h1{font-size:36px}h2{font-size:28px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}blockquote{padding-left:20px;font-size:21px;line-height:37px;font-weight:700;border-left:4px solid #3584f3;color:#232527}blockquote cite{font-size:16px;font-style:normal;color:#232527}blockquote cite:before{content:'\2014' '\00a0'}@media only screen and (max-width: 576px){blockquote{font-size:21px;line-height:31px}}pre{overflow:auto;padding:15px;margin-bottom:0;font-size:14px;white-space:pre-wrap;word-wrap:break-word;word-break:break-all}img,.zoom-img-wrap{max-width:100%;height:auto;vertical-align:middle}img+em,.zoom-img-wrap+em{display:block;margin-top:20px;font-size:12px;line-height:1;font-style:normal;font-weight:normal;text-align:center;color:#b7b9c2}a{text-decoration:none;color:#232527;transition:all 0.35s}a:hover{color:#3584f3}hr{display:block;height:1px;margin:50px 0;border:0;background:#f0f0f0}main.content{margin-top:160px}@media only screen and (max-width: 576px){main.content{margin-top:140px}}q{font-style:italic}.top{position:fixed;bottom:40px;right:-100px;z-index:5;width:40px;height:40px;line-height:40px;text-align:center;border-radius:15px;background-color:#f0f0f0;color:#232527;cursor:pointer;transition:all .25s ease}.top.is-active{right:30px}@media only screen and (max-width: 768px){.top{bottom:25px}.top.is-active{right:25px}}.header{position:fixed;top:0;left:0;z-index:10;width:100%;height:auto;border-bottom:1px solid #f0f0f0;background-color:#fff;transition:all 0.35s;color:#232527}.header.is-hide{top:-80px}.header__inner{position:relative;display:flex;justify-content:space-between;align-items:center;height:80px}.header__overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:10;background-color:rgba(17,17,17,0.7);cursor:pointer;opacity:0;visibility:hidden;transition:all 0.5s ease}.header__overlay.is-visible{opacity:1;visibility:visible}.logo__link{font-size:27px;line-height:33px;font-weight:700;color:inherit;transition:none}.logo__link:hover{color:#232527}.logo__image{max-height:50px}.main-nav{width:100%;max-width:1300px;margin:0 auto}.main-nav__box{display:flex;align-items:center;width:80%;padding-top:90px;margin:0 auto}.main-nav__box .nav__icon-close{position:absolute;top:20px;right:40px;z-index:5;display:flex;align-items:center;justify-content:center;font-size:27px;width:40px;height:40px;text-align:center;line-height:40px;color:#232527;transition:all .25s ease;cursor:pointer}@media only screen and (max-width: 768px){.main-nav__box .nav__icon-close{top:25px;right:30px}}.navigation{display:flex;align-items:center}.top-nav{margin-right:30px}.top-nav .nav__list .nav__item{display:inline-block;margin-right:20px}.top-nav .nav__list .nav__item:last-child{margin-right:0}.top-nav .nav__list .nav__item .nav__link{position:relative;font-size:13px;line-height:23px;text-transform:uppercase;color:#232527}.top-nav .nav__list .nav__item .nav__link:hover{color:#3584f3}@media only screen and (max-width: 992px){.top-nav{display:none}}.left-nav .nav__list .nav__item{display:block;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #f0f0f0}.left-nav .nav__list .nav__item:last-child{margin-bottom:0}.left-nav .nav__list .nav__item .nav__link{position:relative;font-size:14px;line-height:24px;text-transform:uppercase;color:#232527}.left-nav .nav__list .nav__item .nav__link:hover{color:#3584f3}@media only screen and (max-width: 576px){.left-nav .nav__list .nav__item{margin-bottom:10px}}.nav-buttons{display:flex;align-items:center;font-size:24px;color:inherit}.nav-buttons .nav__icon{cursor:pointer}.nav-buttons .nav__icon:first-child{margin-right:15px}.menu-overlay{position:fixed;top:0;right:-500px;bottom:0;width:500px;z-index:100;background-color:#fff;transition:all 0.5s cubic-bezier(0.7, 0.4, 0, 1)}.menu-overlay.is-open{right:0}@media only screen and (max-width: 576px){.menu-overlay{right:-90%;width:90%}}.nav-grid{width:100%;height:85vh;overflow-y:auto}.nav-grid__item{margin-bottom:60px}.nav-grid__item:first-child{display:none}@media only screen and (max-width: 992px){.nav-grid__item:first-child{display:block}}.nav-grid__item:last-child{margin-bottom:30px}@media only screen and (max-width: 768px){.nav-grid__item{height:auto}}.nav-grid__title{position:relative;margin-bottom:20px;padding-bottom:15px;font-size:21px;font-weight:700}.nav-grid__title::after{content:"";position:absolute;bottom:0;transform:translateY(-50%);display:block;width:25px;height:2px;background-color:#232527}@media only screen and (max-width: 768px){.nav-grid__title{margin-bottom:30px}}.nav-grid__item .newsletter-title,.nav-grid__item .newsletter-subtitle{text-align:left}.nav-grid__item .newsletter-subtitle{max-width:100%;margin:0 0 25px}.avatar{margin-bottom:10px}.avatar__image{position:relative;display:inline-block;width:100%;height:100%;min-height:240px;border-radius:5px;background-size:cover;background-position:center;background-repeat:no-repeat}.avatar__image:hover::after{opacity:1;visibility:visible}.avatar__image::after{content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;border-radius:15px;background-color:rgba(255,255,255,0.1);pointer-events:none;transition:.3s ease-in-out;opacity:0;visibility:hidden}.author-bio{margin-bottom:10px;font-size:16px}.author-btn{position:relative;display:inline-block;font-size:12px;line-height:1;letter-spacing:1px;text-transform:uppercase}.author-btn::after{content:'';position:absolute;top:50%;right:-18%;transform:translateY(-50%);z-index:-1;display:block;width:40px;height:40px;border-radius:50%;border:4px solid #f0f0f0;transition:all .2s}.author-btn:hover{color:#3584f3}.widget-story{display:flex;justify-content:space-between;flex-wrap:wrap;width:100%}@media only screen and (max-width: 768px){.widget-story{height:auto}}.widget-story__posts{width:calc(50% - 10px);margin-bottom:20px}.widget-story__title{margin:10px 0 0;font-size:14px}.widget-story__title a{color:#232527}.widget-story__title a:hover{color:#3584f3}.widget-story__image{position:relative;display:block;border-radius:5px;background-size:cover;background-position:center;background-repeat:no-repeat}.widget-story__image:hover:before{opacity:1;visibility:visible}.widget-story__image::after{content:"";display:table;padding-top:65%}.widget-story__image:before{content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;border-radius:5px;transition:300ms ease-in-out;background-color:rgba(255,255,255,0.1);opacity:0;visibility:hidden}.search{position:fixed;top:0;right:-500px;bottom:0;width:500px;z-index:100;background-color:#fff;transition:all 0.5s cubic-bezier(0.7, 0.4, 0, 1)}.search.is-visible{right:0}@media only screen and (max-width: 576px){.search{right:-90%;width:90%}}.search__box{width:90%;margin:0 auto;padding-top:200px}@media only screen and (max-width: 768px){.search__box{width:80%;padding-top:100px}}@media only screen and (max-width: 576px){.search__box{width:90%;padding-top:100px}}.search__group{position:relative;margin-bottom:30px}.search__group .search__close{position:absolute;right:0;top:3px;font-size:25px;cursor:pointer}.search__group .search__text{width:100%;height:auto;padding:0 20px 15px 0;font-size:27px;font-weight:700;line-height:1;border:0;border-bottom:1px solid #f0f0f0;color:#232527}.search__group .search__text::-webkit-input-placeholder{font-weight:700;color:#232527}.search__group .search__text::placeholder{font-weight:700;color:#232527}.search__group .search__text::-ms-clear{display:none}@media only screen and (max-width: 576px){.search__group .search__text{font-size:30px}}.search-results-list{height:55vh;padding:0 0 25px 10px;list-style:decimal;font-weight:700;color:#232527;overflow:auto;white-space:normal}.search-results-list .search-results__item{padding-bottom:15px;margin-left:10px;margin-bottom:15px;display:list-item;list-style-type:circle;border-bottom:1px solid #f0f0f0}.search-results-list .search-results__link{display:block;font-size:16px;line-height:24px;font-weight:700}.search-results-list .search-results__link:hover{color:#3584f3}.search-results-list .search-results-date{font-size:12px;line-height:1;font-weight:700;letter-spacing:-0.5px;text-transform:uppercase;color:#b7b9c2}.search-results-list .no-results{margin-left:-10px;list-style:none}.search-results-list .no-results h3{font-size:18px}.load-more-section{margin:20px 0;text-align:center}@media only screen and (max-width: 576px){.load-more-section{margin:0}}.load-more-posts{position:relative;display:inline-block;min-width:220px;padding:15px 30px;font-size:12px;line-height:22px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;border-radius:15px;border:none;outline:none;color:#fff;background-color:#3584f3;transition:all .2s ease-in-out;cursor:pointer}.load-more-posts:hover{background-color:#277bf2}.load-more-posts i{margin-left:5px}.footer-widgets{margin-top:60px}.widgets-box{position:relative;padding:50px 0;border-top:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0}.widgets-box::before{content:'';position:absolute;top:-1px;left:0;display:block;width:30px;height:1px;background-color:#232527}.widgets-box::after{content:'';position:absolute;bottom:-1px;left:0;display:block;width:30px;height:1px;background-color:#232527}.widget__title{position:relative;padding:15px 0;margin-bottom:30px;font-size:14px;text-align:center;letter-spacing:1.3px;text-transform:uppercase;background-color:#f0f0f0}@media only screen and (max-width: 992px){.widget{margin-bottom:60px}}@media only screen and (max-width: 576px){.widget{margin-bottom:50px}}.recent-posts{position:relative;display:flex;margin-left:4px;margin-bottom:25px}.recent-posts:last-child{margin-bottom:0}.recent-posts:hover .recent-posts__count{color:#3584f3}.recent-posts__header{margin-right:15px}.recent-posts__image{position:relative;display:block;margin-right:15px;min-width:80px;height:80px;border-radius:5px;background-size:cover;background-position:center;background-repeat:no-repeat}.recent-posts__image:hover::after{opacity:1;visibility:visible}.recent-posts__image::before{content:"";position:absolute;top:-4px;left:-4px;z-index:-1;display:block;width:88px;height:88px;border:1px solid #f0f0f0;border-radius:5px}.recent-posts__image::after{content:"";display:block;position:absolute;left:0;top:0;width:100%;height:100%;border-radius:5px;transition:300ms ease-in-out;background-color:rgba(255,255,255,0.1);opacity:0;visibility:hidden}.recent-posts__title{margin-bottom:0;font-size:16px;line-height:24px}.recent-posts__date{margin-bottom:5px;font-size:12px;line-height:16px;letter-spacing:-0.2px;text-transform:uppercase;color:#b7b9c2}.recent-posts__count{position:absolute;top:-12px;left:-4px;display:block;width:25px;height:25px;font-size:12px;line-height:25px;text-align:center;border-radius:50%;color:#232527;background-color:#fff;box-shadow:0 2px 4px rgba(0,0,0,0.15);transition:350ms}.instagram-box{position:relative}.instagram-box .instagram{margin:0 -2px -4px}.instagram-box .instagram .instagram-item{display:inline-block;width:33.333%;padding:0 2px;margin:0 0 4px}@media only screen and (max-width: 768px){.instagram-box .instagram .instagram-item{width:33.333%}}.instagram-box .instagram .instagram-item a{position:relative;display:inline-block;border-radius:3px}.instagram-box .instagram .instagram-item a:hover::before{opacity:1;visibility:visible}.instagram-box .instagram .instagram-item a::before{content:"";display:block;position:absolute;left:0;top:0;width:100%;height:100%;border-radius:3px;transition:300ms ease-in-out;background-color:rgba(255,255,255,0.1);opacity:0;visibility:hidden}.instagram-box .instagram .instagram-item a img{border-radius:3px}@media only screen and (max-width: 992px){.widget-newsletter{margin-bottom:0}}.newsletter-title{margin:0 0 15px;font-size:21px;line-height:1;text-align:center}.newsletter-subtitle{max-width:290px;width:100%;margin:0 auto 25px;font-size:14px;line-height:24px;text-align:center}.newsletter-email{position:relative;width:100%;height:50px;margin:0 0 25px;padding:8px 15px;font-size:13px;text-align:center;line-height:30px;color:#959595;background-color:#fff;border:1px solid #c6c6c6;border-radius:3px;outline:0;-webkit-appearance:none;box-sizing:border-box;transition:border-color .2s ease-in-out;cursor:text}.newsletter-email::placeholder{font-size:12px;text-transform:uppercase}.newsletter-email:focus{color:#232527;border-color:#3584f3}.newsletter-button{position:relative;display:block;width:100%;height:50px;border-radius:5px;margin:0 auto;font-size:12px;line-height:24px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;text-align:center;border:1px solid transparent;outline:0;transition:all .2s ease-in-out;color:#fff;background-color:#232527;cursor:pointer}.newsletter-button:hover{background-color:#277bf2}.footer{position:relative;margin:50px 0}.footer .footer__inner{display:flex;flex-direction:column;align-items:center}@media only screen and (max-width: 768px){.footer .footer__inner{flex-direction:column}}.copyright{font-size:12px;text-align:center;color:#232527}.copyright a{color:#232527}.copyright a:hover{color:#3584f3}.contact{text-align:center}.contact .contact__item{display:inline-block;margin-left:20px}.contact .contact__item:first-child{margin-left:0}.contact .contact__link{font-size:18px;line-height:30px;color:#232527}.contact .contact__link:hover{color:#3584f3}@media only screen and (max-width: 768px){.contact .contact__item{margin-left:15px}}.job-name{float:left}.job-period{float:right;font-size:0.8em}.company-name,.company-name a,.job-period{color:#738a94}.company-name{display:block;font-style:italic;font-size:0.9em;clear:both;float:left;padding-left:3rem}.job-description{clear:both;float:left;padding-left:6rem;font-size:0.8em}.job-description sub{color:#738a94;font-size:0.5em}.article{flex-grow:1;margin-bottom:60px;animation:animateElement cubic-bezier(0.3, 0.45, 0.45, 0.95) 0.75s;animation-duration:0.75s;animation-iteration-count:1}@keyframes animateElement{0%{opacity:0;transform:translate(0px, 50px)}100%{opacity:1;transform:translate(0px, 0px)}}.article.article--first{display:flex;align-items:center;margin-bottom:60px;animation:none}.article.article--first .article__image{order:2;width:66.666%;padding-top:41%;margin-left:30px}.article.article--first .article__content{order:1;width:33.333%;padding-right:30px}.article.article--first .article__content .article__title{margin:15px 0;font-size:36px;line-height:56px}@media only screen and (max-width: 992px){.article.article--first{flex-direction:column;align-items:normal}.article.article--first .article__image{order:0;width:100%;padding-top:55%;margin-left:0}.article.article--first .article__content{order:1;width:100%;padding-right:0;margin-top:20px}.article.article--first .article__content .article__title{font-size:31px;line-height:51px}}@media only screen and (max-width: 1100px){.article.article--first .article__content .article__title{font-size:33px;line-height:53px}}@media only screen and (max-width: 576px){.article.article--first .article__image{padding-top:75%}.article.article--first .article__content{margin-top:25px}.article.article--first .article__content .article__title{margin:10px 0;font-size:26px;line-height:36px}}.article__title{margin:10px 0;font-size:21px;line-height:28px;letter-spacing:-0.5px}@media only screen and (max-width: 576px){.article__title{font-size:26px;line-height:36px}}.article__image{position:relative;display:inline-block;width:100%;padding-top:75%;border-radius:5px;overflow:hidden}.article__image:hover:after{transition:.4s ease-in-out;opacity:1;visibility:visible}.article__image:after{content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;border-radius:15px;background-color:rgba(255,255,255,0.1);pointer-events:none;transition:300ms ease-in-out;opacity:0;visibility:hidden}.article__image img{position:absolute;top:0;width:100%;height:100%;object-fit:cover}.article__content{margin-top:15px}.article__excerpt{margin-bottom:20px;font-size:14px;line-height:24px}.article__meta{display:flex;align-items:center;margin-bottom:10px;line-height:initial;color:#f0f0f0}.article__meta .article-tags__box{display:flex}.article__meta .article__tag,.article__meta .article__date{flex-grow:1;font-size:12px;text-transform:uppercase;letter-spacing:-0.2px;color:#b7b9c2}.article__meta .article__tag{padding:4px 8px;margin:4px 8px 4px 0;font-size:11px;font-family:Consolas, 'Malgun Gothic';line-height:16px;text-transform:uppercase;border:none;border-radius:6px;color:#fff;transition:none}.article__bottom{display:flex;justify-content:space-between}.article__bottom .article__share .share__item{display:inline-block;margin-left:10px}.article__bottom .article__share .share__link{font-size:16px}.article__bottom .article__share .share__facebook i{color:#3b5999}.article__bottom .article__share .share__twitter i{color:#55acee}.article__bottom .article__share .share__pinterest i{color:#bd081c}.read-more{position:relative;display:inline-block;font-size:12px;line-height:1;letter-spacing:1px;text-transform:uppercase;color:#232527}.read-more::after{content:'';position:absolute;top:50%;right:-18%;transform:translateY(-50%);z-index:-1;display:block;width:40px;height:40px;border-radius:50%;border:4px solid #f0f0f0;transition:all 200ms}.post{position:relative;padding:50px 50px 0 50px;margin-top:-70px;border-radius:5px;background-color:#fff;animation:animateElement cubic-bezier(0.3, 0.45, 0.45, 0.95) 0.75s;animation-duration:0.75s;animation-iteration-count:1}@keyframes animateElement{0%{opacity:0;transform:translate(0px, 50px)}100%{opacity:1;transform:translate(0px, 0px)}}@media only screen and (max-width: 992px){.post{padding:0;margin-top:0;border-radius:0}}.post__content a,.page__content a{text-decoration:underline dotted #c5d2d9}.post-image{position:absolute;top:0;width:100%;height:100%;border-radius:5px;object-fit:cover}.image-box{position:relative;padding-top:45%}@media only screen and (max-width: 992px){.image-box{padding-top:65%;margin-bottom:30px}}@media only screen and (max-width: 576px){.image-box{padding-top:100%}}.post-info{display:flex;justify-content:center;align-items:center;line-height:12px;margin-bottom:20px}@media only screen and (max-width: 576px){.post-info{margin-bottom:10px}}.post-tags .post-tags__tag,.post-date{font-size:12px;text-transform:uppercase;letter-spacing:-0.2px;color:#b7b9c2}.post-tags .post-tags__tag:hover{color:#3584f3}.post-tags .post-tags__tag:after{content:",";display:inline-block}.post-tags .post-tags__tag:last-child:after{content:"";position:relative;bottom:0.25rem;display:inline-block;height:3px;width:3px;margin:0 .5rem 0 .5rem;border-radius:50%;background-color:#b7b9c2}.post-head{max-width:600px;margin:0 auto}@media only screen and (max-width: 576px){.post-head{max-width:100%}}.post-title{font-size:37px;line-height:57px;margin-bottom:20px;text-align:center}@media only screen and (max-width: 768px){.post-title{font-size:26px;line-height:36px;margin-bottom:20px}}.post-author{display:flex;padding:50px 0;margin-bottom:60px;border-bottom:1px solid #f0f0f0}.post-author .post-author__image{position:relative;display:block;min-width:110px;height:110px;margin-right:20px;border-radius:15px;text-decoration:none;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#b7b9c2}.post-author .post-author__image:hover::after{opacity:1;visibility:visible}.post-author .post-author__image::after{content:"";display:block;position:absolute;left:0;top:0;width:100%;height:100%;border-radius:15px;transition:300ms ease-in-out;background-color:rgba(255,255,255,0.1);opacity:0;visibility:hidden}.post-author .post-author__name{display:inline-block;margin-bottom:10px;font-size:18px;line-height:18px;font-weight:700}.post-author .post-author__bio{font-size:16px;line-height:24px;margin-bottom:10px}.post-author .post-author__meta{line-height:initial}.post-author .post-author__link{margin-right:10px;font-size:12px;line-height:1;color:#b7b9c2}.post-author .post-author__link:hover{color:#3584f3}.post-author .post-author__link:last-child{margin-right:0}@media only screen and (max-width: 576px){.post-author{flex-direction:column;align-items:center;text-align:center}.post-author .post-author__image{margin-right:0}.post-author .post-author__image,.post-author .post-author__name,.post-author .post-author__bio{margin-bottom:15px}}.show-comments{text-align:center}.disqus-button{display:inline-block;min-width:155px;padding:15px 30px;font-size:12px;line-height:22px;font-weight:700;text-transform:uppercase;letter-spacing:1.3px;border-radius:15px;border:none;outline:none;color:#fff;background-color:#3584f3;transition:all .2s ease-in-out;cursor:pointer}.disqus-button:hover{background-color:#277bf2}.page{position:relative;padding:50px 50px 0 50px;margin-top:-70px;border-radius:5px;background-color:#fff;animation:animateElement cubic-bezier(0.3, 0.45, 0.45, 0.95) 0.75s;animation-duration:0.75s;animation-iteration-count:1}@keyframes animateElement{0%{opacity:0;transform:translate(0px, 50px)}100%{opacity:1;transform:translate(0px, 0px)}}@media only screen and (max-width: 992px){.page{padding:0;margin-top:0;border-radius:0}}.page-title{font-size:37px;line-height:57px;margin-bottom:20px;text-align:center}@media only screen and (max-width: 768px){.page-title{font-size:27px;line-height:37px;margin-bottom:20px}}.page-image{position:absolute;top:0;width:100%;height:100%;border-radius:5px;object-fit:cover}.image-box{position:relative;padding-top:45%}@media only screen and (max-width: 992px){.image-box{padding-top:65%;margin-bottom:30px}}@media only screen and (max-width: 576px){.image-box{padding-top:100%}}.archive-box{margin:0 0 50px;text-align:center}.archive-title{position:relative;margin:0;padding-bottom:20px;font-size:47px;line-height:57px}.archive-title::after{content:"";position:absolute;bottom:0;left:50%;transform:translate(-50%, -50%);display:block;width:10px;height:2px;background-color:#232527}@media only screen and (max-width: 576px){.archive-title{font-size:40px;line-height:52px}}
+
+  </style></head>
+
+<body>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQHFFZMSMC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HQHFFZMSMC');
+</script>
+
+  
+
+  <!-- begin header -->
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="header__inner col col-12 col-d-10 push-d-1 col-m-12 push-m-0">
+
+      <div class="logo">
+        <a class="logo__link" href="/">
+        
+          JiHun Roh
+        
+        </a>
+      </div>
+        
+      <div class="menu-overlay">
+        <nav class="main-nav">
+          <div class="main-nav__box">
+            <div class="nav__icon-close">
+              <i class="ion ion-md-close"></i>
+            </div>
+            <div class="nav-grid">
+
+              <div class="nav-grid__item">
+                <h2 class="nav-grid__title">Menu</h2>
+                <div class="left-nav">
+                  
+<nav class="site-nav animated drop">
+  <ul class="nav__list list-reset"><li class="nav__item"><a href="/my-background/">My Background</a></li></ul>
+</nav>
+
+
+                </div>
+              </div>
+
+              <div class="nav-grid__item">
+                <h2 class="nav-grid__title">Hey!</h2>
+                <div class="widget-about">
+                  <div class="avatar"><a href="/my-background/" class="avatar__image"
+                      style="background-image: url(/assets/images/jihunroh.jpg)"></a></div>
+                  <p class="author-bio">평범한 직장인입니다.</p>
+                  <a href="/my-background/" class="author-btn">Read more <i class="ion ion-ios-arrow-forward"></i></a>
+                </div>
+              </div>
+
+              <div class="nav-grid__item">
+                <h2 class="nav-grid__title">Recent Posts</h2>
+                <div class="widget-story">
+                  
+                    <div class="widget-story__posts">
+                      
+                      <div class="widget-story__header">
+                        <a class="widget-story__image" href="/2022/07/10/%ED%95%9C%EB%AC%BC-%EA%B0%84%EA%B2%83-%EA%B0%99%EC%9D%80-Jekyll%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8/" style="background-image: url(/assets/images/2022/continuous_deployment.webp)"></a>
+                      </div>
+                      
+                      <div class="widget-story__content">
+                        <h6 class="widget-story__title"><a href="/2022/07/10/%ED%95%9C%EB%AC%BC-%EA%B0%84%EA%B2%83-%EA%B0%99%EC%9D%80-Jekyll%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8/">내가 글을 웹에 올리는 방법은?</a></h6>
+                      </div>
+                    </div>
+                  
+                    <div class="widget-story__posts">
+                      
+                      <div class="widget-story__header">
+                        <a class="widget-story__image" href="/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%96%89%EB%8F%99%EC%9D%80-%EC%99%9C-%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C/" style="background-image: url(/assets/images/covers/default.jpg)"></a>
+                      </div>
+                      
+                      <div class="widget-story__content">
+                        <h6 class="widget-story__title"><a href="/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%96%89%EB%8F%99%EC%9D%80-%EC%99%9C-%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C/">탄소중립을 위한 행동은 왜 어려울까</a></h6>
+                      </div>
+                    </div>
+                  
+                    <div class="widget-story__posts">
+                      
+                      <div class="widget-story__header">
+                        <a class="widget-story__image" href="/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/" style="background-image: url(/assets/images/2020/10/wallpad-2.jpg)"></a>
+                      </div>
+                      
+                      <div class="widget-story__content">
+                        <h6 class="widget-story__title"><a href="/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/">월패드 원격제어를 위한 RS485 패킷 분석 준비</a></h6>
+                      </div>
+                    </div>
+                  
+                    <div class="widget-story__posts">
+                      
+                      <div class="widget-story__header">
+                        <a class="widget-story__image" href="/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98-%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98-%EA%B3%BC%EC%A0%95/" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/2/2b/Marine_nitrogen_cycle_under_future_ocean_acidification.jpg)"></a>
+                      </div>
+                      
+                      <div class="widget-story__content">
+                        <h6 class="widget-story__title"><a href="/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98-%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98-%EA%B3%BC%EC%A0%95/">해수어항에서의 질소순환 과정</a></h6>
+                      </div>
+                    </div>
+                  
+                    <div class="widget-story__posts">
+                      
+                      <div class="widget-story__header">
+                        <a class="widget-story__image" href="/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/" style="background-image: url(/assets/images/covers/default.jpg)"></a>
+                      </div>
+                      
+                      <div class="widget-story__content">
+                        <h6 class="widget-story__title"><a href="/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/">기계적으로 어항물 보충을 자동화하기</a></h6>
+                      </div>
+                    </div>
+                  
+                    <div class="widget-story__posts">
+                      
+                      <div class="widget-story__header">
+                        <a class="widget-story__image" href="/2020/05/31/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90-Quad-Sata-KIT-%EC%9E%85%ED%9E%88%EA%B8%B0/" style="background-image: url(/assets/images/covers/default.jpg)"></a>
+                      </div>
+                      
+                      <div class="widget-story__content">
+                        <h6 class="widget-story__title"><a href="/2020/05/31/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90-Quad-Sata-KIT-%EC%9E%85%ED%9E%88%EA%B8%B0/">라즈베리파이4에 Quad Sata KIT 입히기</a></h6>
+                      </div>
+                    </div>
+                  
+                </div>
+              </div>
+
+              
+
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="navigation">
+        <div class="top-nav">
+          
+<nav class="site-nav animated drop">
+  <ul class="nav__list list-reset"><li class="nav__item"><a href="/my-background/">My Background</a></li></ul>
+</nav>
+
+
+        </div>
+        <div class="nav-buttons">
+          <i class="nav__icon nav__icon-menu ion ion-md-menu"></i>
+          <i class="nav__icon nav__icon-search ion ion-md-search"></i>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="header__overlay"></div>
+</header>
+<!-- end header -->
+
+<div class="search">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <div class="search__box">
+          <div class="search__group">
+            <div class="search__close">
+              <i class="ion ion-md-close"></i>
+            </div>
+            <label for="js-search-input" class="screen-reader-text">Search for Blog</label>
+            <input type="text" id="js-search-input" class="search__text" autocomplete="off" placeholder="Type to search...">
+          </div>
+          <div id="js-results-container" class="search-results-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- begin content -->
+  <main class="content" aria-label="Content">
+    
+<div class="container">
+  <div class="row">
+    <div class="col col-12 col-d-10 push-d-1 col-m-12 push-m-0">
+      <h1 class="page-title">해수어항 장비별 소비전력 측정결과</h1>
+      <div class="image-box">
+        <img class="page-image" src="/assets/images/covers/20200104.jpg" alt="해수어항 장비별 소비전력 측정결과">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col col-8 push-2 col-d-10 col-m-12 push-d-1 push-m-0">
+      <!-- begin page -->
+      <article class="page">
+        <div class="page__content">
+          <p>작년 말부터 산호 없는 해수어항을 운영하고 있다. 2020년 1월 초 현재까지 두달이 좀 넘었다.
+클라키크라운(니모), 화이어고비, 그린크로미스, 크리너쉬림프, 터보스네일이 살고 있는 250L가 들어가는 폭 3자의 중형 어항이다.</p>
+
+<blockquote class="instagram-media" data-instgrm-captioned="" data-instgrm-permalink="https://www.instagram.com/p/B6VDponhiHC/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="12" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/B6VDponhiHC/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;"> Instagram에서 이 게시물 보기</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div></a> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/B6VDponhiHC/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">아기다리고기다리 던 조명작업 ㄱㄱ</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/rolji/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> JiHun Roh</a>(@rolji)님의 공유 게시물님, <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2019-12-21T09:13:03+00:00">2019 12월 21 1:13오전 PST</time></p></div></blockquote>
+<script async="" src="//www.instagram.com/embed.js"></script>
+
+<blockquote class="instagram-media" data-instgrm-captioned="" data-instgrm-permalink="https://www.instagram.com/p/B6XP9FQhQFk/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="12" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/B6XP9FQhQFk/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;"> Instagram에서 이 게시물 보기</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div></a> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/B6XP9FQhQFk/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">광어양식 성공하고만다 ㅇㅇ</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/rolji/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> JiHun Roh</a>(@rolji)님의 공유 게시물님, <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2019-12-22T05:39:03+00:00">2019 12월 21 9:39오후 PST</time></p></div></blockquote>
+<script async="" src="//www.instagram.com/embed.js"></script>
+
+<p>어항 운영 후 전기요금이 많이 늘었다.
+어떤 장비가 전기를 많이 먹는지 궁금했다.
+어항마다 사정은 다르겠지만, 해수어항을 하려는 분들에게 해수어항 전기요금을 가늠할 수 있는 자료가 되길 바란다.</p>
+
+<h2 id="장비별-전력-소비">장비별 전력 소비</h2>
+
+<table>
+<tbody>
+<tr><th>종류</th><th>제품명</th><th>소비전력<br />(측정치)</th><th>전력량<br />(예상치)</th></tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">수류모터</span></td>
+<td>maxspect jump MJ-GF4K</td>
+<td class="align-right">7.2W</td>
+<td class="align-right">5.2kWh</td>
+</tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">리턴모터</span></td>
+<td>NYOS VIPER 3.0</td>
+<td class="align-right">35.2W</td>
+<td class="align-right">25.3kWh</td>
+</tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">스키머</span></td>
+<td>Bubble Magus Curve A5</td>
+<td class="align-right">10.6W</td>
+<td class="align-right">7.6kWh</td>
+</tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">온도조절기</span></td>
+<td>세원 OKE-6428HC</td>
+<td class="align-right">1.3W</td>
+<td class="align-right">1.0kWh</td>
+</tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">조명</span></td>
+<td>샤오미 이라이트 전구 5개</td>
+<td class="align-right">20~30W<br />(색 설정마다 다름)</td>
+<td class="align-right">7.2kWh<br />(하루 8시간)</td>
+</tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">히터</span></td>
+<td>네오 히터 200W 2개</td>
+<td class="align-right">340W</td>
+<td class="align-right">α</td>
+</tr>
+<tr style="background-color: #f4f8fb;">
+<td colspan="3">총</td> 
+<td class="align-right">46.3kWh + α</td>
+</tr>
+</tbody>
+</table>
+
+<p>스마트플러그로 어항장비들의 총 전력소비량을 측정하면 ‘19.11월 75kWh, ‘19.12월 82kWh 수준이다.
+이를 역산해서 히터가 먹는 α를 30kWh 수준이라 해석해도 될지 모르겠다.
+200W 히터 2개의 실측 소비전력이 340W인데 30kWh를 역산하면 한달동안 88시간, 매시간마다 7~8분씩 켜져서 물을 데웠다는 뜻이다.
+히터가 전기를 많이 먹는다는 것은 으레 알고 있었지만 이 정도일 줄은 몰랐다.</p>
+
+<p><a href="http://cyber.kepco.co.kr/ckepco/front/jsp/CY/E/E/CYEEHP00101.jsp">누진요금은 200kWh부터 시작되고(7~8월은 300kWh) 200kWh를 전후로 전력량 요금은 93.3원/kWh에서 187.9원/kWh으로 뛴다</a>.
+우리집 전체 전력소비량이 ‘19.11월 275kWh임을 감안하면, 어항에서만 매월 80kWh, 1만5천원을 쓰고 있는 셈이다.</p>
+
+<p>그 외 장비 구입과 감가, 소모품(먹이, 해수염 등), 생물 등의 구입비용, 유지보수(환수, 청소 등)에 쓰는 시간의 기회비용 등 해수어항에는 손과 돈이 많이 간다.
+그럼에도 이런 이쁜 취미를 영위하는데는 쓸만한 수준으로 느끼고 있다.</p>
+
+        </div>
+      </article>
+      <!-- end page -->
+    </div>
+  </div>
+</div>
+  </main> 
+  <!-- end content -->
+  
+  <div class="top" title="Top"><i class="ion ion-ios-arrow-up"></i></div>
+  <!-- begin footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12 col-d-10 push-d-1 col-m-12 push-m-0">
+      <div class="footer__inner">
+        <div class="copyright">Some cover images are designed by <a href='https://www.freepik.com'>rawpixel.com</a></div>
+        <div class="copyright">2022 &copy; <a href="/"><strong>JiHun Roh</strong></a>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+  <script src="/js/vendors/jquery-3.3.1.min.js"></script>
+<script src="/js/vendors/simple-jekyll-search.min.js"></script>
+<script>
+  SimpleJekyllSearch({
+    searchInput: document.getElementById("js-search-input"),
+    resultsContainer: document.getElementById("js-results-container"),
+    json: "/search.json",
+    searchResultTemplate: '<div class="search-results__item"><a class="search-results__link" href="{url}">{title}</a><span class="search-results-date"> <time datetime="{date}">{date}</time></span></div>',
+    noResultsText: '<li class="no-results"><h3>No results found</h3></li>'
+  });
+</script>
+<script src="/js/vendors/instafeed.min.js"></script>
+<script src="/js/vendors/jquery.fitvids.js"></script>
+<script src="/js/vendors/transition.js"></script>
+<script src="/js/vendors/zoom.min.js"></script>
+<script src="/js/common.js"></script>
+<script>
+  var base_url = "",
+    pagination_next_url = base_url + '/page2',
+    pagination_next_page_number = '',
+    pagination_available_pages_number = '';
+</script>
+</body>
+
+</html>
