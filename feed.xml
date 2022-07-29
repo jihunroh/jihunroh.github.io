@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-07-29T08:19:25-05:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">내가 글을 웹에 올리는 방법은?</title><link href="https://jihunroh.github.io/2022/07/10/%ED%95%9C%EB%AC%BC-%EA%B0%84%EA%B2%83-%EA%B0%99%EC%9D%80-Jekyll%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8/" rel="alternate" type="text/html" title="내가 글을 웹에 올리는 방법은?" /><published>2022-07-10T00:00:00-05:00</published><updated>2022-07-10T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/07/10/%ED%95%9C%EB%AC%BC%20%EA%B0%84%EA%B2%83%20%EA%B0%99%EC%9D%80%20Jekyll%EB%A1%9C%20%EB%B8%94%EB%A1%9C%EA%B7%B8</id><content type="html" xml:base="https://jihunroh.github.io/2022/07/10/%ED%95%9C%EB%AC%BC-%EA%B0%84%EA%B2%83-%EA%B0%99%EC%9D%80-Jekyll%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8/"><![CDATA[<p>이 웹사이트는 Ruby 기반인 Jekyll로 만들었다.
+개발자들이 많이 써온 프로그램인데, 2014년부터 써왔더니 나도 제법 쓸줄 안다.
+next.js 같은 더 현대적인 프로그램들이 각광받는 요즘에도,
+오히려 투박해서 매력적인 프로그램이다.</p>
+
+<p>이 프로그램을 쓰는 방법은 개발자에겐 쉽겠지만 나한테 그렇지 않았다.
+수많은 시행착오를 거쳐서야, 내게 가장 최적인 방식을 찾게 됐다.</p>
+
+<p>간만에 GitHub를 둘러보다가, 수년 전 한참 애먹었던 Continuous Integration이
+Actions이라는 이름으로 서비스화되어 있었다. 주말에 장난감처럼 빠져 놀았다.</p>
+
+<h2 id="환경-만들기">환경 만들기</h2>
+
+<p><a href="https://jekyllrb.com/docs/installation/windows/#installation-via-bash-on-windows-10">Windows Subsystem for Linux에 Jekyll을 이용하는 환경을 만든다.</a>
+집에 다용도로 쓰는 리눅스 서버가 있어 Build를 맡겨 보았지만 WSL만큼 편리할 수는 없었다.
+특히나 저전력 서버이다 보니 상시 구동 중인 IoT 프로그램들과 자원을 나눠먹기 어려웠다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># WSL 설정: on Bash Shell</span>
+
+<span class="nb">sudo </span>apt-get update <span class="nt">-y</span> <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get upgrade <span class="nt">-y</span>
+<span class="c"># 시간이 오래 걸리는 작업이므로 powershell에서 wsl --export Ubuntu Ubuntu.tar로 백업해두는 것이 좋다.</span>
+
+<span class="nb">sudo </span>apt <span class="nb">install </span>ruby-bundler ruby2.7-dev build-essential dh-autoreconf zlib1g-dev libffi-dev libssl-dev
+<span class="nb">cd </span>REPOSITORY_PATH
+bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<h2 id="배포하기">배포하기</h2>
+
+<p>4~5년 전쯤엔 3rd-party 플러그인을 쓰려면 Travis-CI나 Netlify을 썼었다.
+지금은 GitHub Actions으로 GitHub 내에서 3rd-party 플러그인도 이용하여 배포까지 할 수 있다.
+이 웹사이트에도 간단한 플러그인을 작성해서 적용하고 있다.</p>
+
+<p><a href="https://jekyllrb.com/docs/continuous-integration/github-actions/#setting-up-the-action">Jekyll 공식문서 예제</a>를 조금 변형해서, 
+<a href="https://github.com/jihunroh/jihunroh.github.io/blob/main/.github/workflows/jekyll.yml">Workflow를 만들었다.</a>
+<code class="language-plaintext highlighter-rouge">main</code> branch가 Workflow를 거친 후 나온 결과물은 <code class="language-plaintext highlighter-rouge">gh-pages</code> branch에 저장된다.
+<code class="language-plaintext highlighter-rouge">gh-pages</code> branch는 Github Pages의 전통적인 기능에 따라 <code class="language-plaintext highlighter-rouge">https://jihunroh.github.io</code>에 결과물을 게시한다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Build and deploy Jekyll site to GitHub Pages</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="s2">"</span><span class="s">main"</span> <span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v3</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Cache gems</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/cache@v3</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s">vendor/bundle</span>
+        <span class="na">key</span><span class="pi">:</span> <span class="s">${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}</span>
+        <span class="na">restore-keys</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">${{ runner.os }}-gems-</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build &amp; Deploy to GitHub Pages</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">helaili/jekyll-action@v2</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">target_branch</span><span class="pi">:</span> <span class="s">gh-pages</span>
+        <span class="na">target_path</span><span class="pi">:</span> <span class="s">/</span>
+        <span class="na">token</span><span class="pi">:</span> <span class="s">${{ secrets.GH_TOKEN }}</span>
+</code></pre></div></div>
+
+<p>오랜 고질병처럼 글쓰기보단 글쓰는 프로그램에 몰두하게 된다.
+2022년 하반기 목표가 일이건, 공부건 <code class="language-plaintext highlighter-rouge">하는 모든 일을 여과없이 기록</code>하는 건데 도움이 될 수도?</p>]]></content><author><name>노지훈</name></author><category term="Jekyll" /><summary type="html"><![CDATA[이 웹사이트는 Ruby 기반인 Jekyll로 만들었다. 개발자들이 많이 써온 프로그램인데, 2014년부터 써왔더니 나도 제법 쓸줄 안다. next.js 같은 더 현대적인 프로그램들이 각광받는 요즘에도, 오히려 투박해서 매력적인 프로그램이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2022/continuous_deployment.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2022/continuous_deployment.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">탄소중립을 위한 행동은 왜 어려울까</title><link href="https://jihunroh.github.io/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%96%89%EB%8F%99%EC%9D%80-%EC%99%9C-%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C/" rel="alternate" type="text/html" title="탄소중립을 위한 행동은 왜 어려울까" /><published>2021-10-04T00:00:00-05:00</published><updated>2021-10-04T00:00:00-05:00</updated><id>https://jihunroh.github.io/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%96%89%EB%8F%99%EC%9D%80%20%EC%99%9C%20%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C</id><content type="html" xml:base="https://jihunroh.github.io/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%96%89%EB%8F%99%EC%9D%80-%EC%99%9C-%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C/"><![CDATA[<p>나는 1년 전부터 바닷물고기를 키우고 있다. 야밤에 집안 조명들을 모두 끈 어둠 속에서 심연의 바다 한 조각을 바라보고 있으면 영롱하기 그지 없다.
+이 취미는 요즘 내 업무분야인 ‘탄소중립’과도 밀접한 관련이 있는데, 어항이 본질적으로 ‘해양생태계의 질소순환 과정’을 좁은 공간 안에 구겨넣은 미니어쳐이기 때문이다.</p>
+
+<p>어항에 투여된 물고기 사료는 질소를 품은 유기물이라서, 물고기, 박테리아의 소화 과정에서 암모니아 및 아질산염을 거쳐, 종국적으로는 질산염이 되어 어항에 누적된다.
+본래 해양 생태계에서는 해조류가 광합성을 하며 질산염을 소모하여 질산염의 균형(이른바 질소순환 과정)을 이루는데, 그렇다고 어항에서 미역을 키울 수는 없는 노릇이다.
+누적된 질산염은 물고기 건강에 만성적인 악영향을 주기 때문에, 주기적으로 깨끗한 물로 갈아주거나 질산염을 질소분자로 변환하는 약품을 투여해야 한다.</p>
+
+<p><img src="/assets/images/2021/10/aquarium.jpg" alt="우리집 해수어항" /></p>
+
+<p><a href="https://microbewiki.kenyon.edu/index.php/Nitrosococcus_oceani"><img src="/assets/images/2020/08/marine-nitrification.jpg" alt="바다에서의 질소 순환 과정" /></a></p>
+
+<p>탄소중립의 난해함은 어항 관리의 그것과 닮았다.
+지구(어항)의 탄소(질산염) 항상성을 깨뜨리고 누적시키는 원인(사료 급여)은 물론, 해결법(물갈이, 약품 투여)까지 공히 알려져는 있는데, 대체 탄소(질산염)는 눈에 쉽게 보이질 않아 얼만큼 행동해야 할지를 모르겠다.
+노력에는 돈과 시간이 들기 때문에 막연하게 최대한의 노력을 하고 싶지는 않은 것이다.</p>
+
+<p><a href="https://www.bbc.com/future/article/20190304-human-evolution-means-we-can-tackle-climate-change">영국의 국제이슈 기고가 Matthew Wilburn King은 우리가 기후행동을 꺼려하는 이유를 짚는다</a>.
+우리 인류의 뇌에는 수백만년에 걸쳐 여러 인지 편향이 각인되었는데, 기후행동은 미래의 가치/비용에 대한 과소평가, 방관자 효과, 매몰비용 오류 등과 엮여 실행하지 어렵다는 것이다.
+이 인지 편향들은 매우 강렬하다고 알려져 있어서, 다시 말하면 우리는 기후변화의 원인, 대응 필요성을 이해할 수는 있어도, 미래를 위한 일을 하는 데에는 좀처럼 성공하지 못한다. 소설가 김훈은 “밥벌이보다 숭고한 일은 없다”고 말했다. 이번달 나올 월급과 떼일 세금을 두고서는 “30년 후의 일인데 노력을 벌써부터 많이 해야하나<code class="language-plaintext highlighter-rouge">미래 과소평가</code>, 더 노력할 사람들이 많은데 내가 할 필요가 있을까?<code class="language-plaintext highlighter-rouge">방관자 효과</code>, 내연기관에 인류가 쏟은 돈이 얼만데 전기/수소차를 쓰라고?<code class="language-plaintext highlighter-rouge">매몰비용 오류</code>” 같은 생각이 아주 직관적인 접근이 되는 것이다.</p>
+
+<p>기후환경 활동가들은 이러한 인지편향을 잘 이해하고 있는지, 사람들에게 강렬한 인상을 남기는 것이 해법이라고 생각하는 것 같다.
+스웨덴의 만 16세 환경운동가 Greta Thunberg는 2019년 UN기후행동 정상회의 연단에서 “여러분은 헛된 말로 저의 꿈을 빼앗았습니다.
+여러분이 할 수 있는 이야기는 전부 돈과 끝없는 경제성장의 신화 뿐입니다.
+어떻게 그럴 수 있습니까?“라고 울먹이며 사람들의 큰 경각심을 불러일으켰다.
+지구 온난화를 논할 때는 어김없이 작은 얼음 조각 위의 북극곰이 출연하고, 자원 재활용을 논할 때에는 폐플라스틱을 잔뜩 먹은 거북이가 등장한다.
+얻는 기쁨보다 잃는 슬픔에 더 큰 의미를 두는 것이 인류의 오랜 부정 편향이다.
+<a href="https://www.etnews.com/20140716000244">산업계가 2015년 시행될 온실가스배출권거래제를 두고 매년 30조원의 제조업 매출 감소를 겪게될 것이라고 경고한 점도 비슷한 전략이다</a>.
+그야말로 편향을 전략적으로 이용하는 프레임 전투다.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u9KxE4Kv9A8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p><img src="/assets/images/2021/10/polar_bear.jpg" alt="빙산조각 위의 북극곰" /></p>
+
+<p>사람들이 더욱 체감하게 하기 위해, 해양에서 국소적으로 일어났던 ‘지구온난화’는 전지구적인 ‘기후변화’로, 중립적 의미의 ‘기후변화’는 다시 부정적 의미의 ‘기후위기’로 이슈 키워드가 변화해 가고 있다.
+변화양상 속에서도 기후환경계와 경제산업계 간의 간극은 결코 좁혀지지 않을 것 같다.
+요즘 나는 파리협약에 따라 당사국이 제출해야 하는 국가온실가스 감축목표(NDC)의 상향을 위해, 관계부처, 탄소중립위원회 등과 협의 중인데, 어느누구 간에는 서로 대화가 곤란할 정도의 치열한 감정싸움이 있다.</p>
+
+<p>국토교통부는 탄소중립을 위한 건물의 에너지성능 향상, 전기/수소차 전환 가속화 등에서 과업을 설정하고자 노력 중이다.
+나는 작년말 미래전략일자리담당관에서 탄소중립을 업무를 맡으면서 가졌던 뜨거운 지적 호기심을 기억한다.
+하지만 업무과정에서 마주친 기후환경의 언어에는 잘 익숙해지지 못했다.
+이 날선 프레임 전투 중에서, 쪽방촌에 연탄이 아닌 태양광패널 나눔봉사가 이뤄질 풍경,
+화석연료의 불맛이 흠뻑 스민 옛날짬뽕을 그리워하는 모습,
+쏟아지는 전기차 폐배터리로 골머리를 앓을 정부의 입장 등을 상상하며 유머를 찾는다.
+이 모든 생각이 2021년 이 시대라는 우물 안에 살고 있기 때문에 갖게되는 아집일 수도 있기에, 머리쓰기보다 묵묵히 손부터 움직이려고 한다.</p>]]></content><author><name>노지훈</name></author><category term="탄소중립" /><summary type="html"><![CDATA[나는 1년 전부터 바닷물고기를 키우고 있다. 야밤에 집안 조명들을 모두 끈 어둠 속에서 심연의 바다 한 조각을 바라보고 있으면 영롱하기 그지 없다. 이 취미는 요즘 내 업무분야인 ‘탄소중립’과도 밀접한 관련이 있는데, 어항이 본질적으로 ‘해양생태계의 질소순환 과정’을 좁은 공간 안에 구겨넣은 미니어쳐이기 때문이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20211004.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20211004.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">월패드 원격제어를 위한 RS485 패킷 분석 준비</title><link href="https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/" rel="alternate" type="text/html" title="월패드 원격제어를 위한 RS485 패킷 분석 준비" /><published>2020-10-03T00:00:00-05:00</published><updated>2020-10-03T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C%20%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20RS485%20%ED%8C%A8%ED%82%B7%20%EB%B6%84%EC%84%9D%20%EC%A4%80%EB%B9%84</id><content type="html" xml:base="https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/"><![CDATA[<p>Home Assistant 등 IoT 플랫폼에서 월패드를 제어할 수 있다면,
+월패드에서 제어가능한 조명, 난방, 환기 등 기기를 IoT 플랫폼에서 간접적으로 제어할 수 있다.</p>
+
+<p>월패드는 RS485 직렬통신을 주로 이용한다. 연결하는 방법은 의외로? 간단하다.
+<a href="http://www.hi-flying.com/elfin-ew10-elfin-ew11">Elfin EW11</a>은 RS485 선에 연결하여,
+오가는 패킷을 듣고, 원하는 패킷을 흘려준다. RS485 신호를 TCP 소켓, MQTT 등 다양한 방식으로 변환해준다.</p>
+
+<p>난 나비엔 UHN-1010을 쓰고 있다. 월패드 아래에 있는 나사를 뜯어 월패드를 조심스럽게 들어냈다. 가족들에겐 양해가 필요하다.🤦🏻‍♂️</p>
+
+<p><img src="/assets/images/2020/10/wallpad-1.jpg" alt="월패드 개방과정" /></p>
+
+<p>Elfin EW11의 <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code> 단자는 신호가 오가고, <code class="language-plaintext highlighter-rouge">C</code>, <code class="language-plaintext highlighter-rouge">D</code> 단자는 전원이다.
+월패드 내측 회로에 있는 단자들과 점퍼케이블을 통해 연결했다.</p>
+
+<p><img src="/assets/images/2020/10/ew11-wiring.jpg" alt="Elfin EW11 Wiring" /></p>
+
+<p><img src="/assets/images/2020/10/wallpad-2.jpg" alt="월패드에 EW11 연결" /></p>
+
+<p>Elfin EW11의 Wi-Fi 설정을 마치고, 라우터의 DHCP 서버로 고정된 내부IP를 할당했다.
+패킷을 TCP 서버에 방송하도록 설정했다. SerialPortMon에서 TCP 서버에 접속하니 패킷이 잘 보인다. <a href="https://blog.djjproject.com/646">더 자세한 설정 장법은 도정진님 블로그에서 확인할 수 있다.</a></p>
+
+<p><img src="/assets/images/2020/10/serialportmon.jpg" alt="SerialPortMon" /></p>
+
+<p>위 설치가 다 끝나면, 유념해야 할 두가지 요소가 있다.</p>
+
+<p>① 이 패킷에 표준은 없는 것 같다. <a href="http://www.kashi.or.kr/NewsLetter/Vol.01/TTAK.KO-04.0083_R1.pdf">IoT 까페에서 안내해 준 한국정보통신기술협회의 표준 문서</a>가 있는데 <a href="http://www.tta.or.kr/data/ttas_view.jsp?totalSu=10474&amp;by=asc&amp;order=standard_no&amp;rn=1&amp;pk_num=TTAK.KO-04.0073/R3&amp;nowSu=2888">폐지된 기준으로 나온다.</a> 따라서 본인이 쓰는 월패드가 쓰는 패킷을 리버스엔지니어링해야 한다. 이 작업이 좀 고되다.</p>
+
+<p><img src="/assets/images/2020/10/specification.jpg" alt="한국정보통신기술협회 표준문서" /></p>
+
+<p>② 패킷 분석 뿐만 아니라 Home Assistant가 읽을 수 있도록 변환도 해야한다. Home Assistant는 워낙 확장이 많아 신호를 넘겨줄 방법이 다양할 것 같은데,
+가장 흔한 방법이 MQTT일 것이다.</p>
+
+<p><a href="https://github.com/jihunroh/homeassistant-addons/tree/master/wallpad">난 홈어시스턴트 코리아 저장소에 있는 코콤 월패드 프로그램을 수정해 ①과 ②를 해결하고 있다.</a> 월패드 때문에 별도의 프로그램을 쓰는 것이 좀 찝찝해서, EW11이 MQTT로 바로 패킷을 쏘도록 하고, Home Assistant가 패킷을 분석하는 방법이 가능한지도 알아보고 있다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><summary type="html"><![CDATA[Home Assistant 등 IoT 플랫폼에서 월패드를 제어할 수 있다면, 월패드에서 제어가능한 조명, 난방, 환기 등 기기를 IoT 플랫폼에서 간접적으로 제어할 수 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2020/10/wallpad-2.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2020/10/wallpad-2.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">해수어항에서의 질소순환 과정</title><link href="https://jihunroh.github.io/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98-%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98-%EA%B3%BC%EC%A0%95/" rel="alternate" type="text/html" title="해수어항에서의 질소순환 과정" /><published>2020-08-16T00:00:00-05:00</published><updated>2020-08-16T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98%20%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98%20%EA%B3%BC%EC%A0%95</id><content type="html" xml:base="https://jihunroh.github.io/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98-%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98-%EA%B3%BC%EC%A0%95/"><![CDATA[<p>🐟물고기🐠 먹이는 인간 음식처럼 단백질, 탄수화물, 지방과 같은 탄소화합물로 구성된다.
+탄소화합물을 구성하는 질소는 자연에서 질소 순환과정<sub>nitrogen cycle</sub>에 따라 순환한다.
+유기물 → 암모니아<sub>NH<sub>3</sub></sub> → 아질산염 이온<sub>NH<sub>2</sub><sup>-</sup></sub> → 질산염 이온<sub>NH<sub>3</sub><sup>-</sup></sub>으로 분해되는 질화 과정<sub>nitrification</sub>,
+질산염 이온이 질소분자로 환원되는 탈질화 과정<sub>denitrification</sub>이다.</p>
+
+<p><a href="https://microbewiki.kenyon.edu/index.php/Nitrosococcus_oceani"><img src="/assets/images/2020/08/marine-nitrification.jpg" alt="바다에서의 질소 순환 과정" /></a></p>
+
+<p>해수어항은 이 자연계의 순환과정을 어항 속에 구겨넣기 위한 부단한 고뇌의 연속이다.</p>
+
+<h2 id="암모니아화-ammonification">암모니아화 <sub>ammonification</sub></h2>
+
+<p>어항 내 먹이 잔여분, 물고기 배설물이나 사체 등 탄소화합물은은 자연스럽게 나타나는 찌꺼기다.
+생육을 위해 탄소화합물을 섭취하는 <a href="https://ko.wikipedia.org/wiki/종속영양생물">종속영양세균</a><sub>heterotrophic bacteria</sub>이 암모니아 기체로 분해한다.</p>
+
+<p>암모니아는 상온에서 본래 기체이지만, 물에 가수분해되어 암모늄 이온과 수산화 이온으로 분리된다.
+<a href="https://blog.naver.com/PostView.nhn?blogId=daichung&amp;logNo=20017638890">PH가 높을 수록 암모늄 이온으로 더 쉽게 가수분해된다.</a></p>
+
+<p>\[ NH_3+ H_2 O \longleftrightarrow NH_4^+ + OH^- \]</p>
+
+<p>시중의 박테리아제는 대개 암모니아화를 하는 종속영양세균을 포함하고 있다.
+종속영양세균은 매 15~20분마다 분열하여 근시간에 폭발적으로 증식한다.</p>
+
+<p><img src="/assets/images/2020/08/fritzzyme_monster_460.jpg" alt="FritzZyme Monster 460은 종속영양 박테리아를 함유하고 있다." /></p>
+
+<h2 id="질화-nitrification">질화 <sub>nitrification</sub></h2>
+
+<p>암모늄 이온은 물고기에 치명적인 위험을 주기에 빠른 제거나 산화가 필요하다.
+암모늄 이온은 <code class="language-plaintext highlighter-rouge">Nitrosococcus</code>에 의해 아질산염 이온으로 산화된다.
+<code class="language-plaintext highlighter-rouge">Nitrosomonas</code>가 언급되는 경우가 있는데,
+<a href="https://blog.naver.com/dart007/221677462823">해수에서도 서식한다는 설명이 있는 반면</a>,
+<a href="https://youtu.be/sso191sYB-4?t=705">민물에서 서식한다는 지적도 있다.</a></p>
+
+<p>\[ 2NH_4+ 3O_2 \longrightarrow 2NO_2^- + 4H^+ + 2H_2 O \]</p>
+
+<p>아질산염 이온은 <code class="language-plaintext highlighter-rouge">Nitrococcus</code>, <code class="language-plaintext highlighter-rouge">Nitrospina</code>에 의해 질산염 이온으로 산화된다.
+마찬가지로 <code class="language-plaintext highlighter-rouge">Nitrobacter</code>가 언급되는 경우가 있는데,
+<a href="https://blog.naver.com/dart007/221677462823">해수에서도 서식한다는 설명이 있는 반면</a>,
+<a href="https://youtu.be/sso191sYB-4?t=705">민물에서 서식한다는 지적이 있다.</a></p>
+
+<p>\[ 2 NO_2^- +  O_2 \longrightarrow 2 NO_3 \]</p>
+
+<p>여하간 <code class="language-plaintext highlighter-rouge">Nitrosococcus</code>와 <code class="language-plaintext highlighter-rouge">Nitrococcus</code>가 해수 내 질화과정의 핵심인 <strong>질화 세균</strong>인건 이견이 없다.
+<a href="https://www.britannica.com/science/nitrifying-bacterium#ref237319">산소를 이용하기에 호기성이고</a>,
+<a href="https://terms.naver.com/entry.nhn?docId=2699177&amp;cid=51610&amp;categoryId=51610">독립영양세균</a>으로서 유기화합물을 합성할 때 아질산, 질산염을 이용하는 것이다.</p>
+
+<p>위 두 반응을 종합하면 질산화 과정은 산소를 소모하고 어항의 PH를 높일 것으로 보이는데,
+어항의 용존산소량과 PH에 유의미한 수준인지는 잘 모르겠다.</p>
+
+<p>\[ NH_4^+ + 2 O_2 \longrightarrow NO_3^- + H_2 O + 2 H^+ \]</p>
+
+<p>종속영양세균에 비하여 독립영양세균은 증식하는데 시간이 필요하다. 번식에 24~36시간이 소요된다고 한다.</p>
+
+<h2 id="탈질화-denitrification">탈질화 <sub>Denitrification</sub></h2>
+
+<p><a href="https://blog.naver.com/dart007/221683393015">탈질화 세균은 종류가 아주 많고</a> 호기성/혐기성 여부도 다양하다.
+<a href="https://en.wikipedia.org/wiki/Pseudomonas_aeruginosa">가령, <code class="language-plaintext highlighter-rouge">Psuedomonas</code> 속의 Pseudomonas aeruginosa은 혐기성인데</a>,
+<a href="http://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE02375177&amp;nodeId=NODE02375177&amp;language=ko_KR"><code class="language-plaintext highlighter-rouge">Stenotrophomonas</code> 속의 어떤 종은 호기 조건에서 질산염을 낮춘다</a>.</p>
+
+<p>질산염을 적정 수준으로 관리하는 것이 해수어항에서 가장 어려운 문제이기도 하다.
+알게 필터<sub>Algae Scrubber</sub>, 리퓨지움을 통해 수초나 조류가 질산염을 소모하도록 하는 방법,
+두껍게 깔린 모래<sub>deep sand</sub> 안의 산소가 희박한 환경에서 혐기성세균을 이용하는 방법 등이 있다.
+하지만 공간 제약 문제로 쉽지 않은 방식들이다.</p>
+
+<p>이 외에 <a href="https://cafe.naver.com/seaaes/210749">모종의 세균이 속성작용<sub>diagenesis</sub>에 필요한 수준보다 산소가 부족한 경우 질산염을 이용하는 특성을 고려한 보드카 요법</a>이 있다.
+보드카, 설탕 등 탄소화합물을 투여해 종속영양세균을 폭발적으로 번식시켜서 세균이 무기호흡하며 질산염을 소모하도록 하는 보드카 요법 등이 거론된다.</p>]]></content><author><name>노지훈</name></author><category term="Reef" /><summary type="html"><![CDATA[🐟물고기🐠 먹이는 인간 음식처럼 단백질, 탄수화물, 지방과 같은 탄소화합물로 구성된다. 탄소화합물을 구성하는 질소는 자연에서 질소 순환과정nitrogen cycle에 따라 순환한다. 유기물 → 암모니아NH3 → 아질산염 이온NH2- → 질산염 이온NH3-으로 분해되는 질화 과정nitrification, 질산염 이온이 질소분자로 환원되는 탈질화 과정denitrification이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marine_nitrogen_cycle_under_future_ocean_acidification.jpg" /><media:content medium="image" url="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marine_nitrogen_cycle_under_future_ocean_acidification.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">기계적으로 어항물 보충을 자동화하기</title><link href="https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="기계적으로 어항물 보충을 자동화하기" /><published>2020-07-26T00:00:00-05:00</published><updated>2020-07-26T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EC%96%B4%ED%95%AD%EB%AC%BC%20%EB%B3%B4%EC%B6%A9%EC%9D%84%20%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/"><![CDATA[<p>해수어항을 곁에 두면 환수보다는 보충수통 채우는 데 손이 자주 간다.
+내가 쓰는 어항은 물이 250L 들어가는데, 여름철이면 하루에 2L 가까이 자연 증발되나 보다.
+보충수 탱크는 11L 정도인데 물을 1주일에 한번 채워줘야 한다.</p>
+
+<p>이게 귀찮다. 환수야 어항 청소하는 맛에 하는데,
+일상적으로 RO/DI 필터에서 초순수를 받아서 보충수 탱크에 채우는 것은 영 재미가 없다.
+탱크를 채울 때 늘 물을 바닥에 흘리는 찜찜함은 덤.</p>
+
+<p>근데 물 보충 자동화를 표방하는 기성품이 이미 있었다.
+<code class="language-plaintext highlighter-rouge">1AQUA SmartATO</code>라는 제품이다.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GPoZvEoIboM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p>전자식 수위 센서로 감지한 물 부족분 만큼 동봉된 보충수 탱크에서 물을 뽑아온다.
+사람들이 꽤 쓰는 제품임에도 단점은 꽤 있는데,</p>
+
+<ol>
+  <li>전기를 먹는다. 전기가 필요 없는 대안이 있다면 이건 단점.</li>
+  <li>보충수 탱크가 자리를 차지한다.</li>
+  <li>RO/DI 초순수를 미리 준비해놓고 보충수 탱크에 채워놔야 한다.</li>
+</ol>
+
+<p>물론, 이 보충수 탱크에 볼탑을 설치해서 초순수가 들어가도록 설계해 3번 단점은 보완할 수 있겠다만,
+그럴바엔 본항이나 섬프항에 볼탑을 설치하고 보충수 탱크 없이 바로 RO/DI 필터에 연결하는게 낫겠다 싶었다.
+전자식 수위 센서는 물리적으로 작동하는 볼탑으로 충분히 대체할 수 있다고 생각했다.
+있어보이려고 그려본 순서도… 이게 바로 <strong>전기를 1W도 쓰지 않고, 공간도 절약될 뿐더러, 손도 가지 않는 방법이다.</strong></p>
+
+<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2020-07-26T11:11:54.257Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36 Edg/84.0.522.44\&quot; etag=\&quot;-I10HFzU2W8Q9fe1zAYm\&quot; version=\&quot;13.5.3\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;C5RBs43oDa-KdzZeNtuy\&quot; name=\&quot;Page-1\&quot;&gt;7Vtbe6M2EP0t+8Bj8oG4WDyC7WTTbreXbJvuIwYZ02ArxTiJ99dXEhJXgXFi7KRxXoKkQbc5mjkzyIo+Xj5fJ97D4hccoFgBavCs6BMFAA3YgPyjNdusxrLVrCJMooALFRW30Q/EK4XYJgrQuiKYYhyn0UO10serFfLTSp2XJPipKjbHcXXUBy9EjYpb34ubtXdRkC6yWghGRf1nFIULMbJm2VnL0hPCfCXrhRfgp1KVPlX0cYJxmj0tn8coppsn9uXuZnsXf7m3rn/6ff2v96f787evf11knV3t80q+hASt0sN2zZX76MUbvl98relWbGCCN6sA0U5URXcX6TImjxp5/Ael6ZYr3NukmFThJF3gEK+8+AvGD1xujlcpF9NoGa0ChyqWlGcx9u+zqqsojvkYpMTlISmt0wTf57qjHeSKoMKxN0Ox6/n3IZvoGMc4IU0rvEK0q4CAga+lmNy0qHWz9VK5Gl52bDaXW+NN4qMOOZ1j3ktC1NWflSOKHEWElyhNtuS9BMVeGj1WJ+fxMxHmcoXeyQNX/R4w0JswmE4U21RcQ5mOFQgVG5L2LzdXU/Lvliwm/dQBFKqkp0WUotsHj23OE7EtVfCUQUHW7Yaxt15zle7Q+JwgRahZAXpgIhgY+WulFghmumWJwfhE+RY+oiRFzy9QeVNFvBeDmwluJyEvPhVGRxOWZFEyOOK1g+vUkOjUVaChOMb5jB/2jFs9z7imdiJIvdQMYFdQJLxobzPAO/8NR2RlhQiez9dkanVM5XN4OcxMCczG1HQQpFG8udR60BooA95u3b1raL4V4I3kuHs3ILPkILOYf2KOypmwmpFC6alKkeeMFXfMKidUDFgx2SF3lpCnkD7RJseirUTYVRV7TB/I6zbkXVHgEvgCWqNfNY3mAi9nm/VuX1f1XgSOV94yiunmf0bxI0oj35N4RC+OwhUp+AQqKJEjkQwZrUJSsorSN4b8C6PpKefzOfB9macMrJllWjlgB3eO2qind4RDeceR1DtSzDDtOwwPFEgZEiwOJDg+056qZoFaU619auIDz8TnWMRHeI7dzKcFRIN7IKIMb1uSeKBvrCVdiENRg7MBalH1fvLkIZvBQd2hfeZcHadiRTb377xfUvhOC5emKE6ey42TLS+d4qxc2+nX+bV/8xh64d03pG78J++iJUgY/Kg0sF037bpVM9nZUvhbh2d9Yqk1S+7qPC3hWopjl/MTlAtC0qqxB42684IUNvlfkyMyf0+4oJMdn6mggI5ikxEd2kQYyZkLHpIL6uDUXFDTduDMYFFCP5xRMYORR1nAIQlZMggSLGqCclZxCQUuqTWfMhRC1gkz9J2c5kMS0hq8TP2IfLTdnlfQ9cevpKPJDUcS99tM065agoI0YlWpPH3LZjYpi1iluFEFbgYwY2/HmuQOscucmAOZE6m+d1mTPl6LqNKkqpRigEhC1pXt0oCUBzd6ScXcNFzuiHf2VDL0kVzJM2gapjqkkoFZUTKwTn2oJR/OWoNMCfst7XLBVwuK+r3c1sJXq6qs0ennKC11SUrfSy1Fh7Qg+jtaJrPLSO4kx91x5IVmNnAhO/vmK0m0gKXeYntEF9myGwS52RGsdgRG/Zj2QDlY6c5Lvid1AJ3DRorzo8ZlL0XUcRBUTx80vFJfBOUZVdGROVisJt1FWT61f0rifScchk3DtTrFC/VSVbVRTe2vg+U+2QFoXFqmYUAwMqEF1OpEdNu+tO2RqmmGbQBTfNbc3zB2DWJYZAtAL5zvmwdkA4PqaCAfrXO6u956dU5QegCbWe9XRBkZNaXn9oqGtW0RaT0YYaNk39H+3/zTODn/lKSA96OdjU1U2V8veybopVYmlznVlNPL3P1r+7n/Lpr7Smqwk5TCnhSiJWN7HAqh17ijYb+QQhg1NmvUwXsg09qYMOz+xFKXF2noQc0pkBCaD8laDnaYQN/TpGvSc32Eu5Gd8/5AlyP76rzhaDuSsqe7HSkHmezb0vkbaiXbc7Cjr/eNxXXQ8+i/xZtrnUs/X107zufK4U3XUe+udZ6Sj3Z57fC6Na2abo95eU2uW9lPMT7o7TX5VwwRdMrDzJN5LuuteK5mXEezZKW/an4qS9QVf7A6hZbgsT3mO7gDld39Pl/OeKcGt+5MT387w5B91+LoqIBjwqHgCppF3CyBF2+CHBy1z/wcHCb7Tu/QVifDkMVxSWkcFAOSBRRj1pFDdjjtSuFxs1pWPK9q0DGqL8LcYoc3LKMgYBZXhseqk2lR+KszrPWckAQWlgQW+mCwkPyuqQ0W7LhTNIyYjgEjWqqwAVAYp7FIkMNc7NNZ882043CqJ8Xi59qZgyp+9K5P/wM=&lt;/diagram&gt;&lt;/mxfile&gt;&quot;,&quot;toolbar&quot;:&quot;pages zoom layers lightbox&quot;,&quot;page&quot;:0}"></div>
+<script type="text/javascript" src="https://app.diagrams.net/js/viewer-static.min.js"></script>
+
+<p>위 알고리즘에 따라 간소화되도록 설계를 구상했다.
+섬프항에 이미 볼탑이 설치되어 있어서 정수기 관을 꽂아 빼냈다.
+섬프항 청소 좀 해야겠다.🤦‍♂️</p>
+
+<p><img src="/assets/images/2020/07/20200726_190815.jpg" alt="섬프항에 설치한 볼탑" /></p>
+
+<p>섬프항에서 나온 정수기 관을 이렇게 어항 뒤에서 냉장고 뒤로 돌려보내고,
+종국적으론 RO/DI 필터가 있는 세탁실로 빼낼 방법에서 며칠 해맸다.</p>
+
+<p><img src="/assets/images/2020/07/20200726_190945.jpg" alt="어항, 냉장고 배치" /></p>
+
+<p>벽 두께가 60cm 정도 되고, 세탁실 쪽 벽은 콘크리트라서 겁이 많이 났다.
+<a href="https://www.clien.net/service/board/kin/15140850">이곳</a> <a href="https://cafe.naver.com/seaaes/602845">저곳</a>에 물어보았더니,
+현자들이 답해주었다. 종합하면,</p>
+
+<ol>
+  <li>벽 안쪽에 철근이나 수도관 등이 지나갈 수 있으니 뚫는 건 자제하라.</li>
+  <li>그래도 뚫고 싶으면 긴 드릴비트를 활용해라.</li>
+</ol>
+
+<p>로 정리됐다. 하지 말라는 1번은 무시하고… 어쨌거나 해야 하니 2번으로…</p>
+
+<p><img src="/assets/images/2020/07/20200726_190856.jpg" alt="벽을 뚫은 정수기관" /></p>
+
+<p>결국엔 벽을 드릴로 뚫었다. 긴 드릴비트를 살까말까 장고 중이던 차에,
+술김에 15cm 겨우 되는 드릴비트로 주방 벽과 세탁실 벽을 대강 위치 맞추어서 뚫었다.
+옷걸이를 펴서 구멍 안에 낑겨넣으니 안에는 단열재 따위가 들었는지, 쑥쑥 잘 들어갔다.
+정수기관을 통과시키는 데는 어려움이 좀 있었지만 결국 성공.
+구멍에 호스관이 지나가고나서 남는 1mm 정도 되는 여유는 투명 실리콘을 쏘아 막았다.</p>
+
+<p><img src="/assets/images/2020/07/20200726_191146.jpg" alt="주방 쪽 정수기관" /></p>
+
+<p><img src="/assets/images/2020/07/20200726_190639.jpg" alt="세탁실 쪽 정수기관" /></p>
+
+<p>그리고 세탁실 쪽 수도꼭지에 RO/DI 필터를 두었다.
+수도꼭지에 세탁실 청소용 호스를 같이 쓸 수 있도록 16A용 기능성 어댑터 여럿를 활용했다.</p>
+
+<p>RO/DI 필터는 항상 작동 중인데, 섬프항에 물이 비었을 때만 수압에 따라 물을 공급한다.
+가끔 환수를 위한 초순수를 받을 수 있게 필터 출수구에는 T피팅으로 갈래를 쳐줬다.</p>
+
+<p><img src="/assets/images/2020/07/20200726_190919.jpg" alt="RO/DI 필터" /></p>
+
+<p>이렇게 쓴지 막 2주가 됐다. 물고기들, 어항 수위 등은 변화 없이, 어항은 생태계를 계속 유지하고 있다.
+보충수 탱크가 사라져 섬프도 한결 단순해졌다. 빈 공간 덕분에 자동 양말필터를 설치할지 고민할 수 있게 됐다.</p>
+
+<p><strong>이게 바로 자동화다.</strong> 👨‍🎓</p>]]></content><author><name>노지훈</name></author><category term="Reef" /><summary type="html"><![CDATA[해수어항을 곁에 두면 환수보다는 보충수통 채우는 데 손이 자주 간다. 내가 쓰는 어항은 물이 250L 들어가는데, 여름철이면 하루에 2L 가까이 자연 증발되나 보다. 보충수 탱크는 11L 정도인데 물을 1주일에 한번 채워줘야 한다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200726.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200726.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">라즈베리파이4에 Quad Sata KIT 입히기</title><link href="https://jihunroh.github.io/2020/05/31/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90-Quad-Sata-KIT-%EC%9E%85%ED%9E%88%EA%B8%B0/" rel="alternate" type="text/html" title="라즈베리파이4에 Quad Sata KIT 입히기" /><published>2020-05-31T00:00:00-05:00</published><updated>2020-05-31T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/05/31/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90%20Quad%20Sata%20KIT%20%EC%9E%85%ED%9E%88%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2020/05/31/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90-Quad-Sata-KIT-%EC%9E%85%ED%9E%88%EA%B8%B0/"><![CDATA[<p>단순 저장소로만 시놀로지 DS216J를 써온 터라, 큰 무리가 없겠거니 싶어 라즈베리파이4 기반으로 IoT 허브 + 자작 NAS를 만들었다.</p>
+
+<p>숫자가 높을 수록 좋은거니깐?! 과감히 DS216J는 방출했다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>시놀로지 DS216J</th>
+      <th>라즈베리파이 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CPU 아키텍쳐</td>
+      <td>Marvell Armada 385</td>
+      <td>ARM Cortex-A72</td>
+    </tr>
+    <tr>
+      <td>CPU 코어 수</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>CPU 클럭</td>
+      <td>1.0 GHz</td>
+      <td>1.5 GHz</td>
+    </tr>
+    <tr>
+      <td>RAM</td>
+      <td>DDR3 512MB</td>
+      <td>LPDDR4 4GB</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="이렇게-이쁘다">이렇게 이쁘다</h2>
+
+<p>성격이 급하니 완성품부터 올려본다.
+사진은 이쁘게 나오고 싶어서, 주렁주렁 매달려있던 TI 안테나를 빼고 찍었다.</p>
+
+<p><img src="/assets/images/2020/05/rasp4-nas-1.jpg" alt="라즈베리파이4 나스+허브 사진 1" /></p>
+
+<p><img src="/assets/images/2020/05/rasp4-nas-2.jpg" alt="라즈베리파이4 나스+허브 사진 2" /></p>
+
+<h2 id="장비에-돈이-많이-들어갔다">장비에 돈이 많이 들어갔다</h2>
+
+<p>스토리지를 제외한 순수 NAS 용도(RASP4 + SD + QUAD SATA KIT)로만 30만원 정도 들었다.
+시놀로지 저가 제품보다 싸게, 더 좋은 성능으로 하려는 건데 스스로를 기만한 느낌…</p>
+
+<p>시놀로지 완성품처럼 NAS를 포장해줄 <a href="https://shop.allnetchina.cn/products/quad-sata-hat-case-for-raspberry-pi-4">QUAD SATA KIT</a>으로
+SSD(SATA3 인터페이스)를 라즈베리파이 4에 마운트했다.</p>
+
+<p>SD카드는 16GB를 사도 될뻔 했다. 문서, 음악 등 덩치파일들은 물려놓은 SSD에 옮겨놓은 덕도 있지만,
+라즈비안에 이짓저짓을 다해놨는데도 SD카드 사용량은 4GB가 되지 않는다.</p>
+
+<p>Elfin EW11 이하 제품들은 모두 IoT를 위한 장비들이다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>기기</th>
+      <th>가격</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>라즈베리파이 4</td>
+      <td>82,500원</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>SD카드 32GB</td>
+      <td>23,000원</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>SSD <a href="http://prod.danawa.com/info/?pcode=5834230">삼성 860 EVO 1TB</a></td>
+      <td>207,540원</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><a href="https://shop.allnetchina.cn/products/quad-sata-hat-case-for-raspberry-pi-4">QUAD SATA KIT</a></td>
+      <td>$115</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><a href="https://ko.aliexpress.com/item/32926395786.html?spm=a2g0s.9042311.0.0.3cb54c4doQKd6C">Elfin EW11</a></td>
+      <td>$14.8</td>
+      <td>RS485 Serial to WiFi Socket converter</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.ti.com/tool/LAUNCHXL-CC1352P#buy">TI LAUNCHXL-CC1352P-2</a></td>
+      <td>$56.98</td>
+      <td>ZigBee Coordinator</td>
+    </tr>
+    <tr>
+      <td><a href="https://ko.aliexpress.com/item/32851970258.html?spm=a2g0s.9042311.0.0.3cb54c4doQKd6C">Dlenp 2.4 GHz 안테나</a></td>
+      <td>$2.44</td>
+      <td>CC1352P-2에 붙일 안테나</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.aliexpress.com/item/4000439492385.html?spm=a2g0s.9042311.0.0.40604c4de0n1iq">CC2531 + CC Debugger + 안테나</a></td>
+      <td>$20.57</td>
+      <td>ZigBee Coordinator</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="장비들은-어여-일해">장비들은 어여 일해!</h2>
+
+<p>OS는 <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite</a>로 IOT 허브(Home Assistant), 광고 차단(Pi-Hole), 리버스 프록시(traefik) 등을 이용할 계획으로 세팅했다.
+구체적인 설치 방법은 웹에 많으니 생략. 개략적인 내 설정방법은 <a href="https://gist.github.com/jihunroh/d93340e5eb70d2a03d2daaf21b73bc70">이 곳</a>에.</p>
+
+<p><img src="/assets/images/2020/05/rome.png" alt="Rome Schema" /></p>
+
+<h2 id="역시-잘-샀어-자화자찬">역시 잘 샀어. 자화자찬</h2>
+
+<p>다른 장비야 워낙 세간에 잘 알려져 있어, QUAD SATA KIT의 사용감이 중요할 것 같다.
+<a href="https://youtu.be/xz-AhmjiTu8">유튜브에 조립 방법이 잘 나와있는데 조립하는 재미는 덤이다.</a>
+나사가 들어가기에 너무 뻑뻑함 등은 중국제이니 용서가 된다.</p>
+
+<p>외모가 훌륭하다. 딴딴한 철제로 되어 있어 플라스틱 특유의 싼마이 느낌이 들지 않는다.
+라즈베리파이4를 날것으로 꺼내놓고 쓰며 들었던 찝찝한 느낌도 해소됐다.</p>
+
+<p>방열판을 달아놓았던 라즈베리파이4에 팬이 달리다보니, 방열판으로는 CPU 온도가 60도 넘어로 올라가곤 했는데 지금은 40도 중반으로 유지되고 있다.
+팬 소음이 좀 있지만, 안보이는 곳에 숨겨놓아 신경쓰이는 수준은 아니다.</p>
+
+<p>NAS의 종착지는 시놀로지라는 통념을 거부하며(?), 사서 고생하는 취미를 가진 분들께 권하고 싶다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><category term="RaspberryPi" /><summary type="html"><![CDATA[단순 저장소로만 시놀로지 DS216J를 써온 터라, 큰 무리가 없겠거니 싶어 라즈베리파이4 기반으로 IoT 허브 + 자작 NAS를 만들었다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200531.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200531.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">라즈베리파이4에서 USB3.0을 이용한 SSD 연결문제</title><link href="https://jihunroh.github.io/2020/05/02/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90%EC%84%9C-USB3.0%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-SSD-%EC%97%B0%EA%B2%B0%EB%AC%B8%EC%A0%9C/" rel="alternate" type="text/html" title="라즈베리파이4에서 USB3.0을 이용한 SSD 연결문제" /><published>2020-05-02T00:00:00-05:00</published><updated>2020-05-02T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/05/02/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90%EC%84%9C%20USB3.0%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20SSD%20%EC%97%B0%EA%B2%B0%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="https://jihunroh.github.io/2020/05/02/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90%EC%84%9C-USB3.0%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-SSD-%EC%97%B0%EA%B2%B0%EB%AC%B8%EC%A0%9C/"><![CDATA[<p>라즈베리파이4에 USB3.0 포트로 SSD를 연결했는데, 마운트를 해놓아도 자주 언마운트 됐다.
+저전압 경고가 <code class="language-plaintext highlighter-rouge">/var/log/kern.log</code>에 자주 목격되기도 해서, SSD에 전력공급 문제가 있는 것 같았다.
+근데 라즈베리파이4가 입력받는 최대전력으로 전력 15W(3A, 5V)로 전력을 입력해도, 저전압 경고만 사라졌을 뿐 SSD는 계속 언마운트 됐다.
+SSD가 끊길 때 <code class="language-plaintext highlighter-rouge">/var/log/kern.log</code>에는 다음같은 기록이 남겨있었다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kernel: [77712.420175] sd 0:0:0:0: [sda] tag#21 uas_eh_abort_handler 0 uas-tag 1 inflight: CMD IN
+kernel: [77712.420195] sd 0:0:0:0: [sda] tag#21 CDB: opcode=0x28 28 00 47 84 14 70 00 00 08 00
+kernel: [77713.140187] sd 0:0:0:0: [sda] tag#1 uas_eh_abort_handler 0 uas-tag 2 inflight: CMD IN
+kernel: [77713.140207] sd 0:0:0:0: [sda] tag#1 CDB: opcode=0x28 28 00 47 81 11 90 00 00 08 00
+kernel: [77713.230206] sd 0:0:0:0: [sda] tag#2 uas_eh_abort_handler 0 uas-tag 3 inflight: CMD IN
+kernel: [77713.230225] sd 0:0:0:0: [sda] tag#2 CDB: opcode=0x28 28 00 47 81 12 00 00 00 08 00
+kernel: [77713.730214] sd 0:0:0:0: [sda] tag#22 uas_eh_abort_handler 0 uas-tag 4 inflight: CMD IN
+kernel: [77713.730233] sd 0:0:0:0: [sda] tag#22 CDB: opcode=0x28 28 00 47 84 13 90 00 00 50 00
+kernel: [77713.770237] sd 0:0:0:0: [sda] tag#23 uas_eh_abort_handler 0 uas-tag 5 inflight: CMD IN
+kernel: [77713.770257] sd 0:0:0:0: [sda] tag#23 CDB: opcode=0x28 28 00 47 84 1e a8 00 00 08 00
+kernel: [77713.950200] sd 0:0:0:0: [sda] tag#24 uas_eh_abort_handler 0 uas-tag 6 inflight: CMD OUT
+kernel: [77713.950220] sd 0:0:0:0: [sda] tag#24 CDB: opcode=0x2a 2a 00 3a 04 11 40 00 00 78 00
+</code></pre></div></div>
+
+<p>우리나라엔 잘 알려져있지 않았지만 <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=245931"><code class="language-plaintext highlighter-rouge">quirks</code> 옵션을 <code class="language-plaintext highlighter-rouge">/boot/cmdline.txt</code>에 넣어주는 해법이 있었다.</a>
+사실상 문과생이라 무슨말인진 모르겠지만, 이 방법으로 USB3.0으로 연결된 SSD가 자주 탈락하는 현상은 완전히 해결됐다.</p>]]></content><author><name>노지훈</name></author><category term="RaspberryPi" /><summary type="html"><![CDATA[라즈베리파이4에 USB3.0 포트로 SSD를 연결했는데, 마운트를 해놓아도 자주 언마운트 됐다. 저전압 경고가 /var/log/kern.log에 자주 목격되기도 해서, SSD에 전력공급 문제가 있는 것 같았다. 근데 라즈베리파이4가 입력받는 최대전력으로 전력 15W(3A, 5V)로 전력을 입력해도, 저전압 경고만 사라졌을 뿐 SSD는 계속 언마운트 됐다. SSD가 끊길 때 /var/log/kern.log에는 다음같은 기록이 남겨있었다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200502.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200502.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">해수어항 장비별 소비전력 측정결과</title><link href="https://jihunroh.github.io/2020/01/04/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD-%EC%9E%A5%EB%B9%84%EB%B3%84-%EC%86%8C%EB%B9%84%EC%A0%84%EB%A0%A5-%EC%B8%A1%EC%A0%95%EA%B2%B0%EA%B3%BC/" rel="alternate" type="text/html" title="해수어항 장비별 소비전력 측정결과" /><published>2020-01-04T00:00:00-06:00</published><updated>2020-01-04T00:00:00-06:00</updated><id>https://jihunroh.github.io/2020/01/04/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%20%EC%9E%A5%EB%B9%84%EB%B3%84%20%EC%86%8C%EB%B9%84%EC%A0%84%EB%A0%A5%20%EC%B8%A1%EC%A0%95%EA%B2%B0%EA%B3%BC</id><content type="html" xml:base="https://jihunroh.github.io/2020/01/04/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD-%EC%9E%A5%EB%B9%84%EB%B3%84-%EC%86%8C%EB%B9%84%EC%A0%84%EB%A0%A5-%EC%B8%A1%EC%A0%95%EA%B2%B0%EA%B3%BC/"><![CDATA[<p>작년 말부터 산호 없는 해수어항을 운영하고 있다. 2020년 1월 초 현재까지 두달이 좀 넘었다.
+클라키크라운(니모), 화이어고비, 그린크로미스, 크리너쉬림프, 터보스네일이 살고 있는 250L가 들어가는 폭 3자의 중형 어항이다.</p>
+
+<blockquote class="instagram-media" data-instgrm-captioned="" data-instgrm-permalink="https://www.instagram.com/p/B6VDponhiHC/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="12" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/B6VDponhiHC/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;"> Instagram에서 이 게시물 보기</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div></a> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/B6VDponhiHC/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">아기다리고기다리 던 조명작업 ㄱㄱ</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/rolji/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> JiHun Roh</a>(@rolji)님의 공유 게시물님, <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2019-12-21T09:13:03+00:00">2019 12월 21 1:13오전 PST</time></p></div></blockquote>
+<script async="" src="//www.instagram.com/embed.js"></script>
+
+<blockquote class="instagram-media" data-instgrm-captioned="" data-instgrm-permalink="https://www.instagram.com/p/B6XP9FQhQFk/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="12" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/B6XP9FQhQFk/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;"> Instagram에서 이 게시물 보기</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div></a> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/B6XP9FQhQFk/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">광어양식 성공하고만다 ㅇㅇ</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/rolji/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> JiHun Roh</a>(@rolji)님의 공유 게시물님, <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2019-12-22T05:39:03+00:00">2019 12월 21 9:39오후 PST</time></p></div></blockquote>
+<script async="" src="//www.instagram.com/embed.js"></script>
+
+<p>어항 운영 후 전기요금이 많이 늘었다.
+어떤 장비가 전기를 많이 먹는지 궁금했다.
+어항마다 사정은 다르겠지만, 해수어항을 하려는 분들에게 해수어항 전기요금을 가늠할 수 있는 자료가 되길 바란다.</p>
+
+<h2 id="장비별-전력-소비">장비별 전력 소비</h2>
+
+<table>
+<tbody>
+<tr><th>종류</th><th>제품명</th><th>소비전력<br />(측정치)</th><th>전력량<br />(예상치)</th></tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">수류모터</span></td>
+<td>maxspect jump MJ-GF4K</td>
+<td class="align-right">7.2W</td>
+<td class="align-right">5.2kWh</td>
+</tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">리턴모터</span></td>
+<td>NYOS VIPER 3.0</td>
+<td class="align-right">35.2W</td>
+<td class="align-right">25.3kWh</td>
+</tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">스키머</span></td>
+<td>Bubble Magus Curve A5</td>
+<td class="align-right">10.6W</td>
+<td class="align-right">7.6kWh</td>
+</tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">온도조절기</span></td>
+<td>세원 OKE-6428HC</td>
+<td class="align-right">1.3W</td>
+<td class="align-right">1.0kWh</td>
+</tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">조명</span></td>
+<td>샤오미 이라이트 전구 5개</td>
+<td class="align-right">20~30W<br />(색 설정마다 다름)</td>
+<td class="align-right">7.2kWh<br />(하루 8시간)</td>
+</tr>
+<tr>
+<td><span style="background-color:#f9e7de; padding: 5px; border-radius: 5px;">히터</span></td>
+<td>네오 히터 200W 2개</td>
+<td class="align-right">340W</td>
+<td class="align-right">α</td>
+</tr>
+<tr style="background-color: #f4f8fb;">
+<td colspan="3">총</td> 
+<td class="align-right">46.3kWh + α</td>
+</tr>
+</tbody>
+</table>
+
+<p>스마트플러그로 어항장비들의 총 전력소비량을 측정하면 ‘19.11월 75kWh, ‘19.12월 82kWh 수준이다.
+이를 역산해서 히터가 먹는 α를 30kWh 수준이라 해석해도 될지 모르겠다.
+200W 히터 2개의 실측 소비전력이 340W인데 30kWh를 역산하면 한달동안 88시간, 매시간마다 7~8분씩 켜져서 물을 데웠다는 뜻이다.
+히터가 전기를 많이 먹는다는 것은 으레 알고 있었지만 이 정도일 줄은 몰랐다.</p>
+
+<p><a href="http://cyber.kepco.co.kr/ckepco/front/jsp/CY/E/E/CYEEHP00101.jsp">누진요금은 200kWh부터 시작되고(7~8월은 300kWh) 200kWh를 전후로 전력량 요금은 93.3원/kWh에서 187.9원/kWh으로 뛴다</a>.
+우리집 전체 전력소비량이 ‘19.11월 275kWh임을 감안하면, 어항에서만 매월 80kWh, 1만5천원을 쓰고 있는 셈이다.</p>
+
+<p>그 외 장비 구입과 감가, 소모품(먹이, 해수염 등), 생물 등의 구입비용, 유지보수(환수, 청소 등)에 쓰는 시간의 기회비용 등 해수어항에는 손과 돈이 많이 간다.
+그럼에도 이런 이쁜 취미를 영위하는데는 쓸만한 수준으로 느끼고 있다.</p>]]></content><author><name>노지훈</name></author><category term="Reef" /><summary type="html"><![CDATA[작년 말부터 산호 없는 해수어항을 운영하고 있다. 2020년 1월 초 현재까지 두달이 좀 넘었다. 클라키크라운(니모), 화이어고비, 그린크로미스, 크리너쉬림프, 터보스네일이 살고 있는 250L가 들어가는 폭 3자의 중형 어항이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200104.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200104.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">다른 한 아이의 성별 추정 문제</title><link href="https://jihunroh.github.io/2018/03/25/%EB%8B%A4%EB%A5%B8-%ED%95%9C-%EC%95%84%EC%9D%B4%EC%9D%98-%EC%84%B1%EB%B3%84-%EC%B6%94%EC%A0%95-%EB%AC%B8%EC%A0%9C/" rel="alternate" type="text/html" title="다른 한 아이의 성별 추정 문제" /><published>2018-03-25T00:00:00-05:00</published><updated>2018-03-25T00:00:00-05:00</updated><id>https://jihunroh.github.io/2018/03/25/%EB%8B%A4%EB%A5%B8%20%ED%95%9C%20%EC%95%84%EC%9D%B4%EC%9D%98%20%EC%84%B1%EB%B3%84%20%EC%B6%94%EC%A0%95%20%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="https://jihunroh.github.io/2018/03/25/%EB%8B%A4%EB%A5%B8-%ED%95%9C-%EC%95%84%EC%9D%B4%EC%9D%98-%EC%84%B1%EB%B3%84-%EC%B6%94%EC%A0%95-%EB%AC%B8%EC%A0%9C/"><![CDATA[<p><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ISBN=8995737050">「행동경제학」</a>을 보면 다음 문제가 나온다.
+이 문제의 정답은 상식과 어긋난다. 스스로 답을 한번 구해보아야 왜 흥미로운지를 알 수 있다.</p>
+
+<blockquote>
+  <p>우리집 옆으로 이사온 가족은 아이가 2명이다. 아들인지 딸인지는 모른다.</p>
+
+  <p>(문제 1) 이웃집 아주머니에게 ‘딸이 있으세요?’ 물었더니 대답은 ‘네’였다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
+
+  <p>(문제 2) 이웃집 아주머니에게 ‘큰 아이가 딸입니까?’라고 물었더니 대답은 ‘네’였다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
+
+  <p>(문제 3) 이웃집 아주머니이 딸을 1명 데리고 걷고 있는 것을 보았다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
+</blockquote>
+
+<p>$ \frac{문제에서 말하는 경우의 수}{모든 가능한 상황} $로 확률을 계산하려면 표본공간 $ \Omega $가 등확률인 근원사건으로 구성되어 있어야 한다.
+<strong>(첫째의 성별, 둘째의 성별)</strong> 로 정의하되, 남자는 □ 여자는 ★로 표기한다.</p>
+
+\[\Omega = \{(□, □), (□, ★), (★, □), (★, ★)\}\]
+
+\[P[(□, □)] = P[(□, ★)] = P[(★, □)] = P[(★, ★)] = 1/4\]
+
+<h2 id="문제-1">문제 1</h2>
+<blockquote>
+  <p>이웃집 아주머니에게 ‘딸이 있습니까’라고 물었더니 대답은 ‘네’였다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
+</blockquote>
+
+<p>이웃집 아주머니의 답은 “딸이 적어도 하나 있다”는 뜻과 동일하다. 가능한 상황($ A_1 $)은 (□, ★), (★, □), (★, ★)이다.
+이 중에서 다른 아이도 여자인 사건($ B $)은 (★, ★) 하나 뿐이므로 답은 1/3 이다.</p>
+
+\[A_1 = \{(□, ★), (★, □), (★, ★)\}\]
+
+\[B = \{(★, ★)\}\]
+
+\[P[B\ \mid A_1] = \frac{P[A_1 \cap B]}{P[A_1]} = \frac{1/4}{3/4} = \frac{1}{3}\]
+
+<h2 id="문제-2">문제 2</h2>
+<blockquote>
+  <p>이웃집 아주머니에게 ‘큰 아이가 딸입니까?’라고 물었더니 대답은 ‘네’였다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
+</blockquote>
+
+<p>큰 아이가 딸인 상황($ A_2 $)은 (★, □), (★, ★) 이다. 이 중에서 다른 아이도 여자인 사건(B)은 (★, ★ 하나 뿐이므로 답은 1/2 이다.</p>
+
+\[A_2 = \{(★, □), (★, ★)\}\]
+
+\[B = \{(★, ★)\}\]
+
+\[P[B\ \mid A_2] = \frac{P[A_2 \cap B]}{P[A_2]} = \frac{1/4}{2/4} = \frac{1}{2}\]
+
+<h2 id="문제-3">문제 3</h2>
+<blockquote>
+  <p>이웃집 아주머니이 딸을 1명 데리고 걷고 있는 것을 보았다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
+</blockquote>
+
+<p>문제 3을 읽고 문제 1과 아무런 차이도 없다고 속단해 답이 1/3이라고 생각했다.</p>
+
+<p>결론적으로 문제 3은 문제 1이 아닌 문제 2와 유사한 상황이다.
+문제 2는 두 자식 중 “첫째” 자식이 딸이라는 정보를 주고,
+문제 3은 두 자식 중 “내 눈에 목격된” 자식이 딸이라는 정보를 준다.
+반면, 문제 1은 두 자식 중 “특정되지 않은” 자식이 딸이라는 정보를 준다.
+특정된 자식이 딸이라는 정보인지(문제 2~3), 특정되지 않은 자식이 딸이라는 정보인지(문제 1)가 다른 것이다.</p>
+
+<p>표본공간을 새로 정의하면 풀이가 깔끔해진다. 이상의 문제풀이에서 (첫째의 성별, 둘째의 성별)로 표본공간을 구성했던 것과 달리, 이 문제를 위해서는 <strong>(동행 중인 자제의 성별, 동행 안한 자제의 성별)</strong> 로 정의한다. 남자는 ○ 여자는 ▲로 표기한다.</p>
+
+\[\Omega' = \{(○, ○), (○, ▲), (▲, ○), (▲, ▲)\}\]
+
+<p>새로운 표본공간 $ \Omega’ $ 은 $ \Omega $와 같이 등확률인 근원사건으로 구성되었다.
+$ \Omega’ $ 와 $ \Omega $의 근원사건은 다음과 같이 대응된다. 즉, 표본공간 $ \Omega $에서도 문제 3을 풀 수는 있지만, 그냥 식이 복잡해질 뿐이다.</p>
+
+<table>
+<caption>표본공간 $ \Omega $와 $ \Omega' $의 근원사건간 일대일 대응</caption>
+<thead>
+  <tr>
+    <th>$ \Omega $</th>
+    <th>$ \Omega' $</th>
+    <th>확률</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>(□, □)</td>
+    <td>(○, ○)</td>
+    <td>1/4</td>
+  </tr>
+  <tr>
+    <td>(□, ★)</td>
+    <td>(○, ▲), (▲, ○) 중 50%의 확률로 하나</td>
+    <td>1/4</td>
+  </tr>
+  <tr>
+    <td>(★, □)</td>
+    <td>(○, ▲), (▲, ○) 중 50%의 확률로 하나</td>
+    <td>1/4</td>
+  </tr>
+  <tr>
+    <td>(★, ★)</td>
+    <td>(▲, ▲)</td>
+    <td>1/4</td>
+  </tr>
+</tbody>
+</table>
+
+\[A_3 = \{(▲, ○), (▲, ▲)\}\]
+
+\[B = \{(▲, ▲)\}\]
+
+\[P[B\ \mid A_3] = \frac{P[A_3 \cap B]}{P[A_3]} = \frac{1/4 }{2/4} = \frac{1}{2}\]
+
+<h2 id="시사점">시사점</h2>
+<p>이 문제를 해석하면, 특정된 자식에 대한 정보를 받았을 때, 그 외의 자식에 대한 성별 추정은 하나의 독립사건처럼 남, 여 중 하나의 문제로 귀결된다는 점이다. 그래서 문제 2~3의 답은 1/2이다.</p>
+
+<p>반면, 특정되지 않은 자식에 대한 정보를 받았을 때, 그 외의 자식에 대한 성별 추정은 특정되지 않은 자식이 누구인지에 종속되게 된다. 그래서 1/3이라는 기묘한 답이 나온다.</p>
+
+<p>아울러, 모든 사건들을 나열하고 가짓수를 세는 방법은 아주 직관적이지만, 그 직관을 이용할 때에는 문제 상황을 기술할 수 있도록 표본공간을 엄밀히 정의해야 한다는 교훈도 얻는다.</p>]]></content><author><name>노지훈</name></author><category term="베이즈정리" /><category term="확률" /><category term="통계학" /><summary type="html"><![CDATA[「행동경제학」을 보면 다음 문제가 나온다. 이 문제의 정답은 상식과 어긋난다. 스스로 답을 한번 구해보아야 왜 흥미로운지를 알 수 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Bayes%27_Theorem_MMB_01.jpg/1200px-Bayes%27_Theorem_MMB_01.jpg" /><media:content medium="image" url="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Bayes%27_Theorem_MMB_01.jpg/1200px-Bayes%27_Theorem_MMB_01.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">A Dialogue on Personal Identity and Immortality 논평</title><link href="https://jihunroh.github.io/2010/11/23/A-Dialogue-on-Personal-Identity-and-Immortality-%EB%85%BC%ED%8F%89/" rel="alternate" type="text/html" title="A Dialogue on Personal Identity and Immortality 논평" /><published>2010-11-23T00:00:00-06:00</published><updated>2010-11-23T00:00:00-06:00</updated><id>https://jihunroh.github.io/2010/11/23/A%20Dialogue%20on%20Personal%20Identity%20and%20Immortality%20%EB%85%BC%ED%8F%89</id><content type="html" xml:base="https://jihunroh.github.io/2010/11/23/A-Dialogue-on-Personal-Identity-and-Immortality-%EB%85%BC%ED%8F%89/"><![CDATA[<p><a href="http://www.humanscience.org/docs/Perry%20(1978)%20A%20Dialogue%20on%20Personal%20Identity%20and%20Immortality.pdf">「A Dialogue on Personal Identity and Immortality」</a>은 죽음을 앞둔 철학교수 Weirob가 그녀의 지도 대학원생Cohen, 성직자인 친구인 Miller와 나눈 동일성(identity), 불멸성(immortality)에 대한 대화록입니다. 그녀는 사후 자신의 불멸성이 상상가능함을 설득해달라고 합니다. 그것이 그녀에게 큰 위안이 될 것이라고 합니다. 그래서 세 사람은 Weirob의 사후에 존재할지도 모를 무언가가 Weirob와 실제로 동일할 것인지, 만약 동일하다면 그 근거가 무엇인지에 대한 갑론을박을 펼칩니다.</p>
+
+<p>이 대화록을 읽으면 어렸을 때 보았던 손톱 먹은 쥐(쥐 둔갑 타령)라는 전래 동화를 기억하게 됩니다. 그 전래 동화에서 첨지라 불리는 영감은 자신의 손톱을 지나가던 쥐에게 먹이로 주었습니다. 쥐는 첨지의 손톱을 먹고 첨지와 똑같은 사람(아마 기억까지 같은)으로 변하여, 자신이 첨지라고 주장합니다. 둘은 옥신각신 싸웁니다. 그러다 어느 스님의 기지로 고양이 앞에서 가짜 첨지가 쥐로 변하면서 이야기가 마무리됩니다. 손톱을 먹고 사람으로 변하는 쥐를 상상하기 어렵다면, 미래 과학기술이 크게 발전하여, ‘나’와 같은 기억 및 성격 등의 것들을 갖도록 ‘나’를 복제하는 상황을 생각할 수도 있겠습니다. 질문은 첨지와 가짜 첨지를 구분해줄 고양이가 우리의 현실에서 무엇이 될 수 있는지 입니다.</p>
+
+<p>먼저 심신이원론의 입장에서 정신이 비물질적인 것이라 감각될 수 없다고 가정합시다. 그리고 시공간적으로 다른 위치의 두 사람이 동일하다는 것은 정신의 동일성으로 판단할 수 있다고 합시다. 하지만 정신은 감각될 수 없는데 어떻게 두 사람이 동일한지 판단할 수 있겠습니까? 신체가 정신의 지표가 된다는 변호는 타당해 보이지 않습니다. 신체적 동일성이 첨지가 누구인지 알려주지 않습니다. 첨지와 가짜 첨지는 물질적인 면에서 완전히 똑같아 보입니다. 공각기동대를 시청한 분이시라면, 쿠사나기 소령이 다른 신체로 고스트를 옮겨간 장면을 기억하실 것입니다. 젊은 아가씨 모습을 가진 쿠사나기 소령은, 귀여운 여자 꼬마의 모습을 한 쿠사나기 소령과 아무래도 동일한 것으로 보입니다. 요컨대, ‘물질적인 신체가 감각될 수 없는 정신의 동일성에 대한 지표, 곧 개인의 동일성의 지표가 된다’는 주장은 그를 지지해줄 좋은 근거가 없을뿐더러, 앞선 예에 의해 틀린 것으로 생각됩니다.</p>
+
+<p>정신이 우리의 심리적인 상태, 태도, 기억, 믿음 등으로 표출된다고 합시다. 하지만 이런 우리들의 습성들이 정신의 동일성에 대한 지표가 되준다는 주장은 독단적입니다. 이러한 습성들은 항상 한결같지 않습니다. 마치 유유히 흘러가는 형산강의 물줄기처럼 그 양상은 매 순간 변합니다. 이렇게 변화무쌍한 지표가 어떻게 동일성을 지지할 수 있는지 근거가 있습니까? 요컨대, 정신이 물질적인 신체와 분리되어 있는 비물질적인 것이라면, 많은 문제가 발생합니다. 비물질적인 영혼을 간접적으로 알아보게 해주는 지표가 무엇이건 말입니다.</p>
+
+<p>그래서 Person-stage라는 개념이 등장합니다. 우리는 두 다른 장소에서 형산강을 보더라도 그 둘을 형산강이라고 생각합니다. 그 이유는 목격된 두 강의 지점이 물리적으로 연결되어있기 때문입니다. 마찬가지로 우리는 Person-stage를 1분 전의 나와 지금의 내가 동일하다고 판단할 수 있는 지표로 생각해볼 수 있습니다. 30분 전의 person-stage와 지금의 person-stage가 연쇄적으로 연결되어 있기 때문입니다. Person-stage는 시간적으로 한 순간의 의식을 의미하는 것으로 보이는데, 한 인간은 이 person-stage들로 구성된 전체입니다. 시간적으로 뒤의 person-stage는 앞선 person-stage의 기억을 갖는다는 점에서 연관되어 있고, 이 관련이 동일성의 지표라는 것입니다.</p>
+
+<p>그런데 공각기동대에는 고스트 해킹을 당해 완전히 다른 기억을 갖고 사는 피해자들이 등장합니다. A라는 사람은 고스트 해킹을 당한 후 B’이 되어 자신이 B라는 완전한 기억들을 갖게 됩니다. 기존의 B와 B’은 같은 기억을 공유합니다. 둘 중 과거의 B와 동일한 사람은 누구입니까? Weirob는 이에 대답하려면, 기억 속의 B와 현재의 실제 B의 동일성에 기댈 수 밖에 없으므로 순환 논증이 된다고 주장합니다. 누구라도 B’이 A와 동일하다는 주장을 하고 싶겠지만, 기억 만으로는 그를 지지하기에 부족합니다. 첨지와 가짜 첨지의 문제도 마찬가지입니다.</p>
+
+<p>기억을 동일성의 지표로 보는 것은 불멸성을 상상함에 있어서도 좋은 출발점이 아닌 것으로 보입니다. 제가 죽은 후에 제 기억, 의식의 모든 것을 온전히 물려받은 천국의 사람(A)이 만들어져, 그것이 실제로 나라고 합시다. 근데 A가 하나만 만들어져야 하는 이유가 없어, A와 어떤 식으로든 다른 모습으로(B) 하나 더 만들어졌다면, 저는 그 중 누구와 동일하다고 해야겠습니까? 둘 모두 자신이 저와 동일하다고 주장할 텐데, 그들의 기억 속 행동들의 주체는 하나입니다. 기억을 동일성의 지표로 보는 것이 얼마나 큰 이득이 있는지 의구심이 가는 부분입니다.</p>
+
+<p>한편 앞선 예시에서 전 다른 신체로 고스트를 옮겨간 쿠사나기 소령을 말하며, 그녀가 아무래도 옮겨가기 전의 쿠사나기 소령과 동일한 것 같다고 말씀드렸습니다. 저는 많은 분들이 이 주장에 동의할 것이라 생각합니다만 Weirob는 그에 반대합니다. 여자 꼬마 쿠사나기 소령의 기억이 실제로 겪었던 일을 기억하는 것인지, 아니면 겪지 않았지만 자신이 그랬다고 믿는 명료한 기억일 뿐인지를 구분하게 해주는 조건이 필요하다고 말합니다. 그리고는 ‘사람이란 단순히 살아있는 신체’라서 두뇌 복제, 혹은 이동 등에서 동일성이 보존되지 않는다는 자신의 주장을 굽히지 않습니다.</p>
+
+<p>그런데 저는 두 다른 시간에 떨어진 A와 B가 서로 동일하려면, 각자의 시간에서 A와 B가 유일해야 하는 지는 의문이 듭니다. Weirob도 인정했듯, 미래에 저의 복제인간들이 모두 자신이 저와 동일하다고 주장한다고 해서 비정합적이지는 않습니다. 특히 ‘두뇌를 다른 신체로 옮긴 Julia는 Julia가 아닐 것’이라는 그녀의 주장은, 과학 기술에 대한 제 기대와 어긋나는 것이라서, 제가 차후에라도 반박할 수 있을지는 모르겠지만 일단 부정적인 태도를 취하게 됩니다.</p>
+
+<p>또한 기억 이론에 기대자니 영화 메멘토의 주인공, 레너드가 몹시 신경쓰입니다. 일정하지 않은 매 시간 간격마다 레너드의 기억은 상실되고 과거 한 시점의 기억으로 돌아갑니다.</p>
+
+<p>바로 최근의 기억조차 상속받지 못하는 레너드를 두고 저는 영화 내내 그가 동일한 사람이라는 것을 의심치 않습니다. 물론 저는 3자적인 위치에서 잘생긴 가이 피어스의 겉모습으로 동일성을 판단합니다. 하지만 매번 복구되는 그의 과거 기억은 사실과 다르게 변조된 것이라서, 가이 피어스 스스로는 자신의 동일성을 어떻게 판단할지 혼란스러워했던 점이 영화의 모티브였던 걸로 기억합니다.</p>
+
+<p>이런 일들이 공상만 되거나, 우발적이고 간헐적으로 일어나지 않고, 조작적이고 의도적으로 일어나는 시대가 올 지도 모릅니다. 그러한 시대라면 실제로 겪은 것을 기억하는 자가 누구인지의 질문은 의미가 없거나 더욱 더 미궁에 빠져들 것입니다. 그래서 그런 시대가 도래하기 전에 서둘러 개인의 동일성 및 불멸성 문제에 대해 공고한 답을 세워야 할 것입니다.</p>]]></content><author><name>노지훈</name></author><category term="논평" /><category term="동일성" /><summary type="html"><![CDATA[「A Dialogue on Personal Identity and Immortality」은 죽음을 앞둔 철학교수 Weirob가 그녀의 지도 대학원생Cohen, 성직자인 친구인 Miller와 나눈 동일성(identity), 불멸성(immortality)에 대한 대화록입니다. 그녀는 사후 자신의 불멸성이 상상가능함을 설득해달라고 합니다. 그것이 그녀에게 큰 위안이 될 것이라고 합니다. 그래서 세 사람은 Weirob의 사후에 존재할지도 모를 무언가가 Weirob와 실제로 동일할 것인지, 만약 동일하다면 그 근거가 무엇인지에 대한 갑론을박을 펼칩니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20101123.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20101123.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
