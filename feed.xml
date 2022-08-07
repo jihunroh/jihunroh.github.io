@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-08-07T04:56:15-05:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">내가 글을 웹에 올리는 방법은?</title><link href="https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80-%EA%B8%80%EC%9D%84-%EC%9B%B9%EC%97%90-%EC%98%AC%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%80/" rel="alternate" type="text/html" title="내가 글을 웹에 올리는 방법은?" /><published>2022-07-10T00:00:00-05:00</published><updated>2022-07-10T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80%20%EA%B8%80%EC%9D%84%20%EC%9B%B9%EC%97%90%20%EC%98%AC%EB%A6%AC%EB%8A%94%20%EB%B0%A9%EB%B2%95%EC%9D%80</id><content type="html" xml:base="https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80-%EA%B8%80%EC%9D%84-%EC%9B%B9%EC%97%90-%EC%98%AC%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%80/"><![CDATA[<p>이 웹사이트는 Ruby 기반인 Jekyll로 만들었다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-08-07T08:44:32-05:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">우리집 IoT를 인프라부터 소개합니다</title><link href="https://jihunroh.github.io/2022/08/07/%EB%82%B4-%ED%99%88-IoT%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4/" rel="alternate" type="text/html" title="우리집 IoT를 인프라부터 소개합니다" /><published>2022-08-07T00:00:00-05:00</published><updated>2022-08-07T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/08/07/%EB%82%B4%20%ED%99%88%20IoT%EB%A5%BC%20%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4</id><content type="html" xml:base="https://jihunroh.github.io/2022/08/07/%EB%82%B4-%ED%99%88-IoT%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4/"><![CDATA[<p>근 3년간 집에서 갈고닦아 쓰고 있는 IoT 환경을 소개한다.</p>
+
+<h2 id="시스템-intel-nuc--manjaro-linux">시스템: <a href="https://www.intel.co.kr/content/www/kr/ko/products/sku/214624/intel-nuc-kit-nuc7cjyhn/specifications.html">Intel NUC</a> + <a href="https://manjaro.org/">Manjaro Linux</a></h2>
+
+<p>2019년부터 ARM 기반의 Raspberrypi를 쓰다가, 2022년 초부터 AMD64 기반의 Intel NUC(NUC7CJYHN)를 쓰고 있다.
+Raspberrypi OS, Ubuntu도 오래 썼지만, Manjaro Linux에 만족스럽게 정착 중이다.</p>
+
+<p><img src="/assets/images/nairobi.webp" alt="Nairobi 모습" />
+<em>물론 서버는 와이프가 보지 못하게 소파 뒤에 숨겨놓고 쓴다.</em></p>
+
+<h2 id="iot-플랫폼-home-assistant">IoT 플랫폼: <a href="https://www.home-assistant.io/">Home Assistant</a></h2>
+
+<p>인기 많은 <a href="https://www.smartthings.com/">Smartthings</a>를 3개월 정도 쓰다가,
+문자 기반 인터페이스(CUI)가 성격에 맞았기에 <a href="https://www.home-assistant.io/">Home Assistant</a>로 전향했다.</p>
+
+<p><a href="https://github.com/jihunroh/homeassistant-configuration">우리집 IoT 시스템의 작동 코드를 GitHub에서 관리하고 있다.</a>
+그간 오랜 누더기질 덕분에 2022.8월초 현재 코드줄 수는 7천줄에 이른다. <del>배보다 배꼽이 더…</del></p>
+
+<p><img src="/assets/images/homeassistant-integration.webp" alt="Home Assistant Integration 모습" />
+<em>집에서 Home Assistant로 사용 중인 확장</em></p>
+
+<h2 id="통신방식-zigbee-80--others-20">통신방식: Zigbee 80% + Others 20%</h2>
+
+<p>사물이 허브와 통신하는 방식은 ZigBee, Z-Wave, Wi-Fi, Bluetooth, RF 등이 있다.
+<del>상황에 따라 통신 방식을 선택해야 한다.</del>
+IoT 하는 여는 사람들처럼 저전력이고 네트워크 부하가 적은 ZigBee를 좋아하지만, 마음에 드는 사물의 통신방식을 받아들일 수 밖에 없다.</p>
+
+<p>내가 쓰는 사물 대부분이 ZigBee로 허브와 통신한다.
+Zigbee 네트워크를 구성하기 위한 게이트웨이로 CC2538을 연결했다.
+<a href="https://www.zigbee2mqtt.io/information/supported_adapters.html">CC2531, CC2538, Conbee 등 다른 선택지도 많고 성능 차이가 있다.</a></p>
+
+<p><img src="/assets/images/cc2538.webp" alt="CC2538 연결 모습" />
+<em>CC2538을 Intel NUC에 연결한 모습</em></p>
+
+<p>Wi-Fi 기반 사물은 Awair 공기질 측정기나 Xiaomi 로봇청소기 같이 API를 제공하고 있는 경우만 제한적으로 쓰고 있다.
+마찬가지로 Bluetooth 기반 사물로 SwitchBot을 써서 커피머신에 붙여쓰고 있다.
+SwitchBot은 Home Assistant가 빌트인으로 지원하고 있다.</p>
+
+<p><a href="http://127.0.0.1:4000/2020/10/03/월패드-원격제어를-위한-RS485-패킷-분석-준비/">RS485 방식으로 통신하는 월패드는 월패드 뒷면을 따서 패킷을 훔쳐쓰고 있다.</a>
+RS485 패킷과 TCP/IP 소켓 통신간 어댑터인 Elfin EW11을 이용하고 있다.
+패킷을 감청하면, 예컨대 월패드로 난방을 켰을 때 어떤 신호가 오가는지를 캡춰할 수 있게 된다.
+그래서 내가 원할 때 같은 신호를 RS485에 흘려주면 난방을 킬 수 있다.
+<a href="https://github.com/jihunroh/rs485_2mqtt">직접 해석한 패킷을 Home Assistant에서 조작할 수 있도록 별도 프로그램을 작성해서 쓰고 있다</a>.</p>
+
+<h2 id="하고있는-것">하고있는 것</h2>
+
+<p>IoT가 뭔지 모르는 와이프도 별도로 사용법을 알 필요 없이 작동하는 자동화를 지향하고 있다.
+<a href="https://github.com/jihunroh/homeassistant-configuration/tree/master/automations">Github 저장소에서 내가 쓰고 있는 자동화를 확인할 수 있다.</a>
+약 70개에 가까운 자동화 코드를 쓰고 있는데, 시간이 될 때 소개해보려 한다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><summary type="html"><![CDATA[근 3년간 집에서 갈고닦아 쓰고 있는 IoT 환경을 소개한다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/iot.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/iot.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">내가 글을 웹에 올리는 방법은?</title><link href="https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80-%EA%B8%80%EC%9D%84-%EC%9B%B9%EC%97%90-%EC%98%AC%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%80/" rel="alternate" type="text/html" title="내가 글을 웹에 올리는 방법은?" /><published>2022-07-10T00:00:00-05:00</published><updated>2022-07-10T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80%20%EA%B8%80%EC%9D%84%20%EC%9B%B9%EC%97%90%20%EC%98%AC%EB%A6%AC%EB%8A%94%20%EB%B0%A9%EB%B2%95%EC%9D%80</id><content type="html" xml:base="https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80-%EA%B8%80%EC%9D%84-%EC%9B%B9%EC%97%90-%EC%98%AC%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%80/"><![CDATA[<p>이 웹사이트는 Ruby 기반인 Jekyll로 만들었다.
 개발자들이 많이 써온 프로그램인데, 2014년부터 써왔더니 나도 제법 쓸줄 안다.
 next.js 같은 더 현대적인 프로그램들이 각광받는 요즘에도,
 오히려 투박해서 매력적인 프로그램이다.</p>
@@ -106,7 +154,106 @@ bundle <span class="nb">install</span>
 이 날선 프레임 전투 중에서, 쪽방촌에 연탄이 아닌 태양광패널 나눔봉사가 이뤄질 풍경,
 화석연료의 불맛이 흠뻑 스민 옛날짬뽕을 그리워하는 모습,
 쏟아지는 전기차 폐배터리로 골머리를 앓을 정부의 입장 등을 상상하며 유머를 찾는다.
-이 모든 생각이 2021년 이 시대라는 우물 안에 살고 있기 때문에 갖게되는 아집일 수도 있기에, 머리쓰기보다 묵묵히 손부터 움직이려고 한다.</p>]]></content><author><name>노지훈</name></author><category term="탄소중립" /><summary type="html"><![CDATA[나는 1년 전부터 바닷물고기를 키우고 있다. 야밤에 집안 조명들을 모두 끈 어둠 속에서 심연의 바다 한 조각을 바라보고 있으면 영롱하기 그지 없다. 이 취미는 요즘 내 업무분야인 ‘탄소중립’과도 밀접한 관련이 있는데, 어항이 본질적으로 ‘해양생태계의 질소순환 과정’을 좁은 공간 안에 구겨넣은 미니어쳐이기 때문이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20211004.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20211004.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">월패드 원격제어를 위한 RS485 패킷 분석 준비</title><link href="https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/" rel="alternate" type="text/html" title="월패드 원격제어를 위한 RS485 패킷 분석 준비" /><published>2020-10-03T00:00:00-05:00</published><updated>2020-10-03T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C%20%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20RS485%20%ED%8C%A8%ED%82%B7%20%EB%B6%84%EC%84%9D%20%EC%A4%80%EB%B9%84</id><content type="html" xml:base="https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/"><![CDATA[<p>Home Assistant 등 IoT 플랫폼에서 월패드를 제어할 수 있다면,
+이 모든 생각이 2021년 이 시대라는 우물 안에 살고 있기 때문에 갖게되는 아집일 수도 있기에, 머리쓰기보다 묵묵히 손부터 움직이려고 한다.</p>]]></content><author><name>노지훈</name></author><category term="탄소중립" /><summary type="html"><![CDATA[나는 1년 전부터 바닷물고기를 키우고 있다. 야밤에 집안 조명들을 모두 끈 어둠 속에서 심연의 바다 한 조각을 바라보고 있으면 영롱하기 그지 없다. 이 취미는 요즘 내 업무분야인 ‘탄소중립’과도 밀접한 관련이 있는데, 어항이 본질적으로 ‘해양생태계의 질소순환 과정’을 좁은 공간 안에 구겨넣은 미니어쳐이기 때문이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20211004.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20211004.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">모든 주식의 주가가 한 계단(tick) 오른다면 어떤 주식을 사야할까?</title><link href="https://jihunroh.github.io/2021/03/21/%EB%AA%A8%EB%93%A0-%EC%A3%BC%EC%8B%9D%EC%9D%98-%EC%A3%BC%EA%B0%80%EA%B0%80-%ED%95%9C-%EA%B3%84%EB%8B%A8(tick)-%EC%98%A4%EB%A5%B8%EB%8B%A4%EB%A9%B4-%EC%96%B4%EB%96%A4-%EC%A3%BC%EC%8B%9D%EC%9D%84-%EC%82%AC%EC%95%BC%ED%95%A0%EA%B9%8C/" rel="alternate" type="text/html" title="모든 주식의 주가가 한 계단(tick) 오른다면 어떤 주식을 사야할까?" /><published>2021-03-21T00:00:00-05:00</published><updated>2021-03-21T00:00:00-05:00</updated><id>https://jihunroh.github.io/2021/03/21/%EB%AA%A8%EB%93%A0%20%EC%A3%BC%EC%8B%9D%EC%9D%98%20%EC%A3%BC%EA%B0%80%EA%B0%80%20%ED%95%9C%20%EA%B3%84%EB%8B%A8(tick)%20%EC%98%A4%EB%A5%B8%EB%8B%A4%EB%A9%B4%20%EC%96%B4%EB%96%A4%20%EC%A3%BC%EC%8B%9D%EC%9D%84%20%EC%82%AC%EC%95%BC%ED%95%A0%EA%B9%8C</id><content type="html" xml:base="https://jihunroh.github.io/2021/03/21/%EB%AA%A8%EB%93%A0-%EC%A3%BC%EC%8B%9D%EC%9D%98-%EC%A3%BC%EA%B0%80%EA%B0%80-%ED%95%9C-%EA%B3%84%EB%8B%A8(tick)-%EC%98%A4%EB%A5%B8%EB%8B%A4%EB%A9%B4-%EC%96%B4%EB%96%A4-%EC%A3%BC%EC%8B%9D%EC%9D%84-%EC%82%AC%EC%95%BC%ED%95%A0%EA%B9%8C/"><![CDATA[<p>스캘핑과 스윙의 중간 어느 지점에서(?) 놀고 있다.</p>
+
+<p>하루 내에 호가 단위(tick) 한단계 높여 실현하는 경우도 있고,
+며칠을 두고 서너 단위를 높여 실현하기도 한다.</p>
+
+<p>그래서 거래량이 많고(주문이 잘 체결되고), 주가에 비해(많이 살 수 있고) 호가 단위(tick)가 상대적으로 큰(많이 이득을 주는) 주식을 좋아한다.
+직감이든 우연이든 <code class="language-plaintext highlighter-rouge">SK하이닉스</code>가 그런 주식이라 생각했는데, 맞는 생각인지 확인해봤다.</p>
+
+<p>질문을 다시 구성한다면 “<strong>매수할 주식의 주가가 한 계단(tick) 오른다면 어떤 주식을 사야할까?</strong>”</p>
+
+<h2 id="이익-계산">이익 계산</h2>
+
+<p>나는 현금 $M$을 갖고 있고, 주가가 $p$, 호가 단위(tick)가 $\Delta p$인 주식을 사려한다.
+현금을 전부 써서 주식을 매수한다면, 주식은 $ M / p $주만큼 살 수 있을 것이다.
+$M$이 $p$에 비하여 상대적으로 크다면 잔금을 무시할 수 있을 정도로 미미해진다.</p>
+
+<p>이 주식을 매도가격 $p + \Delta p$에 판다.
+증권거래세, 증권사수수료를 고려하면 수익/지출은 다음과 같다.</p>
+
+<h3 id="매수-시-지출">매수 시 지출</h3>
+
+<ol>
+  <li>$ 매수금액 = 매입가격 \times 주식수  = p \times \frac{M}{p} = M $</li>
+  <li>$ 매수수수료 = 매수금액 \times 수수료율 = M \times 0.015\% $</li>
+</ol>
+
+<h3 id="매도-시-수익">매도 시 수익</h3>
+
+<ol>
+  <li>$ 매도금액 = 매도가격 \times 주식수 = (p + \Delta p) \times \frac{M}{p} $</li>
+  <li>$ 매도수수료 = 매도금액 \times 수수료율 = (p + \Delta p) \times \frac{M}{p} \times 0.015\% $</li>
+  <li>$ 증권거래세 = 매도금액 \times 증권거래세율 = (p + \Delta p) \times \frac{M}{p} \times 0.25\% $</li>
+</ol>
+
+<h3 id="이익">이익</h3>
+
+<p>이익 $\Pi$는 다음으로 정리된다. 종자돈 $M$이 클 수록, 주가 $p$는 낮을 수록, 호가 단위 $\Delta p$는 클 수록 커진다.</p>
+
+\[\Pi = ( \frac{\Delta p}{p} \cdot  99.735\% - 0.28\% ) M\]
+
+<p>예를 들어, 현재 13만8,000원인 <code class="language-plaintext highlighter-rouge">SK하이닉스</code>를 1,000만원으로 전부 매수하고 13만8,500원에 판다면, 이득은 8,136원을 얻는다.</p>
+
+<p>이득을 얻으려면 $ \frac{\Delta p}{p} \cdot  99.735\% &gt; 0.28\% $ 이어야 한다.</p>
+
+<p>이걸 좀 더 보기 쉽게 역수로 정리하면 다음과 같다.</p>
+
+\[\frac{p}{\Delta p} &lt; 356.2\]
+
+<p>이 조건을 충족하는 주식은 한 단위만 올라도 이득이고, 충족하지 못하는 주식은 손실이다.</p>
+
+<h2 id="종목-비교">종목 비교</h2>
+
+<p>이 조건을 충족하는 주식은 무엇이 있을까? Python에서 <a href="https://github.com/sharebook-kr/pykrx"><code class="language-plaintext highlighter-rouge">pykrx</code></a> 라이브러리를 이용했다. <strong>2021년 3월 19일 기준으로 KOSPI만 고려한다.</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pykrx</span> <span class="kn">import</span> <span class="n">stock</span>
+
+<span class="k">def</span> <span class="nf">get_ticksize</span><span class="p">(</span><span class="n">price</span><span class="p">):</span>
+
+  <span class="k">if</span> <span class="n">price</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+    <span class="n">ticksize</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">elif</span> <span class="n">price</span> <span class="o">&lt;</span> <span class="mi">5000</span><span class="p">:</span>
+    <span class="n">ticksize</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="k">elif</span> <span class="n">price</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">:</span>
+    <span class="n">ticksize</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="k">elif</span> <span class="n">price</span> <span class="o">&lt;</span> <span class="mi">50000</span><span class="p">:</span>
+    <span class="n">ticksize</span> <span class="o">=</span> <span class="mi">50</span>
+  <span class="k">elif</span> <span class="n">price</span> <span class="o">&lt;</span> <span class="mi">100000</span><span class="p">:</span>
+    <span class="n">ticksize</span> <span class="o">=</span> <span class="mi">100</span>
+  <span class="k">elif</span> <span class="n">price</span> <span class="o">&lt;</span> <span class="mi">500000</span><span class="p">:</span>
+    <span class="n">ticksize</span> <span class="o">=</span> <span class="mi">500</span>
+  <span class="k">elif</span> <span class="n">price</span> <span class="o">&gt;=</span> <span class="mi">500000</span><span class="p">:</span>
+    <span class="n">ticksize</span> <span class="o">=</span> <span class="mi">1000</span>
+  <span class="k">return</span> <span class="n">ticksize</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">stock</span><span class="p">.</span><span class="n">get_market_ohlcv_by_ticker</span><span class="p">(</span><span class="s">"20210319"</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s">'종목명'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">index</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'종목명'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'종목명'</span><span class="p">].</span><span class="n">transform</span><span class="p">(</span><span class="n">stock</span><span class="p">.</span><span class="n">get_market_ticker_name</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'호가단위'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'종가'</span><span class="p">].</span><span class="n">transform</span><span class="p">(</span><span class="n">get_ticksize</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'p배율'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'종가'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s">'호가단위'</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'거래대금'</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s">'result.xlsx'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>결과를 엑셀로 잘 정리해 거래대금 순서로 30위까지 나열한다.</p>
+
+<p><img src="/assets/images/2021/03/stock-01.jpg" alt="종목 비교" /></p>
+
+<h2 id="결론">결론</h2>
+
+<p><code class="language-plaintext highlighter-rouge">SK 하이닉스</code> 만세!!!다. <code class="language-plaintext highlighter-rouge">SK 바이오사이언스</code>가 갖 상장해서 이상점인 걸 감안하면, <strong>내 거래 스타일에서 <code class="language-plaintext highlighter-rouge">SK 하이닉스</code>만큼 좋은 주식이 안보인다.</strong></p>
+
+<p>물론, 당연한 얘기(disclaimer)지만 이 지표만 절대적으로 볼 수는 없다.
+호가단위가 작더라도 장 중에 변동성이 더 큰 주식이 더 좋을 수 있다.</p>
+
+<p>예를 들어 모든 변수를 다 고정하고,
+SK하이닉스가 1단위 움직일 때 삼성전자가 3단위로 동행한다고 하면,
+<code class="language-plaintext highlighter-rouge">삼성전자</code>($\frac{p}{\Delta p} \div 3 = 273$)가 <code class="language-plaintext highlighter-rouge">SK하이닉스</code>($\frac{p}{\Delta p} = 276$)보다 미미하게나마 더 큰 이득을 본다.</p>
+
+<p>2021년 3월 19일 기준의 결과이므로, 한달 후에 다시 재산출해보려 한다.</p>]]></content><author><name>노지훈</name></author><category term="주식" /><summary type="html"><![CDATA[스캘핑과 스윙의 중간 어느 지점에서(?) 놀고 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2021/03/stock-01.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2021/03/stock-01.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">월패드 원격제어를 위한 RS485 패킷 분석 준비</title><link href="https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/" rel="alternate" type="text/html" title="월패드 원격제어를 위한 RS485 패킷 분석 준비" /><published>2020-10-03T00:00:00-05:00</published><updated>2020-10-03T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C%20%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20RS485%20%ED%8C%A8%ED%82%B7%20%EB%B6%84%EC%84%9D%20%EC%A4%80%EB%B9%84</id><content type="html" xml:base="https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/"><![CDATA[<p>Home Assistant 등 IoT 플랫폼에서 월패드를 제어할 수 있다면,
 월패드에서 제어가능한 조명, 난방, 환기 등 기기를 IoT 플랫폼에서 간접적으로 제어할 수 있다.</p>
 
 <p>월패드는 RS485 직렬통신을 주로 이용한다. 연결하는 방법은 의외로? 간단하다.
@@ -496,137 +643,4 @@ kernel: [77713.950220] sd 0:0:0:0: [sda] tag#24 CDB: opcode=0x2a 2a 00 3a 04 11 
 우리집 전체 전력소비량이 ‘19.11월 275kWh임을 감안하면, 어항에서만 매월 80kWh, 1만5천원을 쓰고 있는 셈이다.</p>
 
 <p>그 외 장비 구입과 감가, 소모품(먹이, 해수염 등), 생물 등의 구입비용, 유지보수(환수, 청소 등)에 쓰는 시간의 기회비용 등 해수어항에는 손과 돈이 많이 간다.
-그럼에도 이런 이쁜 취미를 영위하는데는 쓸만한 수준으로 느끼고 있다.</p>]]></content><author><name>노지훈</name></author><category term="Reef" /><summary type="html"><![CDATA[작년 말부터 산호 없는 해수어항을 운영하고 있다. 2020년 1월 초 현재까지 두달이 좀 넘었다. 클라키크라운(니모), 화이어고비, 그린크로미스, 크리너쉬림프, 터보스네일이 살고 있는 250L가 들어가는 폭 3자의 중형 어항이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200104.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200104.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">다른 한 아이의 성별 추정 문제</title><link href="https://jihunroh.github.io/2018/03/25/%EB%8B%A4%EB%A5%B8-%ED%95%9C-%EC%95%84%EC%9D%B4%EC%9D%98-%EC%84%B1%EB%B3%84-%EC%B6%94%EC%A0%95-%EB%AC%B8%EC%A0%9C/" rel="alternate" type="text/html" title="다른 한 아이의 성별 추정 문제" /><published>2018-03-25T00:00:00-05:00</published><updated>2018-03-25T00:00:00-05:00</updated><id>https://jihunroh.github.io/2018/03/25/%EB%8B%A4%EB%A5%B8%20%ED%95%9C%20%EC%95%84%EC%9D%B4%EC%9D%98%20%EC%84%B1%EB%B3%84%20%EC%B6%94%EC%A0%95%20%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="https://jihunroh.github.io/2018/03/25/%EB%8B%A4%EB%A5%B8-%ED%95%9C-%EC%95%84%EC%9D%B4%EC%9D%98-%EC%84%B1%EB%B3%84-%EC%B6%94%EC%A0%95-%EB%AC%B8%EC%A0%9C/"><![CDATA[<p><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ISBN=8995737050">「행동경제학」</a>을 보면 다음 문제가 나온다.
-이 문제의 정답은 상식과 어긋난다. 스스로 답을 한번 구해보아야 왜 흥미로운지를 알 수 있다.</p>
-
-<blockquote>
-  <p>우리집 옆으로 이사온 가족은 아이가 2명이다. 아들인지 딸인지는 모른다.</p>
-
-  <p>(문제 1) 이웃집 아주머니에게 ‘딸이 있으세요?’ 물었더니 대답은 ‘네’였다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
-
-  <p>(문제 2) 이웃집 아주머니에게 ‘큰 아이가 딸입니까?’라고 물었더니 대답은 ‘네’였다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
-
-  <p>(문제 3) 이웃집 아주머니이 딸을 1명 데리고 걷고 있는 것을 보았다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
-</blockquote>
-
-<p>$ \frac{문제에서 말하는 경우의 수}{모든 가능한 상황} $로 확률을 계산하려면 표본공간 $ \Omega $가 등확률인 근원사건으로 구성되어 있어야 한다.
-<strong>(첫째의 성별, 둘째의 성별)</strong> 로 정의하되, 남자는 □ 여자는 ★로 표기한다.</p>
-
-\[\Omega = \{(□, □), (□, ★), (★, □), (★, ★)\}\]
-
-\[P[(□, □)] = P[(□, ★)] = P[(★, □)] = P[(★, ★)] = 1/4\]
-
-<h2 id="문제-1">문제 1</h2>
-<blockquote>
-  <p>이웃집 아주머니에게 ‘딸이 있습니까’라고 물었더니 대답은 ‘네’였다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
-</blockquote>
-
-<p>이웃집 아주머니의 답은 “딸이 적어도 하나 있다”는 뜻과 동일하다. 가능한 상황($ A_1 $)은 (□, ★), (★, □), (★, ★)이다.
-이 중에서 다른 아이도 여자인 사건($ B $)은 (★, ★) 하나 뿐이므로 답은 1/3 이다.</p>
-
-\[A_1 = \{(□, ★), (★, □), (★, ★)\}\]
-
-\[B = \{(★, ★)\}\]
-
-\[P[B\ \mid A_1] = \frac{P[A_1 \cap B]}{P[A_1]} = \frac{1/4}{3/4} = \frac{1}{3}\]
-
-<h2 id="문제-2">문제 2</h2>
-<blockquote>
-  <p>이웃집 아주머니에게 ‘큰 아이가 딸입니까?’라고 물었더니 대답은 ‘네’였다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
-</blockquote>
-
-<p>큰 아이가 딸인 상황($ A_2 $)은 (★, □), (★, ★) 이다. 이 중에서 다른 아이도 여자인 사건(B)은 (★, ★ 하나 뿐이므로 답은 1/2 이다.</p>
-
-\[A_2 = \{(★, □), (★, ★)\}\]
-
-\[B = \{(★, ★)\}\]
-
-\[P[B\ \mid A_2] = \frac{P[A_2 \cap B]}{P[A_2]} = \frac{1/4}{2/4} = \frac{1}{2}\]
-
-<h2 id="문제-3">문제 3</h2>
-<blockquote>
-  <p>이웃집 아주머니이 딸을 1명 데리고 걷고 있는 것을 보았다. 다른 한 아이도 딸일 확률은 얼마인가?</p>
-</blockquote>
-
-<p>문제 3을 읽고 문제 1과 아무런 차이도 없다고 속단해 답이 1/3이라고 생각했다.</p>
-
-<p>결론적으로 문제 3은 문제 1이 아닌 문제 2와 유사한 상황이다.
-문제 2는 두 자식 중 “첫째” 자식이 딸이라는 정보를 주고,
-문제 3은 두 자식 중 “내 눈에 목격된” 자식이 딸이라는 정보를 준다.
-반면, 문제 1은 두 자식 중 “특정되지 않은” 자식이 딸이라는 정보를 준다.
-특정된 자식이 딸이라는 정보인지(문제 2~3), 특정되지 않은 자식이 딸이라는 정보인지(문제 1)가 다른 것이다.</p>
-
-<p>표본공간을 새로 정의하면 풀이가 깔끔해진다. 이상의 문제풀이에서 (첫째의 성별, 둘째의 성별)로 표본공간을 구성했던 것과 달리, 이 문제를 위해서는 <strong>(동행 중인 자제의 성별, 동행 안한 자제의 성별)</strong> 로 정의한다. 남자는 ○ 여자는 ▲로 표기한다.</p>
-
-\[\Omega' = \{(○, ○), (○, ▲), (▲, ○), (▲, ▲)\}\]
-
-<p>새로운 표본공간 $ \Omega’ $ 은 $ \Omega $와 같이 등확률인 근원사건으로 구성되었다.
-$ \Omega’ $ 와 $ \Omega $의 근원사건은 다음과 같이 대응된다. 즉, 표본공간 $ \Omega $에서도 문제 3을 풀 수는 있지만, 그냥 식이 복잡해질 뿐이다.</p>
-
-<table>
-<caption>표본공간 $ \Omega $와 $ \Omega' $의 근원사건간 일대일 대응</caption>
-<thead>
-  <tr>
-    <th>$ \Omega $</th>
-    <th>$ \Omega' $</th>
-    <th>확률</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>(□, □)</td>
-    <td>(○, ○)</td>
-    <td>1/4</td>
-  </tr>
-  <tr>
-    <td>(□, ★)</td>
-    <td>(○, ▲), (▲, ○) 중 50%의 확률로 하나</td>
-    <td>1/4</td>
-  </tr>
-  <tr>
-    <td>(★, □)</td>
-    <td>(○, ▲), (▲, ○) 중 50%의 확률로 하나</td>
-    <td>1/4</td>
-  </tr>
-  <tr>
-    <td>(★, ★)</td>
-    <td>(▲, ▲)</td>
-    <td>1/4</td>
-  </tr>
-</tbody>
-</table>
-
-\[A_3 = \{(▲, ○), (▲, ▲)\}\]
-
-\[B = \{(▲, ▲)\}\]
-
-\[P[B\ \mid A_3] = \frac{P[A_3 \cap B]}{P[A_3]} = \frac{1/4 }{2/4} = \frac{1}{2}\]
-
-<h2 id="시사점">시사점</h2>
-<p>이 문제를 해석하면, 특정된 자식에 대한 정보를 받았을 때, 그 외의 자식에 대한 성별 추정은 하나의 독립사건처럼 남, 여 중 하나의 문제로 귀결된다는 점이다. 그래서 문제 2~3의 답은 1/2이다.</p>
-
-<p>반면, 특정되지 않은 자식에 대한 정보를 받았을 때, 그 외의 자식에 대한 성별 추정은 특정되지 않은 자식이 누구인지에 종속되게 된다. 그래서 1/3이라는 기묘한 답이 나온다.</p>
-
-<p>아울러, 모든 사건들을 나열하고 가짓수를 세는 방법은 아주 직관적이지만, 그 직관을 이용할 때에는 문제 상황을 기술할 수 있도록 표본공간을 엄밀히 정의해야 한다는 교훈도 얻는다.</p>]]></content><author><name>노지훈</name></author><category term="베이즈정리" /><category term="확률" /><category term="통계학" /><summary type="html"><![CDATA[「행동경제학」을 보면 다음 문제가 나온다. 이 문제의 정답은 상식과 어긋난다. 스스로 답을 한번 구해보아야 왜 흥미로운지를 알 수 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Bayes%27_Theorem_MMB_01.jpg/1200px-Bayes%27_Theorem_MMB_01.jpg" /><media:content medium="image" url="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Bayes%27_Theorem_MMB_01.jpg/1200px-Bayes%27_Theorem_MMB_01.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">A Dialogue on Personal Identity and Immortality 논평</title><link href="https://jihunroh.github.io/2010/11/23/A-Dialogue-on-Personal-Identity-and-Immortality-%EB%85%BC%ED%8F%89/" rel="alternate" type="text/html" title="A Dialogue on Personal Identity and Immortality 논평" /><published>2010-11-23T00:00:00-06:00</published><updated>2010-11-23T00:00:00-06:00</updated><id>https://jihunroh.github.io/2010/11/23/A%20Dialogue%20on%20Personal%20Identity%20and%20Immortality%20%EB%85%BC%ED%8F%89</id><content type="html" xml:base="https://jihunroh.github.io/2010/11/23/A-Dialogue-on-Personal-Identity-and-Immortality-%EB%85%BC%ED%8F%89/"><![CDATA[<p><a href="http://www.humanscience.org/docs/Perry%20(1978)%20A%20Dialogue%20on%20Personal%20Identity%20and%20Immortality.pdf">「A Dialogue on Personal Identity and Immortality」</a>은 죽음을 앞둔 철학교수 Weirob가 그녀의 지도 대학원생Cohen, 성직자인 친구인 Miller와 나눈 동일성(identity), 불멸성(immortality)에 대한 대화록입니다. 그녀는 사후 자신의 불멸성이 상상가능함을 설득해달라고 합니다. 그것이 그녀에게 큰 위안이 될 것이라고 합니다. 그래서 세 사람은 Weirob의 사후에 존재할지도 모를 무언가가 Weirob와 실제로 동일할 것인지, 만약 동일하다면 그 근거가 무엇인지에 대한 갑론을박을 펼칩니다.</p>
-
-<p>이 대화록을 읽으면 어렸을 때 보았던 손톱 먹은 쥐(쥐 둔갑 타령)라는 전래 동화를 기억하게 됩니다. 그 전래 동화에서 첨지라 불리는 영감은 자신의 손톱을 지나가던 쥐에게 먹이로 주었습니다. 쥐는 첨지의 손톱을 먹고 첨지와 똑같은 사람(아마 기억까지 같은)으로 변하여, 자신이 첨지라고 주장합니다. 둘은 옥신각신 싸웁니다. 그러다 어느 스님의 기지로 고양이 앞에서 가짜 첨지가 쥐로 변하면서 이야기가 마무리됩니다. 손톱을 먹고 사람으로 변하는 쥐를 상상하기 어렵다면, 미래 과학기술이 크게 발전하여, ‘나’와 같은 기억 및 성격 등의 것들을 갖도록 ‘나’를 복제하는 상황을 생각할 수도 있겠습니다. 질문은 첨지와 가짜 첨지를 구분해줄 고양이가 우리의 현실에서 무엇이 될 수 있는지 입니다.</p>
-
-<p>먼저 심신이원론의 입장에서 정신이 비물질적인 것이라 감각될 수 없다고 가정합시다. 그리고 시공간적으로 다른 위치의 두 사람이 동일하다는 것은 정신의 동일성으로 판단할 수 있다고 합시다. 하지만 정신은 감각될 수 없는데 어떻게 두 사람이 동일한지 판단할 수 있겠습니까? 신체가 정신의 지표가 된다는 변호는 타당해 보이지 않습니다. 신체적 동일성이 첨지가 누구인지 알려주지 않습니다. 첨지와 가짜 첨지는 물질적인 면에서 완전히 똑같아 보입니다. 공각기동대를 시청한 분이시라면, 쿠사나기 소령이 다른 신체로 고스트를 옮겨간 장면을 기억하실 것입니다. 젊은 아가씨 모습을 가진 쿠사나기 소령은, 귀여운 여자 꼬마의 모습을 한 쿠사나기 소령과 아무래도 동일한 것으로 보입니다. 요컨대, ‘물질적인 신체가 감각될 수 없는 정신의 동일성에 대한 지표, 곧 개인의 동일성의 지표가 된다’는 주장은 그를 지지해줄 좋은 근거가 없을뿐더러, 앞선 예에 의해 틀린 것으로 생각됩니다.</p>
-
-<p>정신이 우리의 심리적인 상태, 태도, 기억, 믿음 등으로 표출된다고 합시다. 하지만 이런 우리들의 습성들이 정신의 동일성에 대한 지표가 되준다는 주장은 독단적입니다. 이러한 습성들은 항상 한결같지 않습니다. 마치 유유히 흘러가는 형산강의 물줄기처럼 그 양상은 매 순간 변합니다. 이렇게 변화무쌍한 지표가 어떻게 동일성을 지지할 수 있는지 근거가 있습니까? 요컨대, 정신이 물질적인 신체와 분리되어 있는 비물질적인 것이라면, 많은 문제가 발생합니다. 비물질적인 영혼을 간접적으로 알아보게 해주는 지표가 무엇이건 말입니다.</p>
-
-<p>그래서 Person-stage라는 개념이 등장합니다. 우리는 두 다른 장소에서 형산강을 보더라도 그 둘을 형산강이라고 생각합니다. 그 이유는 목격된 두 강의 지점이 물리적으로 연결되어있기 때문입니다. 마찬가지로 우리는 Person-stage를 1분 전의 나와 지금의 내가 동일하다고 판단할 수 있는 지표로 생각해볼 수 있습니다. 30분 전의 person-stage와 지금의 person-stage가 연쇄적으로 연결되어 있기 때문입니다. Person-stage는 시간적으로 한 순간의 의식을 의미하는 것으로 보이는데, 한 인간은 이 person-stage들로 구성된 전체입니다. 시간적으로 뒤의 person-stage는 앞선 person-stage의 기억을 갖는다는 점에서 연관되어 있고, 이 관련이 동일성의 지표라는 것입니다.</p>
-
-<p>그런데 공각기동대에는 고스트 해킹을 당해 완전히 다른 기억을 갖고 사는 피해자들이 등장합니다. A라는 사람은 고스트 해킹을 당한 후 B’이 되어 자신이 B라는 완전한 기억들을 갖게 됩니다. 기존의 B와 B’은 같은 기억을 공유합니다. 둘 중 과거의 B와 동일한 사람은 누구입니까? Weirob는 이에 대답하려면, 기억 속의 B와 현재의 실제 B의 동일성에 기댈 수 밖에 없으므로 순환 논증이 된다고 주장합니다. 누구라도 B’이 A와 동일하다는 주장을 하고 싶겠지만, 기억 만으로는 그를 지지하기에 부족합니다. 첨지와 가짜 첨지의 문제도 마찬가지입니다.</p>
-
-<p>기억을 동일성의 지표로 보는 것은 불멸성을 상상함에 있어서도 좋은 출발점이 아닌 것으로 보입니다. 제가 죽은 후에 제 기억, 의식의 모든 것을 온전히 물려받은 천국의 사람(A)이 만들어져, 그것이 실제로 나라고 합시다. 근데 A가 하나만 만들어져야 하는 이유가 없어, A와 어떤 식으로든 다른 모습으로(B) 하나 더 만들어졌다면, 저는 그 중 누구와 동일하다고 해야겠습니까? 둘 모두 자신이 저와 동일하다고 주장할 텐데, 그들의 기억 속 행동들의 주체는 하나입니다. 기억을 동일성의 지표로 보는 것이 얼마나 큰 이득이 있는지 의구심이 가는 부분입니다.</p>
-
-<p>한편 앞선 예시에서 전 다른 신체로 고스트를 옮겨간 쿠사나기 소령을 말하며, 그녀가 아무래도 옮겨가기 전의 쿠사나기 소령과 동일한 것 같다고 말씀드렸습니다. 저는 많은 분들이 이 주장에 동의할 것이라 생각합니다만 Weirob는 그에 반대합니다. 여자 꼬마 쿠사나기 소령의 기억이 실제로 겪었던 일을 기억하는 것인지, 아니면 겪지 않았지만 자신이 그랬다고 믿는 명료한 기억일 뿐인지를 구분하게 해주는 조건이 필요하다고 말합니다. 그리고는 ‘사람이란 단순히 살아있는 신체’라서 두뇌 복제, 혹은 이동 등에서 동일성이 보존되지 않는다는 자신의 주장을 굽히지 않습니다.</p>
-
-<p>그런데 저는 두 다른 시간에 떨어진 A와 B가 서로 동일하려면, 각자의 시간에서 A와 B가 유일해야 하는 지는 의문이 듭니다. Weirob도 인정했듯, 미래에 저의 복제인간들이 모두 자신이 저와 동일하다고 주장한다고 해서 비정합적이지는 않습니다. 특히 ‘두뇌를 다른 신체로 옮긴 Julia는 Julia가 아닐 것’이라는 그녀의 주장은, 과학 기술에 대한 제 기대와 어긋나는 것이라서, 제가 차후에라도 반박할 수 있을지는 모르겠지만 일단 부정적인 태도를 취하게 됩니다.</p>
-
-<p>또한 기억 이론에 기대자니 영화 메멘토의 주인공, 레너드가 몹시 신경쓰입니다. 일정하지 않은 매 시간 간격마다 레너드의 기억은 상실되고 과거 한 시점의 기억으로 돌아갑니다.</p>
-
-<p>바로 최근의 기억조차 상속받지 못하는 레너드를 두고 저는 영화 내내 그가 동일한 사람이라는 것을 의심치 않습니다. 물론 저는 3자적인 위치에서 잘생긴 가이 피어스의 겉모습으로 동일성을 판단합니다. 하지만 매번 복구되는 그의 과거 기억은 사실과 다르게 변조된 것이라서, 가이 피어스 스스로는 자신의 동일성을 어떻게 판단할지 혼란스러워했던 점이 영화의 모티브였던 걸로 기억합니다.</p>
-
-<p>이런 일들이 공상만 되거나, 우발적이고 간헐적으로 일어나지 않고, 조작적이고 의도적으로 일어나는 시대가 올 지도 모릅니다. 그러한 시대라면 실제로 겪은 것을 기억하는 자가 누구인지의 질문은 의미가 없거나 더욱 더 미궁에 빠져들 것입니다. 그래서 그런 시대가 도래하기 전에 서둘러 개인의 동일성 및 불멸성 문제에 대해 공고한 답을 세워야 할 것입니다.</p>]]></content><author><name>노지훈</name></author><category term="논평" /><category term="동일성" /><summary type="html"><![CDATA[「A Dialogue on Personal Identity and Immortality」은 죽음을 앞둔 철학교수 Weirob가 그녀의 지도 대학원생Cohen, 성직자인 친구인 Miller와 나눈 동일성(identity), 불멸성(immortality)에 대한 대화록입니다. 그녀는 사후 자신의 불멸성이 상상가능함을 설득해달라고 합니다. 그것이 그녀에게 큰 위안이 될 것이라고 합니다. 그래서 세 사람은 Weirob의 사후에 존재할지도 모를 무언가가 Weirob와 실제로 동일할 것인지, 만약 동일하다면 그 근거가 무엇인지에 대한 갑론을박을 펼칩니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20101123.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20101123.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+그럼에도 이런 이쁜 취미를 영위하는데는 쓸만한 수준으로 느끼고 있다.</p>]]></content><author><name>노지훈</name></author><category term="Reef" /><summary type="html"><![CDATA[작년 말부터 산호 없는 해수어항을 운영하고 있다. 2020년 1월 초 현재까지 두달이 좀 넘었다. 클라키크라운(니모), 화이어고비, 그린크로미스, 크리너쉬림프, 터보스네일이 살고 있는 250L가 들어가는 폭 3자의 중형 어항이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200104.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200104.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
