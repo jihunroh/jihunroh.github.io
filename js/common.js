@@ -3,10 +3,8 @@ $(document).ready(function() {
 
   var menuOpenIcon = $(".nav__icon-menu"),
     menuCloseIcon = $(".nav__icon-close"),
-    menuList = $(".menu-overlay"),
     searchOpenIcon = $(".nav__icon-search"),
     searchCloseIcon = $(".search__close"),
-    searchBox = $(".search"),
     headerOverlay = $(".header__overlay"),
     html = $("html");
 

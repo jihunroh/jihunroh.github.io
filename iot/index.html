@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>탄소중립을 위한 행동은 왜 어려울까</title>
+  <title>Internet of Things</title>
   <meta name='description' content=''>
 
-  <link rel="canonical" href="https://jihunroh.github.io/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%96%89%EB%8F%99%EC%9D%80-%EC%99%9C-%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C/">
+  <link rel="canonical" href="https://jihunroh.github.io/iot/">
   <link rel="alternate" type="application/rss+xml" title="JiHun Roh" href="/feed.xml">
 
   <!-- Fonts -->
@@ -71,108 +71,79 @@
 
   <!-- begin content -->
   <main class="content" aria-label="Content">
-    <div class="container">
+    
+<div class="container">
   <div class="row">
     <div class="col col-12 col-d-10 push-d-1 col-m-12 push-m-0">
-      <div class="post-head">
-        <div class="post-info">
-          
-            <div class="post-tags">
-              
-                <a href="/tag/탄소중립" class="post-tags__tag">탄소중립</a>
-              
-            </div>
-          
-          <span class="post-date">
-            <time datetime="2021-10-04T00:00:00-05:00">2021년 10월 04일</time>
-          </span>
-        </div>
-        <h1 class="post-title">탄소중립을 위한 행동은 왜 어려울까</h1>
-      </div>
-      
+      <h1 class="page-title">Internet of Things</h1>
       <div class="image-box">
-        <img class="post-image" src="/assets/images/covers/20211004.webp" alt="탄소중립을 위한 행동은 왜 어려울까">
+        <img class="page-image" src="/assets/images/covers/iot.jpg" alt="Internet of Things">
       </div>
-      
     </div>
   </div>
 </div>
 
+
 <div class="container">
   <div class="row">
     <div class="col col-8 push-2 col-d-10 col-m-12 push-d-1 push-m-0">
-      <!-- begin post -->
-      <article class="post">
+      <!-- begin page -->
+      <article class="page">
+        <div class="page__content">
+          <p>내가 쓰고 있는 IoT 환경을 소개한다.</p>
 
-        <div class="post__content">
-          <p>나는 1년 전부터 바닷물고기를 키우고 있다. 야밤에 집안 조명들을 모두 끈 어둠 속에서 심연의 바다 한 조각을 바라보고 있으면 영롱하기 그지 없다.
-이 취미는 요즘 내 업무분야인 ‘탄소중립’과도 밀접한 관련이 있는데, 어항이 본질적으로 ‘해양생태계의 질소순환 과정’을 좁은 공간 안에 구겨넣은 미니어쳐이기 때문이다.</p>
+<h2 id="시스템-intel-nuc--manjaro-linux">시스템: <a href="https://www.intel.co.kr/content/www/kr/ko/products/sku/214624/intel-nuc-kit-nuc7cjyhn/specifications.html">Intel NUC</a> + <a href="https://manjaro.org/">Manjaro Linux</a></h2>
 
-<p>어항에 투여된 물고기 사료는 질소를 품은 유기물이라서, 물고기, 박테리아의 소화 과정에서 암모니아 및 아질산염을 거쳐, 종국적으로는 질산염이 되어 어항에 누적된다.
-본래 해양 생태계에서는 해조류가 광합성을 하며 질산염을 소모하여 질산염의 균형(이른바 질소순환 과정)을 이루는데, 그렇다고 어항에서 미역을 키울 수는 없는 노릇이다.
-누적된 질산염은 물고기 건강에 만성적인 악영향을 주기 때문에, 주기적으로 깨끗한 물로 갈아주거나 질산염을 질소분자로 변환하는 약품을 투여해야 한다.</p>
+<p>2019년부터 ARM 기반의 Raspberrypi를 쓰다가, 2022년 초부터 AMD64 기반의 Intel NUC(NUC7CJYHN)를 쓰고 있다.
+Raspberrypi OS, Ubuntu도 오래 썼지만, Manjaro Linux에 만족스럽게 정착 중이다.</p>
 
-<p><img src="/assets/images/2021/10/aquarium.jpg" alt="우리집 해수어항" /></p>
+<p><img src="/assets/images/nairobi.webp" alt="Nairobi 모습" />
+<em>물론 서버는 와이프가 보지 못하게 소파 뒤에 숨겨놓고 쓴다.</em></p>
 
-<p><a href="https://microbewiki.kenyon.edu/index.php/Nitrosococcus_oceani"><img src="/assets/images/2020/08/marine-nitrification.jpg" alt="바다에서의 질소 순환 과정" /></a></p>
+<h2 id="iot-플랫폼-home-assistant">IoT 플랫폼: <a href="https://www.home-assistant.io/">Home Assistant</a></h2>
 
-<p>탄소중립의 난해함은 어항 관리의 그것과 닮았다.
-지구(어항)의 탄소(질산염) 항상성을 깨뜨리고 누적시키는 원인(사료 급여)은 물론, 해결법(물갈이, 약품 투여)까지 공히 알려져는 있는데, 대체 탄소(질산염)는 눈에 쉽게 보이질 않아 얼만큼 행동해야 할지를 모르겠다.
-노력에는 돈과 시간이 들기 때문에 막연하게 최대한의 노력을 하고 싶지는 않은 것이다.</p>
+<p>인기 많은 <a href="https://www.smartthings.com/">Smartthings</a>를 3개월 정도 쓰다가,
+문자 기반 인터페이스(CUI)가 성격에 맞았기에 <a href="https://www.home-assistant.io/">Home Assistant</a>로 전향했다.</p>
 
-<p><a href="https://www.bbc.com/future/article/20190304-human-evolution-means-we-can-tackle-climate-change">영국의 국제이슈 기고가 Matthew Wilburn King은 우리가 기후행동을 꺼려하는 이유를 짚는다</a>.
-우리 인류의 뇌에는 수백만년에 걸쳐 여러 인지 편향이 각인되었는데, 기후행동은 미래의 가치/비용에 대한 과소평가, 방관자 효과, 매몰비용 오류 등과 엮여 실행하지 어렵다는 것이다.
-이 인지 편향들은 매우 강렬하다고 알려져 있어서, 다시 말하면 우리는 기후변화의 원인, 대응 필요성을 이해할 수는 있어도, 미래를 위한 일을 하는 데에는 좀처럼 성공하지 못한다. 소설가 김훈은 “밥벌이보다 숭고한 일은 없다”고 말했다. 이번달 나올 월급과 떼일 세금을 두고서는 “30년 후의 일인데 노력을 벌써부터 많이 해야하나<code class="language-plaintext highlighter-rouge">미래 과소평가</code>, 더 노력할 사람들이 많은데 내가 할 필요가 있을까?<code class="language-plaintext highlighter-rouge">방관자 효과</code>, 내연기관에 인류가 쏟은 돈이 얼만데 전기/수소차를 쓰라고?<code class="language-plaintext highlighter-rouge">매몰비용 오류</code>” 같은 생각이 아주 직관적인 접근이 되는 것이다.</p>
+<p><a href="https://github.com/jihunroh/homeassistant-configuration">우리집 IoT 시스템의 작동 코드를 GitHub에서 관리하고 있다.</a>
+그간 오랜 누더기질 덕분에 2022.8월초 현재 코드줄 수는 7천줄에 이른다. <del>배보다 배꼽이 더…</del></p>
 
-<p>기후환경 활동가들은 이러한 인지편향을 잘 이해하고 있는지, 사람들에게 강렬한 인상을 남기는 것이 해법이라고 생각하는 것 같다.
-스웨덴의 만 16세 환경운동가 Greta Thunberg는 2019년 UN기후행동 정상회의 연단에서 “여러분은 헛된 말로 저의 꿈을 빼앗았습니다.
-여러분이 할 수 있는 이야기는 전부 돈과 끝없는 경제성장의 신화 뿐입니다.
-어떻게 그럴 수 있습니까?“라고 울먹이며 사람들의 큰 경각심을 불러일으켰다.
-지구 온난화를 논할 때는 어김없이 작은 얼음 조각 위의 북극곰이 출연하고, 자원 재활용을 논할 때에는 폐플라스틱을 잔뜩 먹은 거북이가 등장한다.
-얻는 기쁨보다 잃는 슬픔에 더 큰 의미를 두는 것이 인류의 오랜 부정 편향이다.
-<a href="https://www.etnews.com/20140716000244">산업계가 2015년 시행될 온실가스배출권거래제를 두고 매년 30조원의 제조업 매출 감소를 겪게될 것이라고 경고한 점도 비슷한 전략이다</a>.
-그야말로 편향을 전략적으로 이용하는 프레임 전투다.</p>
+<p><img src="/assets/images/homeassistant-integration.webp" alt="Home Assistant Integration 모습" />
+<em>Home Assistant로 조작할 수 있는 확장</em></p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/u9KxE4Kv9A8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<h2 id="통신방식-zigbee-80--others-20">통신방식: Zigbee 80% + Others 20%</h2>
 
-<p><img src="/assets/images/2021/10/polar_bear.jpg" alt="빙산조각 위의 북극곰" /></p>
+<p>사물이 허브와 통신하는 방식은 ZigBee, Z-Wave, Wi-Fi, Bluetooth, RF 등이 있다.
+<del>상황에 따라 통신 방식을 선택해야 한다.</del>
+IoT 하는 여는 사람들처럼 저전력이고 네트워크 부하가 적은 ZigBee를 좋아하지만, 마음에 드는 사물의 통신방식을 받아들일 수 밖에 없다.</p>
 
-<p>사람들이 더욱 체감하게 하기 위해, 해양에서 국소적으로 일어났던 ‘지구온난화’는 전지구적인 ‘기후변화’로, 중립적 의미의 ‘기후변화’는 다시 부정적 의미의 ‘기후위기’로 이슈 키워드가 변화해 가고 있다.
-변화양상 속에서도 기후환경계와 경제산업계 간의 간극은 결코 좁혀지지 않을 것 같다.
-요즘 나는 파리협약에 따라 당사국이 제출해야 하는 국가온실가스 감축목표(NDC)의 상향을 위해, 관계부처, 탄소중립위원회 등과 협의 중인데, 어느누구 간에는 서로 대화가 곤란할 정도의 치열한 감정싸움이 있다.</p>
+<p>내가 쓰는 사물 대부분이 ZigBee로 허브와 통신한다.
+Zigbee 네트워크를 구성하기 위한 게이트웨이로 CC2538을 연결했다.
+<a href="https://www.zigbee2mqtt.io/information/supported_adapters.html">CC2531, CC2538, Conbee 등 다른 선택지도 많고 성능 차이가 있다.</a></p>
 
-<p>국토교통부는 탄소중립을 위한 건물의 에너지성능 향상, 전기/수소차 전환 가속화 등에서 과업을 설정하고자 노력 중이다.
-나는 작년말 미래전략일자리담당관에서 탄소중립을 업무를 맡으면서 가졌던 뜨거운 지적 호기심을 기억한다.
-하지만 업무과정에서 마주친 기후환경의 언어에는 잘 익숙해지지 못했다.
-이 날선 프레임 전투 중에서, 쪽방촌에 연탄이 아닌 태양광패널 나눔봉사가 이뤄질 풍경,
-화석연료의 불맛이 흠뻑 스민 옛날짬뽕을 그리워하는 모습,
-쏟아지는 전기차 폐배터리로 골머리를 앓을 정부의 입장 등을 상상하며 유머를 찾는다.
-이 모든 생각이 2021년 이 시대라는 우물 안에 살고 있기 때문에 갖게되는 아집일 수도 있기에, 머리쓰기보다 묵묵히 손부터 움직이려고 한다.</p>
+<p><img src="/assets/images/cc2538.webp" alt="CC2538 연결 모습" />
+<em>CC2538을 Intel NUC에 연결한 모습</em></p>
+
+<p>Wi-Fi 기반 사물은 Awair 공기질 측정기나 Xiaomi 로봇청소기 같이 API를 제공하고 있는 경우만 제한적으로 쓰고 있다.
+마찬가지로 Bluetooth 기반 사물로 SwitchBot을 써서 커피머신에 붙여쓰고 있다.
+SwitchBot은 Home Assistant가 빌트인으로 지원하고 있다.</p>
+
+<p><a href="http://127.0.0.1:4000/2020/10/03/월패드-원격제어를-위한-RS485-패킷-분석-준비/">RS485 방식으로 통신하는 월패드는 월패드 뒷면을 따서 패킷을 훔쳐쓰고 있다.</a>
+RS485 패킷과 TCP/IP 소켓 통신간 어댑터인 Elfin EW11을 이용하고 있다.
+패킷을 감청하면, 예컨대 월패드로 난방을 켰을 때 어떤 신호가 오가는지를 캡춰할 수 있게 된다.
+그래서 내가 원할 때 같은 신호를 RS485에 흘려주면 난방을 킬 수 있다.
+<a href="https://github.com/jihunroh/rs485_2mqtt">직접 해석한 패킷을 Home Assistant에서 조작할 수 있도록 별도 프로그램을 작성해서 쓰고 있다</a>.</p>
+
+<h2 id="하고있는-것">하고있는 것</h2>
+
+<p>IoT가 뭔지 모르는 와이프도 별도로 사용법을 알 필요 없이 작동하는 자동화를 지향하고 있다.
+<a href="https://github.com/jihunroh/homeassistant-configuration/tree/master/automations">Github 저장소에서 내가 쓰고 있는 자동화를 확인할 수 있다.</a>
+약 70개에 가까운 자동화 코드를 쓰고 있는데, 시간이 될 때 소개해보려 한다.</p>
 
         </div>
-
-        <div class="post-author">
-          <a href="/my-background/" class="post-author__image" style="background-image: url(/assets/images/jihunroh.jpg)" aria-label="노지훈"></a>
-          <div class="post-author__info">
-            <a class="post-author__name" href="/my-background/">노지훈</a>
-            <p class="post-author__bio">평범한 직장인입니다.</p>
-            <div class="post-author__meta">
-              
-              <a class="post-author__link" href="https://www.facebook.com/jihunroh" target="_blank">Facebook</a>
-              
-              <a class="post-author__link" href="https://www.linkedin.com/in/jihunroh1/" target="_blank">Linkedin</a>
-              
-            </div>
-          </div>
-        </div>
-
-        
-
       </article>
-      <!-- end post -->
-      
+      <!-- end page -->
     </div>
-
   </div>
 </div>
   </main> 
