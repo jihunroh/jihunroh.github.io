@@ -1,4 +1,290 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-09-11T06:35:45-05:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">이산화탄소 절대음감(?)의 실내공기 관리</title><link href="https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C-%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98-%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0-%EA%B4%80%EB%A6%AC/" rel="alternate" type="text/html" title="이산화탄소 절대음감(?)의 실내공기 관리" /><published>2022-09-11T00:00:00-05:00</published><updated>2022-09-11T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C%20%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98%20%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0%20%EA%B4%80%EB%A6%AC</id><content type="html" xml:base="https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C-%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98-%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0-%EA%B4%80%EB%A6%AC/"><![CDATA[<h2 id="가혹한-공기질-환경">가혹한 공기질 환경</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-09-25T09:09:39-05:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">어항 수온을 집 밖에서도 관리하기</title><link href="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="어항 수온을 집 밖에서도 관리하기" /><published>2022-09-24T00:00:00-05:00</published><updated>2022-09-24T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD%20%EC%88%98%EC%98%A8%EC%9D%84%20%EC%A7%91%20%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84%20%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/"><![CDATA[<p>간만에 여유가 있어, 오래전 홀린듯이 사두었던 <a href="https://store.arduino.cc/products/arduino-uno-wifi-rev2">Arduino Uno WiFi Rev2</a> 보드로 어항 수온 센서를 만들었다. 어항 수온계는 제품이 워낙 많지만, Home Assistant  같은 IoT 플랫폼에서 데이터를 수집할 수 있는 제품은 발견치 못했다. 만들만 하다고 생각했다.</p>
+
+<h2 id="준비물">준비물</h2>
+
+<ul>
+  <li><a href="https://store.arduino.cc/products/arduino-uno-wifi-rev2">Arduino Uno WiFi Rev2 보드</a></li>
+  <li><a href="https://ko.aliexpress.com/item/4000068914916.html">DS18B20 수온측정 모듈 + 프로브</a></li>
+  <li><a href="https://ko.aliexpress.com/item/32896971385.html">SSD1306 OLED 모듈</a></li>
+  <li><a href="https://www.arduino.cc/en/software">Arduino IDE</a> 또는 <a href="https://platformio.org/">PlatformIO</a></li>
+</ul>
+
+<h2 id="구상">구상</h2>
+
+<ul>
+  <li>수온을 프로브로 일정주기(예: 3초)마다 측정한다.</li>
+  <li>측정된 수온을 디지털 액정에 보여준다.</li>
+  <li>측정된 수온을 MQTT Broker에 전달하여 Home Assistant에 표현한다.</li>
+</ul>
+
+<h2 id="수온-측정하기">수온 측정하기</h2>
+
+<p>언제 왜 샀는지도 모르는 <code class="language-plaintext highlighter-rouge">DS18B20 모듈</code>의 제품 설명에서 풀업 저항을 달아서 쓰라 하기에, 다른 사용례를 보고 4.7kΩ의 풀업 저항을 달았다.</p>
+
+<p><img src="/assets/images/2022/DS18B20.png" alt="DS18B20" /></p>
+
+<p>Platform IO에서 <a href="https://www.arduino.cc/reference/en/libraries/onewire/"><code class="language-plaintext highlighter-rouge">OneWire</code></a>, <a href="https://www.arduino.cc/reference/en/libraries/dallastemperature/"><code class="language-plaintext highlighter-rouge">DallasTemperature</code></a> 라이브러리를 설치했다.
+사실 알리익스프레스에서 구한 중국산이다 보니 라이브러리가 있을까 걱정했는데,
+동일한 제품들의 모조품이라 그런지 라이브러리도 그대로 작동!</p>
+
+<p>간단한 소스를 만들어 바로 물에 담가 테스트 시작.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;OneWire.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;DallasTemperature.h&gt;</span><span class="cp">
+</span>
+<span class="cp">#define ONE_WIRE_BUS 2
+</span>
+<span class="n">OneWire</span> <span class="nf">oneWire</span><span class="p">(</span><span class="n">ONE_WIRE_BUS</span><span class="p">);</span>
+<span class="n">DallasTemperature</span> <span class="nf">sensors</span><span class="p">(</span><span class="o">&amp;</span><span class="n">oneWire</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+  <span class="n">sensors</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">sensors</span><span class="p">.</span><span class="n">requestTemperatures</span><span class="p">();</span>
+  <span class="kt">float</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">round</span><span class="p">(</span><span class="n">sensors</span><span class="p">.</span><span class="n">getTempCByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>스타벅스 속의 프로브…</p>
+
+<p><img src="/assets/images/2022/probe-in-starbucks.jpg" alt="Probe in Starbucks" /></p>
+
+<p><img src="/assets/images/2022/arduino-plotter.jpg" alt="DS18B20" /></p>
+
+<p>얼추 따뜻한 물과 찬물 구분이 되는걸 확인했다.
+근데 <a href="https://www.hannainst.com/marine-salinity-tester-hi98319.html">아무래도 중국산이다보니 측정되는 숫자를 못 믿겠어서 믿을만한 다른 수온계와 비교측정을 했다</a>.
+내가 사용할 섭씨 20~35도 구간에서 1도 정도 높게 측정되는 걸 출력값에 반영토록 보정했다.</p>
+
+<h2 id="oled-액정에-보여주기">OLED 액정에 보여주기</h2>
+
+<p>데이터는 장치에서 바로 보여주어야 시인성도 높다.
+어디서 언제 산지 모른 <code class="language-plaintext highlighter-rouge">SSD1306 모듈</code>을 추가로 달고, <a href="https://www.arduino.cc/reference/en/libraries/adafruit-ssd1306/"><code class="language-plaintext highlighter-rouge">Adafruit SSD1306</code></a>, <a href="https://www.arduino.cc/reference/en/libraries/adafruit-gfx-library/"><code class="language-plaintext highlighter-rouge">Adafruit_GFX</code></a> 라이브러리를 추가했다.
+추가되는 소스 만 보자.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;Adafruit_GFX.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;Adafruit_SSD1306.h&gt;</span><span class="cp">
+</span>
+<span class="cp">#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET     4
+#define ONE_WIRE_BUS   2
+</span>
+<span class="n">Adafruit_SSD1306</span> <span class="nf">display</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Wire</span><span class="p">,</span> <span class="n">OLED_RESET</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">SSD1306_SWITCHCAPVCC</span><span class="p">,</span> <span class="mh">0x3C</span><span class="p">);</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">clearDisplay</span><span class="p">();</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">clearDisplay</span><span class="p">();</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">setTextSize</span><span class="p">(</span><span class="mf">1.5</span><span class="p">);</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">setTextColor</span><span class="p">(</span><span class="n">WHITE</span><span class="p">);</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">28</span><span class="p">);</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Temperature: "</span> <span class="o">+</span> <span class="n">String</span><span class="p">(</span><span class="n">temp</span><span class="p">));</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">display</span><span class="p">();</span>
+
+  <span class="n">delay</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>점점 모양을 갖춰간다. 이제 컴퓨터에 연결하여 시리얼 모니터를 볼 필요 없이 OLED 액정을 보면 된다.
+3초마다 측정된 온도가 나타난다. 추후 다른 센서 모듈을 추가하면 계기판처럼 쓸 수도 있겠다.</p>
+
+<p><img src="/assets/images/2022/SSD1306.jpg" alt="SSD1306" /></p>
+
+<h2 id="wi-fi에-연결하자">Wi-Fi에 연결하자</h2>
+
+<p><a href="https://www.arduino.cc/reference/en/libraries/wifinina/"><code class="language-plaintext highlighter-rouge">WiFiNINA</code></a> 라이브러리를 추가했다.
+펌웨어 업데이트 중 실수로 보드 WiFi 모듈이 벽돌이 되어버렸다.
+많이 해맸는데 <a href="https://arduino.github.io/arduino-fwuploader/1.0/commands/arduino-fwuploader_firmware_flash/">커맨드라인 툴로 업데이트하면서 해결됐다.</a>
+Arduino Uno WiFi Rev2의 보드명은 <code class="language-plaintext highlighter-rouge">arduino:megaavr:uno2018</code>이다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./arduino-fwuploader firmware flash <span class="nt">-b</span> arduino:megaavr:uno2018 <span class="nt">-a</span> COM3
+</code></pre></div></div>
+
+<p>추가될 부분만 살펴보자.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;SPI.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;WiFiNINA.h&gt;</span><span class="cp">
+</span>
+<span class="cp">#define WIFI_SSID     "&lt;Wi-Fi 네트워크 SSID 이름&gt;"
+#define WIFI_PASSWORD "&lt;Wi-Fi 네트워크 비밀번호&gt;"
+</span>
+<span class="n">WiFiClient</span>        <span class="n">client</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">status</span><span class="p">()</span> <span class="o">!=</span> <span class="n">WL_CONNECTED</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"."</span><span class="p">);</span>
+      <span class="n">WiFi</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span><span class="p">);</span>
+      <span class="n">delay</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Connected to the Wi-Fi network"</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="mqtt-broker에-메시지를-보내자">MQTT Broker에 메시지를 보내자</h2>
+
+<p>Home Assistant가 인식할 수 있는 MQTT 메시지 포맷을 쉽게 구성해주는 라이브러리가 있을 것 같았다.
+바퀴를 다시 발명할 필요 없다. 검색된 라이브러리 중 사용법이 간단한 <a href="https://www.arduino.cc/reference/en/libraries/home-assistant-integration/"><code class="language-plaintext highlighter-rouge">home-assistant-integration</code></a>를 선택했다.</p>
+
+<p><img src="/assets/images/2022/home_assistant_library.png" alt="Home Assistant 관련 라이브러리" /></p>
+
+<p>예외처리를 만들고 프로그램 완결성을 높였다.
+이름은 거창하게 <code class="language-plaintext highlighter-rouge">Reef Sense</code>로 지었다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;OneWire.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;WiFiNINA.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;DallasTemperature.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;Adafruit_GFX.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;Adafruit_SSD1306.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;ArduinoHA.h&gt;</span><span class="cp">
+</span>
+<span class="cp">#define ONE_WIRE_BUS 2
+</span>
+<span class="cp">#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET     4
+#define ONE_WIRE_BUS   2
+</span>
+<span class="cp">#define BROKER_ADDR         IPAddress(192,168,&lt;IP&gt;,&lt;주소&gt;)
+#define BROKER_USERNAME     "&lt;MQTT BROKER USERNAME&gt;"
+#define BROKER_PASSWORD     "&lt;MQTT BROKER PASSWORD&gt;"
+</span>
+<span class="cp">#define WIFI_SSID     "&lt;Wi-Fi 네트워크 SSID 이름&gt;"
+#define WIFI_PASSWORD "&lt;Wi-Fi 네트워크 비밀번호&gt;"
+</span>
+<span class="cp">#define VERSION "2022.9.25"
+</span>
+<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">lastSentAt</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+<span class="n">byte</span> <span class="n">mac</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0x00</span><span class="p">,</span> <span class="s">"&lt;MAC&gt;"</span><span class="p">,</span> <span class="s">"&lt;주소&gt;"</span><span class="p">,</span> <span class="s">"&lt;16진수로&gt;"</span><span class="p">,</span> <span class="s">"&lt;넣기&gt;"</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">};</span>
+
+<span class="n">OneWire</span> <span class="n">oneWire</span><span class="p">(</span><span class="n">ONE_WIRE_BUS</span><span class="p">);</span>
+<span class="n">DallasTemperature</span> <span class="n">sensors</span><span class="p">(</span><span class="o">&amp;</span><span class="n">oneWire</span><span class="p">);</span>
+<span class="n">Adafruit_SSD1306</span> <span class="n">display</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Wire</span><span class="p">,</span> <span class="n">OLED_RESET</span><span class="p">);</span>
+<span class="n">WiFiClient</span> <span class="n">client</span><span class="p">;</span>
+<span class="n">HADevice</span> <span class="n">device</span><span class="p">(</span><span class="n">mac</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">mac</span><span class="p">));</span>
+<span class="n">HAMqtt</span> <span class="n">mqtt</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">device</span><span class="p">);</span>
+<span class="n">HASensor</span> <span class="n">temperature_sensor</span><span class="p">(</span><span class="s">"reefer_temperature"</span><span class="p">);</span>
+
+<span class="kt">float</span> <span class="n">measure_temperature</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">sensors</span><span class="p">.</span><span class="n">requestTemperatures</span><span class="p">();</span>
+  <span class="kt">float</span> <span class="n">temperature</span> <span class="o">=</span> <span class="p">(</span><span class="n">round</span><span class="p">(</span><span class="n">sensors</span><span class="p">.</span><span class="n">getTempCByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">temperature</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">print_display</span><span class="p">(</span><span class="kt">float</span> <span class="n">temperature</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">clearDisplay</span><span class="p">();</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">setTextSize</span><span class="p">(</span><span class="mf">1.5</span><span class="p">);</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">setTextColor</span><span class="p">(</span><span class="n">WHITE</span><span class="p">);</span>
+  
+  <span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Temperature: "</span><span class="p">);</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">temperature</span><span class="p">);</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">status</span><span class="p">()</span> <span class="o">==</span> <span class="n">WL_CONNECTED</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Wi-Fi:   Connected"</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Wi-Fi:   Disconnected"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">mqtt</span><span class="p">.</span><span class="n">isConnected</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"MQTT:    Connected"</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"MQTT:    Disconnected"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">display</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Version: "</span><span class="p">);</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">VERSION</span><span class="p">);</span>
+
+  <span class="n">display</span><span class="p">.</span><span class="n">display</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"[0] Serial Initiated..."</span><span class="p">);</span>
+  
+  <span class="n">sensors</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+  <span class="n">temperature_sensor</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">"Reefer Temperature"</span><span class="p">);</span>
+  <span class="n">temperature_sensor</span><span class="p">.</span><span class="n">setDeviceClass</span><span class="p">(</span><span class="s">"temperature"</span><span class="p">);</span>
+  <span class="n">temperature_sensor</span><span class="p">.</span><span class="n">setUnitOfMeasurement</span><span class="p">(</span><span class="s">"℃"</span><span class="p">);</span>
+  <span class="n">temperature_sensor</span><span class="p">.</span><span class="n">setIcon</span><span class="p">(</span><span class="s">"mdi:water-thermometer"</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"[1] Sensor Initiated..."</span><span class="p">);</span>
+
+  <span class="n">display</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">SSD1306_SWITCHCAPVCC</span><span class="p">,</span> <span class="mh">0x3C</span><span class="p">);</span>
+  <span class="n">display</span><span class="p">.</span><span class="n">clearDisplay</span><span class="p">();</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"[2] Display Initiated..."</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">status</span><span class="p">()</span> <span class="o">!=</span> <span class="n">WL_CONNECTED</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"[3] Wi-fi Failed to connect..."</span><span class="p">);</span>
+    <span class="n">WiFi</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">WIFI_SSID</span><span class="p">,</span> <span class="n">WIFI_PASSWORD</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"[3] Wi-Fi Connected..."</span><span class="p">);</span>
+
+  <span class="n">device</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">"Arduino Reef Sense"</span><span class="p">);</span>
+  <span class="n">device</span><span class="p">.</span><span class="n">setSoftwareVersion</span><span class="p">(</span><span class="n">VERSION</span><span class="p">);</span>
+  <span class="n">device</span><span class="p">.</span><span class="n">setModel</span><span class="p">(</span><span class="s">"Arduino Uno WiFi Rev2"</span><span class="p">);</span>
+  <span class="n">device</span><span class="p">.</span><span class="n">setManufacturer</span><span class="p">(</span><span class="s">"Jihun Roh"</span><span class="p">);</span>
+
+  <span class="n">mqtt</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">BROKER_ADDR</span><span class="p">,</span> <span class="n">BROKER_USERNAME</span><span class="p">,</span> <span class="n">BROKER_PASSWORD</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"[4] MQTT Connected..."</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">sensors</span><span class="p">.</span><span class="n">requestTemperatures</span><span class="p">();</span>
+  <span class="kt">float</span> <span class="n">temperature</span> <span class="o">=</span> <span class="n">measure_temperature</span><span class="p">();</span>
+  <span class="n">print_display</span><span class="p">(</span><span class="n">temperature</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">((</span><span class="n">millis</span><span class="p">()</span> <span class="o">-</span> <span class="n">lastSentAt</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">5000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">lastSentAt</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+    <span class="n">temperature_sensor</span><span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">temperature</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">mqtt</span><span class="p">.</span><span class="n">loop</span><span class="p">();</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>최종 작동 모습이다. 주말 틈틈히 작업한 보람이 LED에 보인다.
+LED에는 수온 뿐만 아니라 Wi-Fi 연결, MQTT 연결이 잘 되었는지도 표현되게 하였다.</p>
+
+<p><img src="/assets/images/2022/reef_sense.jpg" alt="최종 작동모습" /></p>
+
+<p>이렇게 준비한 이른바 <code class="language-plaintext highlighter-rouge">Reef Sense</code>를 어항 밑 섬프항에 놓아두었다.
+프로브는 히터나 모터 등 열을 발산하는 곳으로부터 멀리 두어야 신뢰할만한 값을 측정할 수 있다.
+나는 본수조로부터 섬프항으로 내려오는 파이프 앞에 프로브를 두었다.</p>
+
+<p><img src="/assets/images/2022/reef_sense_in_real_world.jpg" alt="실제 장착모습" /></p>
+
+<p>Home Assistant에 UI를 달았다. 아직 기본적인 UI지만, 사용성이 높게 수정해나가야 한다.</p>
+
+<p><img src="/assets/images/2022/home_assistant_lovelace.png" alt="Home Assistant Lovelace 모습" /></p>
+
+<h2 id="tbd">TBD</h2>
+
+<ul>
+  <li>빵판에 주렁주렁 달아놓은 전선을 적절한 박스로 포장한다.</li>
+  <li>집에 PH 센서와 프로브 남는 것이 있는데 이것도 달아야 겠다.</li>
+  <li>용존산소 등 다른 센서도 알아본다.</li>
+  <li>UI를 더 직관적이고 이쁘게 꾸민다.</li>
+  <li>겨울철을 앞두고 이 값을 기반으로 수온이 적정범위를 벗어났을 때, 알림을 뜨도록 하고 여유 히터를 작동토록 하는 자동화를 만들 생각이다.</li>
+</ul>]]></content><author><name>노지훈</name></author><category term="IoT" /><category term="Reef" /><summary type="html"><![CDATA[간만에 여유가 있어, 오래전 홀린듯이 사두었던 Arduino Uno WiFi Rev2 보드로 어항 수온 센서를 만들었다. 어항 수온계는 제품이 워낙 많지만, Home Assistant 같은 IoT 플랫폼에서 데이터를 수집할 수 있는 제품은 발견치 못했다. 만들만 하다고 생각했다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2022/reef_sense.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2022/reef_sense.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">이산화탄소 절대음감(?)의 실내공기 관리</title><link href="https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C-%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98-%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0-%EA%B4%80%EB%A6%AC/" rel="alternate" type="text/html" title="이산화탄소 절대음감(?)의 실내공기 관리" /><published>2022-09-11T00:00:00-05:00</published><updated>2022-09-11T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C%20%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98%20%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0%20%EA%B4%80%EB%A6%AC</id><content type="html" xml:base="https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C-%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98-%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0-%EA%B4%80%EB%A6%AC/"><![CDATA[<h2 id="가혹한-공기질-환경">가혹한 공기질 환경</h2>
 
 <p>쾌적한 실내 공기질을 유지하려 한다면 어떤 변수에 신경써야나?
 실내 공기질을 말할 때 많이 언급하는 변수가 5개는 되는 것 같다.</p>
@@ -675,24 +961,4 @@ SSD(SATA3 인터페이스)를 라즈베리파이 4에 마운트했다.</p>
 <p>방열판을 달아놓았던 라즈베리파이4에 팬이 달리다보니, 방열판으로는 CPU 온도가 60도 넘어로 올라가곤 했는데 지금은 40도 중반으로 유지되고 있다.
 팬 소음이 좀 있지만, 안보이는 곳에 숨겨놓아 신경쓰이는 수준은 아니다.</p>
 
-<p>NAS의 종착지는 시놀로지라는 통념을 거부하며(?), 사서 고생하는 취미를 가진 분들께 권하고 싶다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><category term="RaspberryPi" /><summary type="html"><![CDATA[단순 저장소로만 시놀로지 DS216J를 써온 터라, 큰 무리가 없겠거니 싶어 라즈베리파이4 기반으로 IoT 허브 + 자작 NAS를 만들었다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200531.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200531.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">라즈베리파이4에서 USB3.0을 이용한 SSD 연결문제</title><link href="https://jihunroh.github.io/2020/05/02/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90%EC%84%9C-USB3.0%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-SSD-%EC%97%B0%EA%B2%B0%EB%AC%B8%EC%A0%9C/" rel="alternate" type="text/html" title="라즈베리파이4에서 USB3.0을 이용한 SSD 연결문제" /><published>2020-05-02T00:00:00-05:00</published><updated>2020-05-02T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/05/02/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90%EC%84%9C%20USB3.0%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20SSD%20%EC%97%B0%EA%B2%B0%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="https://jihunroh.github.io/2020/05/02/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90%EC%84%9C-USB3.0%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-SSD-%EC%97%B0%EA%B2%B0%EB%AC%B8%EC%A0%9C/"><![CDATA[<p>라즈베리파이4에 USB3.0 포트로 SSD를 연결했는데, 마운트를 해놓아도 자주 언마운트 됐다.
-저전압 경고가 <code class="language-plaintext highlighter-rouge">/var/log/kern.log</code>에 자주 목격되기도 해서, SSD에 전력공급 문제가 있는 것 같았다.
-근데 라즈베리파이4가 입력받는 최대전력으로 전력 15W(3A, 5V)로 전력을 입력해도, 저전압 경고만 사라졌을 뿐 SSD는 계속 언마운트 됐다.
-SSD가 끊길 때 <code class="language-plaintext highlighter-rouge">/var/log/kern.log</code>에는 다음같은 기록이 남겨있었다.</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kernel: [77712.420175] sd 0:0:0:0: [sda] tag#21 uas_eh_abort_handler 0 uas-tag 1 inflight: CMD IN
-kernel: [77712.420195] sd 0:0:0:0: [sda] tag#21 CDB: opcode=0x28 28 00 47 84 14 70 00 00 08 00
-kernel: [77713.140187] sd 0:0:0:0: [sda] tag#1 uas_eh_abort_handler 0 uas-tag 2 inflight: CMD IN
-kernel: [77713.140207] sd 0:0:0:0: [sda] tag#1 CDB: opcode=0x28 28 00 47 81 11 90 00 00 08 00
-kernel: [77713.230206] sd 0:0:0:0: [sda] tag#2 uas_eh_abort_handler 0 uas-tag 3 inflight: CMD IN
-kernel: [77713.230225] sd 0:0:0:0: [sda] tag#2 CDB: opcode=0x28 28 00 47 81 12 00 00 00 08 00
-kernel: [77713.730214] sd 0:0:0:0: [sda] tag#22 uas_eh_abort_handler 0 uas-tag 4 inflight: CMD IN
-kernel: [77713.730233] sd 0:0:0:0: [sda] tag#22 CDB: opcode=0x28 28 00 47 84 13 90 00 00 50 00
-kernel: [77713.770237] sd 0:0:0:0: [sda] tag#23 uas_eh_abort_handler 0 uas-tag 5 inflight: CMD IN
-kernel: [77713.770257] sd 0:0:0:0: [sda] tag#23 CDB: opcode=0x28 28 00 47 84 1e a8 00 00 08 00
-kernel: [77713.950200] sd 0:0:0:0: [sda] tag#24 uas_eh_abort_handler 0 uas-tag 6 inflight: CMD OUT
-kernel: [77713.950220] sd 0:0:0:0: [sda] tag#24 CDB: opcode=0x2a 2a 00 3a 04 11 40 00 00 78 00
-</code></pre></div></div>
-
-<p>우리나라엔 잘 알려져있지 않았지만 <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=245931"><code class="language-plaintext highlighter-rouge">quirks</code> 옵션을 <code class="language-plaintext highlighter-rouge">/boot/cmdline.txt</code>에 넣어주는 해법이 있었다.</a>
-사실상 문과생이라 무슨말인진 모르겠지만, 이 방법으로 USB3.0으로 연결된 SSD가 자주 탈락하는 현상은 완전히 해결됐다.</p>]]></content><author><name>노지훈</name></author><category term="RaspberryPi" /><summary type="html"><![CDATA[라즈베리파이4에 USB3.0 포트로 SSD를 연결했는데, 마운트를 해놓아도 자주 언마운트 됐다. 저전압 경고가 /var/log/kern.log에 자주 목격되기도 해서, SSD에 전력공급 문제가 있는 것 같았다. 근데 라즈베리파이4가 입력받는 최대전력으로 전력 15W(3A, 5V)로 전력을 입력해도, 저전압 경고만 사라졌을 뿐 SSD는 계속 언마운트 됐다. SSD가 끊길 때 /var/log/kern.log에는 다음같은 기록이 남겨있었다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200502.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200502.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>NAS의 종착지는 시놀로지라는 통념을 거부하며(?), 사서 고생하는 취미를 가진 분들께 권하고 싶다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><category term="RaspberryPi" /><summary type="html"><![CDATA[단순 저장소로만 시놀로지 DS216J를 써온 터라, 큰 무리가 없겠거니 싶어 라즈베리파이4 기반으로 IoT 허브 + 자작 NAS를 만들었다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200531.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200531.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
