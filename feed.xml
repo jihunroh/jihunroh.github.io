@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-10-03T00:44:44-05:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">어항 수온을 집 밖에서도 관리하기</title><link href="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="어항 수온을 집 밖에서도 관리하기" /><published>2022-09-24T00:00:00-05:00</published><updated>2022-09-24T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD%20%EC%88%98%EC%98%A8%EC%9D%84%20%EC%A7%91%20%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84%20%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/"><![CDATA[<p>간만에 여유가 있어, 오래전 홀린듯이 사두었던 <a href="https://store.arduino.cc/products/arduino-uno-wifi-rev2">Arduino Uno WiFi Rev2</a> 보드로 어항 수온 센서를 만들었다. 어항 수온계는 제품이 워낙 많지만, Home Assistant  같은 IoT 플랫폼에서 데이터를 수집할 수 있는 제품은 발견치 못했다. 만들만 하다고 생각했다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-10-03T11:06:25-05:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">어항 수온을 집 밖에서도 관리하기</title><link href="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="어항 수온을 집 밖에서도 관리하기" /><published>2022-09-24T00:00:00-05:00</published><updated>2022-09-24T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD%20%EC%88%98%EC%98%A8%EC%9D%84%20%EC%A7%91%20%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84%20%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/"><![CDATA[<p>간만에 여유가 있어, 오래전 홀린듯이 사두었던 <a href="https://store.arduino.cc/products/arduino-uno-wifi-rev2">Arduino Uno WiFi Rev2</a> 보드로 어항 수온 센서를 만들었다. 어항 수온계는 제품이 워낙 많지만, Home Assistant  같은 IoT 플랫폼에서 데이터를 수집할 수 있는 제품은 발견치 못했다. 만들만 하다고 생각했다.</p>
 
 <h2 id="준비물">준비물</h2>
 
@@ -725,10 +725,14 @@ SK하이닉스가 1단위 움직일 때 삼성전자가 3단위로 동행한다�
 
 <h2 id="질화-nitrification">질화 <sub>nitrification</sub></h2>
 
-<p>암모늄 이온은 물고기에 치명적인 위험을 주기에 빠른 제거나 산화가 필요하다.
-암모늄 이온은 <code class="language-plaintext highlighter-rouge">Nitrosococcus</code>에 의해 아질산염 이온으로 산화된다.
+<p>암모늄 이온은 수생생물에 치명적인 독성이 있다. 빠른 제거나 산화가 필요하다.
+<strong>질화 세균</strong>은 암모늄 이온 또는 암모니아를 산화시킨다.
+대체로 <a href="https://www.britannica.com/science/nitrifying-bacterium#ref237319">산소를 이용하기에 호기성이고</a>,
+<a href="https://terms.naver.com/entry.nhn?docId=2699177&amp;cid=51610&amp;categoryId=51610">독립영양세균</a>으로서 유기화합물을 합성할 때 아질산, 질산염을 이용하는 것이다.</p>
+
+<p>충분한 생태계를 갖춘 <code class="language-plaintext highlighter-rouge">Nitrosococcus</code>는 암모늄 이온을 아질산염 이온으로 산화시킨다.
 <a href="https://blog.naver.com/dart007/221677462823"><code class="language-plaintext highlighter-rouge">Nitrosomonas</code>도 언급되곤 하는데</a>,
-<a href="https://youtu.be/sso191sYB-4?t=705">민물에서 서식한다는 지적도 있다.</a></p>
+<a href="https://youtu.be/sso191sYB-4?t=705">민물에서만 서식한다는 지적도 있다.</a></p>
 
 <p>\[ 2NH_4+ 3O_2 \longrightarrow 2NO_2^- + 4H^+ + 2H_2 O \]</p>
 
@@ -736,30 +740,29 @@ SK하이닉스가 1단위 움직일 때 삼성전자가 3단위로 동행한다�
 
 <p>\[ 2 NO_2^- +  O_2 \longrightarrow 2 NO_3 \]</p>
 
-<p>여하간 <code class="language-plaintext highlighter-rouge">Nitrosococcus</code>와 <code class="language-plaintext highlighter-rouge">Nitrococcus</code>가 해수 내 질화과정의 핵심인 <strong>질화 세균</strong>인건 이견이 없다.
-<a href="https://www.britannica.com/science/nitrifying-bacterium#ref237319">산소를 이용하기에 호기성이고</a>,
-<a href="https://terms.naver.com/entry.nhn?docId=2699177&amp;cid=51610&amp;categoryId=51610">독립영양세균</a>으로서 유기화합물을 합성할 때 아질산, 질산염을 이용하는 것이다.</p>
-
 <p>위 두 반응을 종합하면 질산화 과정은 산소를 소모하고 어항의 PH를 높일 것으로 보이는데,
 어항의 용존산소량과 PH에 유의미한 수준인지는 잘 모르겠다.</p>
 
 <p>\[ NH_4^+ + 2 O_2 \longrightarrow NO_3^- + H_2 O + 2 H^+ \]</p>
 
-<p>종속영양세균에 비하여 독립영양세균은 증식하는데 시간이 필요하다. 번식에 24~36시간이 소요된다고 한다.</p>
+<p>종속영양세균에 비하여 독립영양세균은 증식하는데 시간이 필요하다. 번식에 24~36시간이 소요된다고 한다.
+해수어항에서 물잡이를 day-scale로 하는 이유인 것 같다.</p>
 
 <h2 id="탈질화-denitrification">탈질화 <sub>Denitrification</sub></h2>
 
-<p><a href="https://blog.naver.com/dart007/221683393015">탈질화 세균은 종류가 아주 많고</a> 호기성/혐기성 여부도 다양하다.
+<p>탈질화는 질산염을 환원시키는 과정이다.
+크게 박테리아를 이용하거나 식물을 이용한다.</p>
+
+<p><a href="https://blog.naver.com/dart007/221683393015">탈질화 세균은 종류가 아주 많고 특징도 다양하다</a>.
 <a href="https://en.wikipedia.org/wiki/Pseudomonas_aeruginosa">가령, <code class="language-plaintext highlighter-rouge">Psuedomonas</code> 속의 Pseudomonas aeruginosa은 혐기성인데</a>,
-<a href="http://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE02375177&amp;nodeId=NODE02375177&amp;language=ko_KR"><code class="language-plaintext highlighter-rouge">Stenotrophomonas</code> 속의 어떤 종은 호기 조건에서 질산염을 낮춘다</a>.</p>
+<a href="http://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE02375177&amp;nodeId=NODE02375177&amp;language=ko_KR"><code class="language-plaintext highlighter-rouge">Stenotrophomonas</code> 속의 어떤 종은 호기 조건에서 질산염을 낮춘다</a>.
+두껍게 깔린 모래<sub>deep sand</sub> 안의 산소가 희박한 환경에서 혐기성세균을 이용하는 방법이 알려져 있다.</p>
 
-<p>질산염을 적정 수준으로 관리하는 것이 해수어항에서 가장 어려운 문제이기도 하다.
-알게 필터<sub>Algae Scrubber</sub>, 리퓨지움을 통해 수초나 조류가 질산염을 소모하도록 하는 방법,
-두껍게 깔린 모래<sub>deep sand</sub> 안의 산소가 희박한 환경에서 혐기성세균을 이용하는 방법 등이 있다.
-하지만 공간 제약 문제로 쉽지 않은 방식들이다.</p>
+<p>이 외에 <a href="https://cafe.naver.com/seaaes/210749">모종의 세균이 속성작용<sub>diagenesis</sub>에 필요한 수준보다 산소가 부족한 경우 질산염을 이용하는 특성을 고려한 보드카 요법</a>이 있다. 보드카, 설탕 등 탄소화합물을 투여해 종속영양세균을 폭발적으로 번식시켜서 세균이 무기호흡하며 질산염을 소모하도록 하는 보드카 요법 등이 거론된다.
+공간 제약 문제로 쉽지 않은 방식이다.</p>
 
-<p>이 외에 <a href="https://cafe.naver.com/seaaes/210749">모종의 세균이 속성작용<sub>diagenesis</sub>에 필요한 수준보다 산소가 부족한 경우 질산염을 이용하는 특성을 고려한 보드카 요법</a>이 있다.
-보드카, 설탕 등 탄소화합물을 투여해 종속영양세균을 폭발적으로 번식시켜서 세균이 무기호흡하며 질산염을 소모하도록 하는 보드카 요법 등이 거론된다.</p>]]></content><author><name>노지훈</name></author><category term="Reef" /><summary type="html"><![CDATA[🐟물고기🐠 먹이는 인간 음식처럼 단백질, 탄수화물, 지방과 같은 탄소화합물로 구성된다. 탄소화합물을 구성하는 질소는 자연에서 질소 순환과정nitrogen cycle에 따라 순환한다. 유기물 → 암모니아NH3 → 아질산염 이온NH2- → 질산염 이온NH3-으로 분해되는 질화 과정nitrification, 질산염 이온이 질소분자로 환원되는 탈질화 과정denitrification이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marine_nitrogen_cycle_under_future_ocean_acidification.jpg" /><media:content medium="image" url="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marine_nitrogen_cycle_under_future_ocean_acidification.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">기계적으로 어항물 보충을 자동화하기</title><link href="https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="기계적으로 어항물 보충을 자동화하기" /><published>2020-07-26T00:00:00-05:00</published><updated>2020-07-26T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EC%96%B4%ED%95%AD%EB%AC%BC%20%EB%B3%B4%EC%B6%A9%EC%9D%84%20%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/"><![CDATA[<p>해수어항을 곁에 두면 환수보다는 보충수통 채우는 데 손이 자주 간다.
+<p>수생식물은 질산염을 소모하여 광합성을 한다.
+알게 필터<sub>Algae Scrubber</sub>, 리퓨지움을 통해 수초/해초가 질산염을 소모하도록 할 수 있다.</p>]]></content><author><name>노지훈</name></author><category term="Reef" /><summary type="html"><![CDATA[🐟물고기🐠 먹이는 인간 음식처럼 단백질, 탄수화물, 지방과 같은 탄소화합물로 구성된다. 탄소화합물을 구성하는 질소는 자연에서 질소 순환과정nitrogen cycle에 따라 순환한다. 유기물 → 암모니아NH3 → 아질산염 이온NH2- → 질산염 이온NH3-으로 분해되는 질화 과정nitrification, 질산염 이온이 질소분자로 환원되는 탈질화 과정denitrification이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marine_nitrogen_cycle_under_future_ocean_acidification.jpg" /><media:content medium="image" url="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marine_nitrogen_cycle_under_future_ocean_acidification.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">기계적으로 어항물 보충을 자동화하기</title><link href="https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="기계적으로 어항물 보충을 자동화하기" /><published>2020-07-26T00:00:00-05:00</published><updated>2020-07-26T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EC%96%B4%ED%95%AD%EB%AC%BC%20%EB%B3%B4%EC%B6%A9%EC%9D%84%20%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/"><![CDATA[<p>해수어항을 곁에 두면 환수보다는 보충수통 채우는 데 손이 자주 간다.
 내가 쓰는 어항은 물이 250L 들어가는데, 여름철이면 하루에 2L 가까이 자연 증발되나 보다.
 보충수 탱크는 11L 정도인데 물을 1주일에 한번 채워줘야 한다.</p>
 
