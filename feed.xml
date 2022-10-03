@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-09-26T09:08:32-05:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">어항 수온을 집 밖에서도 관리하기</title><link href="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="어항 수온을 집 밖에서도 관리하기" /><published>2022-09-24T00:00:00-05:00</published><updated>2022-09-24T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD%20%EC%88%98%EC%98%A8%EC%9D%84%20%EC%A7%91%20%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84%20%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/"><![CDATA[<p>간만에 여유가 있어, 오래전 홀린듯이 사두었던 <a href="https://store.arduino.cc/products/arduino-uno-wifi-rev2">Arduino Uno WiFi Rev2</a> 보드로 어항 수온 센서를 만들었다. 어항 수온계는 제품이 워낙 많지만, Home Assistant  같은 IoT 플랫폼에서 데이터를 수집할 수 있는 제품은 발견치 못했다. 만들만 하다고 생각했다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-10-02T22:22:12-05:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">어항 수온을 집 밖에서도 관리하기</title><link href="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="어항 수온을 집 밖에서도 관리하기" /><published>2022-09-24T00:00:00-05:00</published><updated>2022-09-24T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD%20%EC%88%98%EC%98%A8%EC%9D%84%20%EC%A7%91%20%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84%20%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/"><![CDATA[<p>간만에 여유가 있어, 오래전 홀린듯이 사두었던 <a href="https://store.arduino.cc/products/arduino-uno-wifi-rev2">Arduino Uno WiFi Rev2</a> 보드로 어항 수온 센서를 만들었다. 어항 수온계는 제품이 워낙 많지만, Home Assistant  같은 IoT 플랫폼에서 데이터를 수집할 수 있는 제품은 발견치 못했다. 만들만 하다고 생각했다.</p>
 
 <h2 id="준비물">준비물</h2>
 
@@ -29,7 +29,7 @@
 
 <p>간단한 소스를 만들어 바로 물에 담가 테스트 시작.</p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;OneWire.h&gt;</span><span class="cp">
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;OneWire.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;DallasTemperature.h&gt;</span><span class="cp">
 </span>
 <span class="cp">#define ONE_WIRE_BUS 2
@@ -43,7 +43,7 @@
   <span class="n">sensors</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="nf">loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="kt">void</span> <span class="n">loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">sensors</span><span class="p">.</span><span class="n">requestTemperatures</span><span class="p">();</span>
   <span class="kt">float</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">round</span><span class="p">(</span><span class="n">sensors</span><span class="p">.</span><span class="n">getTempCByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
@@ -65,8 +65,13 @@
 <h2 id="oled-액정에-보여주기">OLED 액정에 보여주기</h2>
 
 <p>데이터는 장치에서 바로 보여주어야 시인성도 높다.
-어디서 언제 산지 모른 <code class="language-plaintext highlighter-rouge">SSD1306 모듈</code>을 추가로 달고, <a href="https://www.arduino.cc/reference/en/libraries/adafruit-ssd1306/"><code class="language-plaintext highlighter-rouge">Adafruit SSD1306</code></a>, <a href="https://www.arduino.cc/reference/en/libraries/adafruit-gfx-library/"><code class="language-plaintext highlighter-rouge">Adafruit_GFX</code></a> 라이브러리를 추가했다.
-추가되는 소스 만 보자.</p>
+어디서 언제 산지 모른 <code class="language-plaintext highlighter-rouge">SSD1306 모듈</code>을 추가로 달고, <a href="https://www.arduino.cc/reference/en/libraries/adafruit-ssd1306/"><code class="language-plaintext highlighter-rouge">Adafruit SSD1306</code></a>, <a href="https://www.arduino.cc/reference/en/libraries/adafruit-gfx-library/"><code class="language-plaintext highlighter-rouge">Adafruit_GFX</code></a> 라이브러리를 추가했다.</p>
+
+<p>연결은 다음과 같이…</p>
+
+<p><img src="/assets/images/2022/SSD1306.png" alt="DS18B20" /></p>
+
+<p>추가되는 소스 만 보자.</p>
 
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;Adafruit_GFX.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;Adafruit_SSD1306.h&gt;</span><span class="cp">
@@ -722,16 +727,12 @@ SK하이닉스가 1단위 움직일 때 삼성전자가 3단위로 동행한다�
 
 <p>암모늄 이온은 물고기에 치명적인 위험을 주기에 빠른 제거나 산화가 필요하다.
 암모늄 이온은 <code class="language-plaintext highlighter-rouge">Nitrosococcus</code>에 의해 아질산염 이온으로 산화된다.
-<code class="language-plaintext highlighter-rouge">Nitrosomonas</code>가 언급되는 경우가 있는데,
-<a href="https://blog.naver.com/dart007/221677462823">해수에서도 서식한다는 설명이 있는 반면</a>,
+<a href="https://blog.naver.com/dart007/221677462823"><code class="language-plaintext highlighter-rouge">Nitrosomonas</code>도 언급되곤 하는데</a>,
 <a href="https://youtu.be/sso191sYB-4?t=705">민물에서 서식한다는 지적도 있다.</a></p>
 
 <p>\[ 2NH_4+ 3O_2 \longrightarrow 2NO_2^- + 4H^+ + 2H_2 O \]</p>
 
-<p>아질산염 이온은 <code class="language-plaintext highlighter-rouge">Nitrococcus</code>, <code class="language-plaintext highlighter-rouge">Nitrospina</code>에 의해 질산염 이온으로 산화된다.
-마찬가지로 <code class="language-plaintext highlighter-rouge">Nitrobacter</code>가 언급되는 경우가 있는데,
-<a href="https://blog.naver.com/dart007/221677462823">해수에서도 서식한다는 설명이 있는 반면</a>,
-<a href="https://youtu.be/sso191sYB-4?t=705">민물에서 서식한다는 지적이 있다.</a></p>
+<p>아질산염 이온은 <code class="language-plaintext highlighter-rouge">Nitrococcus</code>, <code class="language-plaintext highlighter-rouge">Nitrobacter</code>, <code class="language-plaintext highlighter-rouge">Nitrospina</code>에 의해 질산염 이온으로 산화된다.</p>
 
 <p>\[ 2 NO_2^- +  O_2 \longrightarrow 2 NO_3 \]</p>
 
