@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-10-15T22:56:41-05:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">어항 수온을 집 밖에서도 관리하기</title><link href="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="어항 수온을 집 밖에서도 관리하기" /><published>2022-09-24T00:00:00-05:00</published><updated>2022-09-24T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD%20%EC%88%98%EC%98%A8%EC%9D%84%20%EC%A7%91%20%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84%20%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/"><![CDATA[<p>간만에 여유가 있어, 오래전 홀린듯이 사두었던 <a href="https://store.arduino.cc/products/arduino-uno-wifi-rev2">Arduino Uno WiFi Rev2</a> 보드로 어항 수온 센서를 만들었다. 어항 수온계는 제품이 워낙 많지만, Home Assistant  같은 IoT 플랫폼에서 데이터를 수집할 수 있는 제품은 발견치 못했다. 만들만 하다고 생각했다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-10-16T12:59:49+09:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">댕댕이 위치나 재실 여부 추적하기</title><link href="https://jihunroh.github.io/2022/10/16/%EA%B0%95%EC%95%84%EC%A7%80-%EC%9C%84%EC%B9%98%EB%82%98-%EC%9E%AC%EC%8B%A4%EC%97%AC%EB%B6%80-%EC%B6%94%EC%A0%81%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="댕댕이 위치나 재실 여부 추적하기" /><published>2022-10-16T00:00:00+09:00</published><updated>2022-10-16T00:00:00+09:00</updated><id>https://jihunroh.github.io/2022/10/16/%EA%B0%95%EC%95%84%EC%A7%80%20%EC%9C%84%EC%B9%98%EB%82%98%20%EC%9E%AC%EC%8B%A4%EC%97%AC%EB%B6%80%20%EC%B6%94%EC%A0%81%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2022/10/16/%EA%B0%95%EC%95%84%EC%A7%80-%EC%9C%84%EC%B9%98%EB%82%98-%EC%9E%AC%EC%8B%A4%EC%97%AC%EB%B6%80-%EC%B6%94%EC%A0%81%ED%95%98%EA%B8%B0/"><![CDATA[<p>사람이 집을 들락날락 하는 건 센싱할 방법이 많다. 사람 몸에 사실상 붙어있는 스마트폰 덕분이다.
+스마트폰이 실내 Wi-Fi 라우터에 연결되었는지, 블루투스 어댑터에서 스캔이 되는지, GPS 위치는 어떻게 찍히는지는 직관적으로 알 수 있다.
+물론 스마트폰에 의존하지 않는 현관문 개폐 센서, 레이저 센서도 출시되어 있다.</p>
+
+<p><strong>반려동물은 다르다.</strong> 댕댕이를 잃어버렸을 때, 댕댕이가 어디 있는지를 알고 싶을 것이다.
+댕댕이 몸에 시술해도 무해하고 체온을 전력원으로 삼는 GPS나 블루투스 칩이 있다면 좋겠지만, 댕댕이에게 뭘 붙이는거라곤 현재로서는 목걸이 밖에 없는 것 같다.
+<strong>지금으로서는 목걸이에 트래킹 장치를 다는 수밖에 없다.</strong></p>
+
+<h3 id="어떤-장치를-달까">어떤 장치를 달까?</h3>
+
+<p><img src="/assets/images/2022/airtag_smarttag.webp" alt="Apple AirTag &amp; Samsung Galaxy Smart Tag" /></p>
+
+<p>Apple의 AirTag, 삼성의 Galaxy Smart Tag는 선택지에서 바로 제외했다.
+스마트폰을 BLE Observer로 삼기 때문에, 와이프와 내가 출근한 시간(=집에 스마트폰이 없는 시간)에 댕댕이들의 재실 여부를 확인할 수 없다.
+그리고 센싱 데이터가 활짝 개방되어있지 않아 Home Assistant 같은 환경에서는 자동화를 만들기 곤란하다.
+여러 평들을 보면 잘 작동하는 환경도 기대보다 제한적인 것 같다.</p>
+
+<p>반면, 댕댕이에 쓸 수 있는 GPS Tracker는 선택지가 많지 않고, 배터리 소모가 커 손이 많이 간다.
+시중의 GPS Tracker는 월 이용요금을 받기도 했다. <strong>GPS Tracker도 포기했다. 내 질문을 <code class="language-plaintext highlighter-rouge">우리 댕댕이 달자는 지금 어디있을까</code>가 아니라 <code class="language-plaintext highlighter-rouge">우리 댕댕이 달자는 지금 집에 있을까</code>로 단순화할 수 밖에 없었다.</strong></p>
+
+<p>결국, 자주가는 IoT 커뮤니티에서 <strong>BLE Beacon을 쓰는 것이 좋겠다는 의견을 들었다.</strong></p>
+
+<h3 id="준비물-1-ble-beacon">준비물 1: BLE Beacon</h3>
+
+<p>댕댕이가 불편없이 메고 다닐 수 있게 가능한 가볍고 작은 것으로 선택했다.
+개당 19달러 정도에 폭 3.5x3.5cm, 무게 10g 정도 하는 <a href="https://www.amazon.com/dp/B085XN9B7N?psc=1&amp;ref=ppx_yo2ov_dt_b_product_details">Blue Charm Beacon</a>이 괜찮아보여 2개 구매했다. 다른 유사제품도 많다.</p>
+
+<p><img src="/assets/images/2022/ble_beacon.jpg" alt="BLE Beacon" /></p>
+
+<p>우리 댕댕이 목걸이에 달아놓았다.</p>
+
+<p><img src="/assets/images/2022/bluecharm_on_collar.jpg" alt="목줄에 멘 BLE Beacon" /></p>
+
+<p>BLE Beacon 사용설명서는 Beacon 설정을 가급적 수정하지 말라고 하는데, 블루투스 어댑터에서 자주 이탈하는 현상이 있어 <a href="https://play.google.com/store/apps/details?id=com.beacon.kbeaconset&amp;hl=en&amp;gl=US">KBeacon이라는 앱</a>으로 신호 송출주기를 1000ms로 수정했다.
+배터리를 조금이라도 아낄까 싶어 iBeacon은 끄고 EddyStone(TLM)만 송신하도록 설정했다.</p>
+
+<p><img src="/assets/images/2022/kbeacon.webp" alt="BLE Beacon" /></p>
+
+<p>구매하고 사용한지 한달이 되어가는 지금, AirTag만큼 영롱하지 못한 점은 아쉽지만 무게나 크기 때문에 불편한 점은 없다.</p>
+
+<h3 id="준비물-2-ble-beacon-tracker">준비물 2: BLE Beacon Tracker</h3>
+
+<p>BLE Tracker는 BLE Beacon이 송출하는 신호의 세기를 통해 재실 여부를 판단하고, MQTT Broker를 통해 Home Assistant에도 데이터를 보내준다.
+<a href="https://www.home-assistant.io/integrations/bluetooth_le_tracker/">Home Assistant의 자체 BLE Tracker가 있지만</a> 만듦새가 좋지 않다는 평이 좀 있었다.
+대안으로 <a href="https://www.room-assistant.io">room-assistant</a>를 설치했다.</p>
+
+<p>room-assistant 설정에서는 <code class="language-plaintext highlighter-rouge">homeAssistant</code>, <code class="language-plaintext highlighter-rouge">bluetoothLowEnergy</code> 확장을 켜고,
+MQTT Broker와 각 Beacon을 트래킹하도록 설정하였다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">global</span><span class="pi">:</span>
+  <span class="na">instanceName</span><span class="pi">:</span> <span class="s">home</span>
+  <span class="na">integrations</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">homeAssistant</span>
+    <span class="pi">-</span> <span class="s">bluetoothLowEnergy</span>
+<span class="na">homeAssistant</span><span class="pi">:</span>
+  <span class="na">mqttUrl</span><span class="pi">:</span> <span class="s1">'</span><span class="s">mqtt://MQTT</span><span class="nv"> </span><span class="s">브로커</span><span class="nv"> </span><span class="s">주소'</span>
+  <span class="na">mqttOptions</span><span class="pi">:</span>
+    <span class="na">username</span><span class="pi">:</span> <span class="s">&lt;MQTT 브로커 username &gt;</span>
+    <span class="na">password</span><span class="pi">:</span> <span class="s">&lt;MQTT 브로커 password &gt;</span>
+<span class="na">bluetoothLowEnergy</span><span class="pi">:</span>
+  <span class="na">hciDeviceId</span><span class="pi">:</span> <span class="m">0</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="m">60</span>
+  <span class="na">allowlist</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">dd340206****</span>
+    <span class="pi">-</span> <span class="s">dd340206****</span>
+  <span class="na">tagOverrides</span><span class="pi">:</span>
+    <span class="na">dd340206****</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">Dalja BLE Tag</span>
+    <span class="na">dd340206****</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">SSamjang BLE Tag</span>
+</code></pre></div></div>
+
+<p>MQTT Broker를 통해 Home Assistant에도 Beacon 트래킹 결과가 entity로 잘 떴다.
+언제 댕댕이가 문 밖으로 나갔는지를 알 수 있다.</p>
+
+<p><img src="/assets/images/2022/homeassistant_entities.jpg" alt="BLE Beacon" /></p>
+
+<p><img src="/assets/images/2022/ble_tracker_history.webp" alt="BLE Beacon" /></p>
+
+<h2 id="활용하는-방법">활용하는 방법</h2>
+
+<p>이제 댕댕이 재실 여부 데이터(정확히는 댕댕이의 목걸이 재실 여부)가 수집되기에 활용방법은 무궁무진하다.
+현재 쓰고 있는 자동화는 간단한 것들이다.</p>
+
+<ol>
+  <li>
+    <p>댕댕이의 외출 여부를 스마트폰 푸시알람으로 받는다. 특히, 댕댕이 유치원에서 직접 집에 들어와 댕댕이 등원을 시켜주는데, 제 시간에 등하원을 했는지 확인이 가능하다.
+일주일 간 평균 외출 시간도 관리할 수 있다.
+<img src="/assets/images/2022/dalssam_notify.webp" alt="외출 알림" /></p>
+  </li>
+  <li>
+    <p>댕댕이가 없는 동안 집안에서 동작이 감지되면 스마트폰에 경고 알람과 텔레그램 메세지를 보낸다.
+댕댕이가 있는 동안 감지되는 (댕댕이의) 동작과는 따로 관리할 수 있어 유용하다.</p>
+  </li>
+  <li>
+    <p>댕댕이가 외출하면 로봇청소기를 돌린다.
+로봇청소기가 돌 때 댕댕이들이 흥분하기에 산책나갈 때 로봇청소기를 돌린다.
+보통 한바퀴 청소에 30~40분 정도 소요되어 산책하고 돌아오면 청소가 완료되어있다.
+산책나갈 때 미리 장난감 정리를 하고 나가게 된다.</p>
+  </li>
+</ol>]]></content><author><name>노지훈</name></author><category term="IoT" /><category term="Puppy" /><summary type="html"><![CDATA[사람이 집을 들락날락 하는 건 센싱할 방법이 많다. 사람 몸에 사실상 붙어있는 스마트폰 덕분이다. 스마트폰이 실내 Wi-Fi 라우터에 연결되었는지, 블루투스 어댑터에서 스캔이 되는지, GPS 위치는 어떻게 찍히는지는 직관적으로 알 수 있다. 물론 스마트폰에 의존하지 않는 현관문 개폐 센서, 레이저 센서도 출시되어 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2022/dalssam_notify.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2022/dalssam_notify.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">어항 수온을 집 밖에서도 관리하기</title><link href="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="어항 수온을 집 밖에서도 관리하기" /><published>2022-09-24T00:00:00+09:00</published><updated>2022-09-24T00:00:00+09:00</updated><id>https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD%20%EC%88%98%EC%98%A8%EC%9D%84%20%EC%A7%91%20%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84%20%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2022/09/24/%EC%96%B4%ED%95%AD-%EC%88%98%EC%98%A8%EC%9D%84-%EC%A7%91-%EB%B0%96%EC%97%90%EC%84%9C%EB%8F%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/"><![CDATA[<p>간만에 여유가 있어, 오래전 홀린듯이 사두었던 <a href="https://store.arduino.cc/products/arduino-uno-wifi-rev2">Arduino Uno WiFi Rev2</a> 보드로 어항 수온 센서를 만들었다. 어항 수온계는 제품이 워낙 많지만, Home Assistant  같은 IoT 플랫폼에서 데이터를 수집할 수 있는 제품은 발견치 못했다. 만들만 하다고 생각했다.</p>
 
 <h2 id="준비물">준비물</h2>
 
@@ -290,7 +390,7 @@ LED에는 수온 뿐만 아니라 Wi-Fi 연결, MQTT 연결이 잘 되었는지�
   <li>용존산소 등 다른 센서도 알아본다.</li>
   <li>UI를 더 직관적이고 이쁘게 꾸민다.</li>
   <li>겨울철을 앞두고 이 값을 기반으로 수온이 적정범위를 벗어났을 때, 알림을 뜨도록 하고 여유 히터를 작동토록 하는 자동화를 만들 생각이다.</li>
-</ul>]]></content><author><name>노지훈</name></author><category term="IoT" /><category term="Reef" /><summary type="html"><![CDATA[간만에 여유가 있어, 오래전 홀린듯이 사두었던 Arduino Uno WiFi Rev2 보드로 어항 수온 센서를 만들었다. 어항 수온계는 제품이 워낙 많지만, Home Assistant 같은 IoT 플랫폼에서 데이터를 수집할 수 있는 제품은 발견치 못했다. 만들만 하다고 생각했다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2022/reef_sense.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2022/reef_sense.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">이산화탄소 절대음감(?)의 실내공기 관리</title><link href="https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C-%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98-%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0-%EA%B4%80%EB%A6%AC/" rel="alternate" type="text/html" title="이산화탄소 절대음감(?)의 실내공기 관리" /><published>2022-09-11T00:00:00-05:00</published><updated>2022-09-11T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C%20%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98%20%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0%20%EA%B4%80%EB%A6%AC</id><content type="html" xml:base="https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C-%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98-%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0-%EA%B4%80%EB%A6%AC/"><![CDATA[<h2 id="가혹한-공기질-환경">가혹한 공기질 환경</h2>
+</ul>]]></content><author><name>노지훈</name></author><category term="IoT" /><category term="Reef" /><summary type="html"><![CDATA[간만에 여유가 있어, 오래전 홀린듯이 사두었던 Arduino Uno WiFi Rev2 보드로 어항 수온 센서를 만들었다. 어항 수온계는 제품이 워낙 많지만, Home Assistant 같은 IoT 플랫폼에서 데이터를 수집할 수 있는 제품은 발견치 못했다. 만들만 하다고 생각했다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2022/reef_sense.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2022/reef_sense.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">이산화탄소 절대음감(?)의 실내공기 관리</title><link href="https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C-%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98-%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0-%EA%B4%80%EB%A6%AC/" rel="alternate" type="text/html" title="이산화탄소 절대음감(?)의 실내공기 관리" /><published>2022-09-11T00:00:00+09:00</published><updated>2022-09-11T00:00:00+09:00</updated><id>https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C%20%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98%20%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0%20%EA%B4%80%EB%A6%AC</id><content type="html" xml:base="https://jihunroh.github.io/2022/09/11/%EC%9D%B4%EC%82%B0%ED%99%94%ED%83%84%EC%86%8C-%EC%A0%88%EB%8C%80%EC%9D%8C%EA%B0%90%EC%9D%98-%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0-%EA%B4%80%EB%A6%AC/"><![CDATA[<h2 id="가혹한-공기질-환경">가혹한 공기질 환경</h2>
 
 <p>쾌적한 실내 공기질을 유지하려 한다면 어떤 변수에 신경써야나?
 실내 공기질을 말할 때 많이 언급하는 변수가 5개는 되는 것 같다.</p>
@@ -412,7 +512,7 @@ trigger에 따라 다양한 방법으로 구현할 수 있는데,
 집 안에서 이산화탄소 탄소를 내뿜는 사람이 많다면, 전열교환기로 아무리 환기를 한들, 이산화탄소 평형점은 올라갈 수 밖에 없다.</p>
 
 <p>이러한 평형점이 쾌쾌한 공기라는 게 느껴질 정도인 1,000ppm을 넘는다면?
-이 때는 전열교환기가 아니라, 창문 자동개폐기를 써야 한다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><summary type="html"><![CDATA[가혹한 공기질 환경]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2022/awair_app.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2022/awair_app.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">우리집 IoT를 인프라부터 소개합니다</title><link href="https://jihunroh.github.io/2022/08/07/%EB%82%B4-%ED%99%88-IoT%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4/" rel="alternate" type="text/html" title="우리집 IoT를 인프라부터 소개합니다" /><published>2022-08-07T00:00:00-05:00</published><updated>2022-08-07T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/08/07/%EB%82%B4%20%ED%99%88%20IoT%EB%A5%BC%20%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4</id><content type="html" xml:base="https://jihunroh.github.io/2022/08/07/%EB%82%B4-%ED%99%88-IoT%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4/"><![CDATA[<p>근 3년간 집에서 갈고닦아 쓰고 있는 IoT 환경을 소개한다.</p>
+이 때는 전열교환기가 아니라, 창문 자동개폐기를 써야 한다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><summary type="html"><![CDATA[가혹한 공기질 환경]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2022/awair_app.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2022/awair_app.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">우리집 IoT를 인프라부터 소개합니다</title><link href="https://jihunroh.github.io/2022/08/07/%EB%82%B4-%ED%99%88-IoT%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4/" rel="alternate" type="text/html" title="우리집 IoT를 인프라부터 소개합니다" /><published>2022-08-07T00:00:00+09:00</published><updated>2022-08-07T00:00:00+09:00</updated><id>https://jihunroh.github.io/2022/08/07/%EB%82%B4%20%ED%99%88%20IoT%EB%A5%BC%20%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4</id><content type="html" xml:base="https://jihunroh.github.io/2022/08/07/%EB%82%B4-%ED%99%88-IoT%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4/"><![CDATA[<p>근 3년간 집에서 갈고닦아 쓰고 있는 IoT 환경을 소개한다.</p>
 
 <h2 id="시스템-intel-nuc--manjaro-linux">시스템: <a href="https://www.intel.co.kr/content/www/kr/ko/products/sku/214624/intel-nuc-kit-nuc7cjyhn/specifications.html">Intel NUC</a> + <a href="https://manjaro.org/">Manjaro Linux</a></h2>
 
@@ -460,7 +560,7 @@ RS485 패킷과 TCP/IP 소켓 통신간 어댑터인 Elfin EW11을 이용하고 
 
 <p>IoT가 뭔지 모르는 와이프도 별도로 사용법을 알 필요 없이 작동하는 자동화를 지향하고 있다.
 <a href="https://github.com/jihunroh/homeassistant-configuration/tree/master/automations">Github 저장소에서 내가 쓰고 있는 자동화를 확인할 수 있다.</a>
-약 70개에 가까운 자동화 코드를 쓰고 있는데, 시간이 될 때 소개해보려 한다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><summary type="html"><![CDATA[근 3년간 집에서 갈고닦아 쓰고 있는 IoT 환경을 소개한다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/iot.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/iot.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">내가 글을 웹에 올리는 방법은?</title><link href="https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80-%EA%B8%80%EC%9D%84-%EC%9B%B9%EC%97%90-%EC%98%AC%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%80/" rel="alternate" type="text/html" title="내가 글을 웹에 올리는 방법은?" /><published>2022-07-10T00:00:00-05:00</published><updated>2022-07-10T00:00:00-05:00</updated><id>https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80%20%EA%B8%80%EC%9D%84%20%EC%9B%B9%EC%97%90%20%EC%98%AC%EB%A6%AC%EB%8A%94%20%EB%B0%A9%EB%B2%95%EC%9D%80</id><content type="html" xml:base="https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80-%EA%B8%80%EC%9D%84-%EC%9B%B9%EC%97%90-%EC%98%AC%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%80/"><![CDATA[<p>이 웹사이트는 Ruby 기반인 Jekyll로 만들었다.
+약 70개에 가까운 자동화 코드를 쓰고 있는데, 시간이 될 때 소개해보려 한다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><summary type="html"><![CDATA[근 3년간 집에서 갈고닦아 쓰고 있는 IoT 환경을 소개한다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/iot.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/iot.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">내가 글을 웹에 올리는 방법은?</title><link href="https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80-%EA%B8%80%EC%9D%84-%EC%9B%B9%EC%97%90-%EC%98%AC%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%80/" rel="alternate" type="text/html" title="내가 글을 웹에 올리는 방법은?" /><published>2022-07-10T00:00:00+09:00</published><updated>2022-07-10T00:00:00+09:00</updated><id>https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80%20%EA%B8%80%EC%9D%84%20%EC%9B%B9%EC%97%90%20%EC%98%AC%EB%A6%AC%EB%8A%94%20%EB%B0%A9%EB%B2%95%EC%9D%80</id><content type="html" xml:base="https://jihunroh.github.io/2022/07/10/%EB%82%B4%EA%B0%80-%EA%B8%80%EC%9D%84-%EC%9B%B9%EC%97%90-%EC%98%AC%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%80/"><![CDATA[<p>이 웹사이트는 Ruby 기반인 Jekyll로 만들었다.
 개발자들이 많이 써온 프로그램인데, 2014년부터 써왔더니 나도 제법 쓸줄 안다.
 next.js 같은 더 현대적인 프로그램들이 각광받는 요즘에도,
 오히려 투박해서 매력적인 프로그램이다.</p>
@@ -526,7 +626,7 @@ bundle <span class="nb">install</span>
 </code></pre></div></div>
 
 <p>오랜 고질병처럼 글쓰기보단 글쓰는 프로그램에 몰두하게 된다.
-2022년 하반기 목표가 일이건, 공부건 <code class="language-plaintext highlighter-rouge">하는 모든 일을 여과없이 기록</code>하는 건데 도움이 될 수도?</p>]]></content><author><name>노지훈</name></author><category term="Jekyll" /><summary type="html"><![CDATA[이 웹사이트는 Ruby 기반인 Jekyll로 만들었다. 개발자들이 많이 써온 프로그램인데, 2014년부터 써왔더니 나도 제법 쓸줄 안다. next.js 같은 더 현대적인 프로그램들이 각광받는 요즘에도, 오히려 투박해서 매력적인 프로그램이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2022/continuous_deployment.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2022/continuous_deployment.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">탄소중립을 위한 행동은 왜 어려울까</title><link href="https://jihunroh.github.io/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%96%89%EB%8F%99%EC%9D%80-%EC%99%9C-%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C/" rel="alternate" type="text/html" title="탄소중립을 위한 행동은 왜 어려울까" /><published>2021-10-04T00:00:00-05:00</published><updated>2021-10-04T00:00:00-05:00</updated><id>https://jihunroh.github.io/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%96%89%EB%8F%99%EC%9D%80%20%EC%99%9C%20%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C</id><content type="html" xml:base="https://jihunroh.github.io/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%96%89%EB%8F%99%EC%9D%80-%EC%99%9C-%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C/"><![CDATA[<p>나는 1년 전부터 바닷물고기를 키우고 있다. 야밤에 집안 조명들을 모두 끈 어둠 속에서 심연의 바다 한 조각을 바라보고 있으면 영롱하기 그지 없다.
+2022년 하반기 목표가 일이건, 공부건 <code class="language-plaintext highlighter-rouge">하는 모든 일을 여과없이 기록</code>하는 건데 도움이 될 수도?</p>]]></content><author><name>노지훈</name></author><category term="Jekyll" /><summary type="html"><![CDATA[이 웹사이트는 Ruby 기반인 Jekyll로 만들었다. 개발자들이 많이 써온 프로그램인데, 2014년부터 써왔더니 나도 제법 쓸줄 안다. next.js 같은 더 현대적인 프로그램들이 각광받는 요즘에도, 오히려 투박해서 매력적인 프로그램이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2022/continuous_deployment.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2022/continuous_deployment.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">탄소중립을 위한 행동은 왜 어려울까</title><link href="https://jihunroh.github.io/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%96%89%EB%8F%99%EC%9D%80-%EC%99%9C-%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C/" rel="alternate" type="text/html" title="탄소중립을 위한 행동은 왜 어려울까" /><published>2021-10-04T00:00:00+09:00</published><updated>2021-10-04T00:00:00+09:00</updated><id>https://jihunroh.github.io/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%96%89%EB%8F%99%EC%9D%80%20%EC%99%9C%20%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C</id><content type="html" xml:base="https://jihunroh.github.io/2021/10/04/%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%96%89%EB%8F%99%EC%9D%80-%EC%99%9C-%EC%96%B4%EB%A0%A4%EC%9A%B8%EA%B9%8C/"><![CDATA[<p>나는 1년 전부터 바닷물고기를 키우고 있다. 야밤에 집안 조명들을 모두 끈 어둠 속에서 심연의 바다 한 조각을 바라보고 있으면 영롱하기 그지 없다.
 이 취미는 요즘 내 업무분야인 ‘탄소중립’과도 밀접한 관련이 있는데, 어항이 본질적으로 ‘해양생태계의 질소순환 과정’을 좁은 공간 안에 구겨넣은 미니어쳐이기 때문이다.</p>
 
 <p>어항에 투여된 물고기 사료는 질소를 품은 유기물이라서, 물고기, 박테리아의 소화 과정에서 암모니아 및 아질산염을 거쳐, 종국적으로는 질산염이 되어 어항에 누적된다.
@@ -568,7 +668,7 @@ bundle <span class="nb">install</span>
 이 날선 프레임 전투 중에서, 쪽방촌에 연탄이 아닌 태양광패널 나눔봉사가 이뤄질 풍경,
 화석연료의 불맛이 흠뻑 스민 옛날짬뽕을 그리워하는 모습,
 쏟아지는 전기차 폐배터리로 골머리를 앓을 정부의 입장 등을 상상하며 유머를 찾는다.
-이 모든 생각이 2021년 이 시대라는 우물 안에 살고 있기 때문에 갖게되는 아집일 수도 있기에, 머리쓰기보다 묵묵히 손부터 움직이려고 한다.</p>]]></content><author><name>노지훈</name></author><category term="탄소중립" /><summary type="html"><![CDATA[나는 1년 전부터 바닷물고기를 키우고 있다. 야밤에 집안 조명들을 모두 끈 어둠 속에서 심연의 바다 한 조각을 바라보고 있으면 영롱하기 그지 없다. 이 취미는 요즘 내 업무분야인 ‘탄소중립’과도 밀접한 관련이 있는데, 어항이 본질적으로 ‘해양생태계의 질소순환 과정’을 좁은 공간 안에 구겨넣은 미니어쳐이기 때문이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20211004.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20211004.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">모든 주식의 주가가 한 계단(tick) 오른다면 어떤 주식을 사야할까?</title><link href="https://jihunroh.github.io/2021/03/21/%EB%AA%A8%EB%93%A0-%EC%A3%BC%EC%8B%9D%EC%9D%98-%EC%A3%BC%EA%B0%80%EA%B0%80-%ED%95%9C-%EA%B3%84%EB%8B%A8(tick)-%EC%98%A4%EB%A5%B8%EB%8B%A4%EB%A9%B4-%EC%96%B4%EB%96%A4-%EC%A3%BC%EC%8B%9D%EC%9D%84-%EC%82%AC%EC%95%BC%ED%95%A0%EA%B9%8C/" rel="alternate" type="text/html" title="모든 주식의 주가가 한 계단(tick) 오른다면 어떤 주식을 사야할까?" /><published>2021-03-21T00:00:00-05:00</published><updated>2021-03-21T00:00:00-05:00</updated><id>https://jihunroh.github.io/2021/03/21/%EB%AA%A8%EB%93%A0%20%EC%A3%BC%EC%8B%9D%EC%9D%98%20%EC%A3%BC%EA%B0%80%EA%B0%80%20%ED%95%9C%20%EA%B3%84%EB%8B%A8(tick)%20%EC%98%A4%EB%A5%B8%EB%8B%A4%EB%A9%B4%20%EC%96%B4%EB%96%A4%20%EC%A3%BC%EC%8B%9D%EC%9D%84%20%EC%82%AC%EC%95%BC%ED%95%A0%EA%B9%8C</id><content type="html" xml:base="https://jihunroh.github.io/2021/03/21/%EB%AA%A8%EB%93%A0-%EC%A3%BC%EC%8B%9D%EC%9D%98-%EC%A3%BC%EA%B0%80%EA%B0%80-%ED%95%9C-%EA%B3%84%EB%8B%A8(tick)-%EC%98%A4%EB%A5%B8%EB%8B%A4%EB%A9%B4-%EC%96%B4%EB%96%A4-%EC%A3%BC%EC%8B%9D%EC%9D%84-%EC%82%AC%EC%95%BC%ED%95%A0%EA%B9%8C/"><![CDATA[<p>스캘핑과 스윙의 중간 어느 지점에서(?) 놀고 있다.</p>
+이 모든 생각이 2021년 이 시대라는 우물 안에 살고 있기 때문에 갖게되는 아집일 수도 있기에, 머리쓰기보다 묵묵히 손부터 움직이려고 한다.</p>]]></content><author><name>노지훈</name></author><category term="탄소중립" /><summary type="html"><![CDATA[나는 1년 전부터 바닷물고기를 키우고 있다. 야밤에 집안 조명들을 모두 끈 어둠 속에서 심연의 바다 한 조각을 바라보고 있으면 영롱하기 그지 없다. 이 취미는 요즘 내 업무분야인 ‘탄소중립’과도 밀접한 관련이 있는데, 어항이 본질적으로 ‘해양생태계의 질소순환 과정’을 좁은 공간 안에 구겨넣은 미니어쳐이기 때문이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20211004.webp" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20211004.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">모든 주식의 주가가 한 계단(tick) 오른다면 어떤 주식을 사야할까?</title><link href="https://jihunroh.github.io/2021/03/21/%EB%AA%A8%EB%93%A0-%EC%A3%BC%EC%8B%9D%EC%9D%98-%EC%A3%BC%EA%B0%80%EA%B0%80-%ED%95%9C-%EA%B3%84%EB%8B%A8(tick)-%EC%98%A4%EB%A5%B8%EB%8B%A4%EB%A9%B4-%EC%96%B4%EB%96%A4-%EC%A3%BC%EC%8B%9D%EC%9D%84-%EC%82%AC%EC%95%BC%ED%95%A0%EA%B9%8C/" rel="alternate" type="text/html" title="모든 주식의 주가가 한 계단(tick) 오른다면 어떤 주식을 사야할까?" /><published>2021-03-21T00:00:00+09:00</published><updated>2021-03-21T00:00:00+09:00</updated><id>https://jihunroh.github.io/2021/03/21/%EB%AA%A8%EB%93%A0%20%EC%A3%BC%EC%8B%9D%EC%9D%98%20%EC%A3%BC%EA%B0%80%EA%B0%80%20%ED%95%9C%20%EA%B3%84%EB%8B%A8(tick)%20%EC%98%A4%EB%A5%B8%EB%8B%A4%EB%A9%B4%20%EC%96%B4%EB%96%A4%20%EC%A3%BC%EC%8B%9D%EC%9D%84%20%EC%82%AC%EC%95%BC%ED%95%A0%EA%B9%8C</id><content type="html" xml:base="https://jihunroh.github.io/2021/03/21/%EB%AA%A8%EB%93%A0-%EC%A3%BC%EC%8B%9D%EC%9D%98-%EC%A3%BC%EA%B0%80%EA%B0%80-%ED%95%9C-%EA%B3%84%EB%8B%A8(tick)-%EC%98%A4%EB%A5%B8%EB%8B%A4%EB%A9%B4-%EC%96%B4%EB%96%A4-%EC%A3%BC%EC%8B%9D%EC%9D%84-%EC%82%AC%EC%95%BC%ED%95%A0%EA%B9%8C/"><![CDATA[<p>스캘핑과 스윙의 중간 어느 지점에서(?) 놀고 있다.</p>
 
 <p>하루 내에 호가 단위(tick) 한단계 높여 실현하는 경우도 있고,
 며칠을 두고 서너 단위를 높여 실현하기도 한다.</p>
@@ -667,7 +767,7 @@ $M$이 $p$에 비하여 상대적으로 크다면 잔금을 무시할 수 있을
 SK하이닉스가 1단위 움직일 때 삼성전자가 3단위로 동행한다고 하면,
 <code class="language-plaintext highlighter-rouge">삼성전자</code>($\frac{p}{\Delta p} \div 3 = 273$)가 <code class="language-plaintext highlighter-rouge">SK하이닉스</code>($\frac{p}{\Delta p} = 276$)보다 미미하게나마 더 큰 이득을 본다.</p>
 
-<p>2021년 3월 19일 기준의 결과이므로, 한달 후에 다시 재산출해보려 한다.</p>]]></content><author><name>노지훈</name></author><category term="주식" /><summary type="html"><![CDATA[스캘핑과 스윙의 중간 어느 지점에서(?) 놀고 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2021/03/stock-01.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2021/03/stock-01.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">월패드 원격제어를 위한 RS485 패킷 분석 준비</title><link href="https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/" rel="alternate" type="text/html" title="월패드 원격제어를 위한 RS485 패킷 분석 준비" /><published>2020-10-03T00:00:00-05:00</published><updated>2020-10-03T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C%20%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20RS485%20%ED%8C%A8%ED%82%B7%20%EB%B6%84%EC%84%9D%20%EC%A4%80%EB%B9%84</id><content type="html" xml:base="https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/"><![CDATA[<p>Home Assistant 등 IoT 플랫폼에서 월패드를 제어할 수 있다면,
+<p>2021년 3월 19일 기준의 결과이므로, 한달 후에 다시 재산출해보려 한다.</p>]]></content><author><name>노지훈</name></author><category term="주식" /><summary type="html"><![CDATA[스캘핑과 스윙의 중간 어느 지점에서(?) 놀고 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2021/03/stock-01.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2021/03/stock-01.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">월패드 원격제어를 위한 RS485 패킷 분석 준비</title><link href="https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/" rel="alternate" type="text/html" title="월패드 원격제어를 위한 RS485 패킷 분석 준비" /><published>2020-10-03T00:00:00+09:00</published><updated>2020-10-03T00:00:00+09:00</updated><id>https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C%20%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20RS485%20%ED%8C%A8%ED%82%B7%20%EB%B6%84%EC%84%9D%20%EC%A4%80%EB%B9%84</id><content type="html" xml:base="https://jihunroh.github.io/2020/10/03/%EC%9B%94%ED%8C%A8%EB%93%9C-%EC%9B%90%EA%B2%A9%EC%A0%9C%EC%96%B4%EB%A5%BC-%EC%9C%84%ED%95%9C-RS485-%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84/"><![CDATA[<p>Home Assistant 등 IoT 플랫폼에서 월패드를 제어할 수 있다면,
 월패드에서 제어가능한 조명, 난방, 환기 등 기기를 IoT 플랫폼에서 간접적으로 제어할 수 있다.</p>
 
 <p>월패드는 RS485 직렬통신을 주로 이용한다. 연결하는 방법은 의외로? 간단하다.
@@ -699,7 +799,7 @@ SK하이닉스가 1단위 움직일 때 삼성전자가 3단위로 동행한다�
 <p>② 패킷 분석 뿐만 아니라 Home Assistant가 읽을 수 있도록 변환도 해야한다. Home Assistant는 워낙 확장이 많아 신호를 넘겨줄 방법이 다양할 것 같은데,
 가장 흔한 방법이 MQTT일 것이다.</p>
 
-<p><a href="https://github.com/jihunroh/homeassistant-addons/tree/master/wallpad">난 홈어시스턴트 코리아 저장소에 있는 코콤 월패드 프로그램을 수정해 ①과 ②를 해결하고 있다.</a> 월패드 때문에 별도의 프로그램을 쓰는 것이 좀 찝찝해서, EW11이 MQTT로 바로 패킷을 쏘도록 하고, Home Assistant가 패킷을 분석하는 방법이 가능한지도 알아보고 있다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><summary type="html"><![CDATA[Home Assistant 등 IoT 플랫폼에서 월패드를 제어할 수 있다면, 월패드에서 제어가능한 조명, 난방, 환기 등 기기를 IoT 플랫폼에서 간접적으로 제어할 수 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2020/10/wallpad-2.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2020/10/wallpad-2.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">해수어항에서의 질소순환 과정</title><link href="https://jihunroh.github.io/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98-%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98-%EA%B3%BC%EC%A0%95/" rel="alternate" type="text/html" title="해수어항에서의 질소순환 과정" /><published>2020-08-16T00:00:00-05:00</published><updated>2020-08-16T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98%20%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98%20%EA%B3%BC%EC%A0%95</id><content type="html" xml:base="https://jihunroh.github.io/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98-%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98-%EA%B3%BC%EC%A0%95/"><![CDATA[<p>🐟물고기🐠 먹이는 인간 음식처럼 단백질, 탄수화물, 지방과 같은 탄소화합물로 구성된다.
+<p><a href="https://github.com/jihunroh/homeassistant-addons/tree/master/wallpad">난 홈어시스턴트 코리아 저장소에 있는 코콤 월패드 프로그램을 수정해 ①과 ②를 해결하고 있다.</a> 월패드 때문에 별도의 프로그램을 쓰는 것이 좀 찝찝해서, EW11이 MQTT로 바로 패킷을 쏘도록 하고, Home Assistant가 패킷을 분석하는 방법이 가능한지도 알아보고 있다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><summary type="html"><![CDATA[Home Assistant 등 IoT 플랫폼에서 월패드를 제어할 수 있다면, 월패드에서 제어가능한 조명, 난방, 환기 등 기기를 IoT 플랫폼에서 간접적으로 제어할 수 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/2020/10/wallpad-2.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/2020/10/wallpad-2.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">해수어항에서의 질소순환 과정</title><link href="https://jihunroh.github.io/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98-%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98-%EA%B3%BC%EC%A0%95/" rel="alternate" type="text/html" title="해수어항에서의 질소순환 과정" /><published>2020-08-16T00:00:00+09:00</published><updated>2020-08-16T00:00:00+09:00</updated><id>https://jihunroh.github.io/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98%20%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98%20%EA%B3%BC%EC%A0%95</id><content type="html" xml:base="https://jihunroh.github.io/2020/08/16/%ED%95%B4%EC%88%98%EC%96%B4%ED%95%AD%EC%97%90%EC%84%9C%EC%9D%98-%EC%A7%88%EC%86%8C%EC%88%9C%ED%99%98-%EA%B3%BC%EC%A0%95/"><![CDATA[<p>🐟물고기🐠 먹이는 인간 음식처럼 단백질, 탄수화물, 지방과 같은 탄소화합물로 구성된다.
 탄소화합물을 구성하는 질소는 자연에서 질소 순환과정<sub>nitrogen cycle</sub>에 따라 순환한다.
 유기물 → 암모니아<sub>NH<sub>3</sub></sub> → 아질산염 이온<sub>NH<sub>2</sub><sup>-</sup></sub> → 질산염 이온<sub>NH<sub>3</sub><sup>-</sup></sub>으로 분해되는 질화 과정<sub>nitrification</sub>,
 질산염 이온이 질소분자로 환원되는 탈질화 과정<sub>denitrification</sub>이다.</p>
@@ -762,7 +862,7 @@ SK하이닉스가 1단위 움직일 때 삼성전자가 3단위로 동행한다�
 공간 제약 문제로 쉽지 않은 방식이다.</p>
 
 <p>수생식물은 질산염을 소모하여 광합성을 한다.
-알게 필터<sub>Algae Scrubber</sub>, 리퓨지움을 통해 수초/해초가 질산염을 소모하도록 할 수 있다.</p>]]></content><author><name>노지훈</name></author><category term="Reef" /><summary type="html"><![CDATA[🐟물고기🐠 먹이는 인간 음식처럼 단백질, 탄수화물, 지방과 같은 탄소화합물로 구성된다. 탄소화합물을 구성하는 질소는 자연에서 질소 순환과정nitrogen cycle에 따라 순환한다. 유기물 → 암모니아NH3 → 아질산염 이온NH2- → 질산염 이온NH3-으로 분해되는 질화 과정nitrification, 질산염 이온이 질소분자로 환원되는 탈질화 과정denitrification이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marine_nitrogen_cycle_under_future_ocean_acidification.jpg" /><media:content medium="image" url="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marine_nitrogen_cycle_under_future_ocean_acidification.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">기계적으로 어항물 보충을 자동화하기</title><link href="https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="기계적으로 어항물 보충을 자동화하기" /><published>2020-07-26T00:00:00-05:00</published><updated>2020-07-26T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EC%96%B4%ED%95%AD%EB%AC%BC%20%EB%B3%B4%EC%B6%A9%EC%9D%84%20%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/"><![CDATA[<p>해수어항을 곁에 두면 환수보다는 보충수통 채우는 데 손이 자주 간다.
+알게 필터<sub>Algae Scrubber</sub>, 리퓨지움을 통해 수초/해초가 질산염을 소모하도록 할 수 있다.</p>]]></content><author><name>노지훈</name></author><category term="Reef" /><summary type="html"><![CDATA[🐟물고기🐠 먹이는 인간 음식처럼 단백질, 탄수화물, 지방과 같은 탄소화합물로 구성된다. 탄소화합물을 구성하는 질소는 자연에서 질소 순환과정nitrogen cycle에 따라 순환한다. 유기물 → 암모니아NH3 → 아질산염 이온NH2- → 질산염 이온NH3-으로 분해되는 질화 과정nitrification, 질산염 이온이 질소분자로 환원되는 탈질화 과정denitrification이다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marine_nitrogen_cycle_under_future_ocean_acidification.jpg" /><media:content medium="image" url="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marine_nitrogen_cycle_under_future_ocean_acidification.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">기계적으로 어항물 보충을 자동화하기</title><link href="https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="기계적으로 어항물 보충을 자동화하기" /><published>2020-07-26T00:00:00+09:00</published><updated>2020-07-26T00:00:00+09:00</updated><id>https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EC%96%B4%ED%95%AD%EB%AC%BC%20%EB%B3%B4%EC%B6%A9%EC%9D%84%20%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2020/07/26/%EA%B8%B0%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%96%B4%ED%95%AD%EB%AC%BC-%EB%B3%B4%EC%B6%A9%EC%9D%84-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0/"><![CDATA[<p>해수어항을 곁에 두면 환수보다는 보충수통 채우는 데 손이 자주 간다.
 내가 쓰는 어항은 물이 250L 들어가는데, 여름철이면 하루에 2L 가까이 자연 증발되나 보다.
 보충수 탱크는 11L 정도인데 물을 1주일에 한번 채워줘야 한다.</p>
 
@@ -837,133 +937,4 @@ SK하이닉스가 1단위 움직일 때 삼성전자가 3단위로 동행한다�
 <p>이렇게 쓴지 막 2주가 됐다. 물고기들, 어항 수위 등은 변화 없이, 어항은 생태계를 계속 유지하고 있다.
 보충수 탱크가 사라져 섬프도 한결 단순해졌다. 빈 공간 덕분에 자동 양말필터를 설치할지 고민할 수 있게 됐다.</p>
 
-<p><strong>이게 바로 자동화다.</strong> 👨‍🎓</p>]]></content><author><name>노지훈</name></author><category term="Reef" /><summary type="html"><![CDATA[해수어항을 곁에 두면 환수보다는 보충수통 채우는 데 손이 자주 간다. 내가 쓰는 어항은 물이 250L 들어가는데, 여름철이면 하루에 2L 가까이 자연 증발되나 보다. 보충수 탱크는 11L 정도인데 물을 1주일에 한번 채워줘야 한다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200726.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200726.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">라즈베리파이4에 Quad Sata KIT 입히기</title><link href="https://jihunroh.github.io/2020/05/31/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90-Quad-Sata-KIT-%EC%9E%85%ED%9E%88%EA%B8%B0/" rel="alternate" type="text/html" title="라즈베리파이4에 Quad Sata KIT 입히기" /><published>2020-05-31T00:00:00-05:00</published><updated>2020-05-31T00:00:00-05:00</updated><id>https://jihunroh.github.io/2020/05/31/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90%20Quad%20Sata%20KIT%20%EC%9E%85%ED%9E%88%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2020/05/31/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B44%EC%97%90-Quad-Sata-KIT-%EC%9E%85%ED%9E%88%EA%B8%B0/"><![CDATA[<p>단순 저장소로만 시놀로지 DS216J를 써온 터라, 큰 무리가 없겠거니 싶어 라즈베리파이4 기반으로 IoT 허브 + 자작 NAS를 만들었다.</p>
-
-<p>숫자가 높을 수록 좋은거니깐?! 과감히 DS216J는 방출했다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>구분</th>
-      <th>시놀로지 DS216J</th>
-      <th>라즈베리파이 4</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>CPU 아키텍쳐</td>
-      <td>Marvell Armada 385</td>
-      <td>ARM Cortex-A72</td>
-    </tr>
-    <tr>
-      <td>CPU 코어 수</td>
-      <td>2</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>CPU 클럭</td>
-      <td>1.0 GHz</td>
-      <td>1.5 GHz</td>
-    </tr>
-    <tr>
-      <td>RAM</td>
-      <td>DDR3 512MB</td>
-      <td>LPDDR4 4GB</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="이렇게-이쁘다">이렇게 이쁘다</h2>
-
-<p>성격이 급하니 완성품부터 올려본다.
-사진은 이쁘게 나오고 싶어서, 주렁주렁 매달려있던 TI 안테나를 빼고 찍었다.</p>
-
-<p><img src="/assets/images/2020/05/rasp4-nas-1.jpg" alt="라즈베리파이4 나스+허브 사진 1" /></p>
-
-<p><img src="/assets/images/2020/05/rasp4-nas-2.jpg" alt="라즈베리파이4 나스+허브 사진 2" /></p>
-
-<h2 id="장비에-돈이-많이-들어갔다">장비에 돈이 많이 들어갔다</h2>
-
-<p>스토리지를 제외한 순수 NAS 용도(RASP4 + SD + QUAD SATA KIT)로만 30만원 정도 들었다.
-시놀로지 저가 제품보다 싸게, 더 좋은 성능으로 하려는 건데 스스로를 기만한 느낌…</p>
-
-<p>시놀로지 완성품처럼 NAS를 포장해줄 <a href="https://shop.allnetchina.cn/products/quad-sata-hat-case-for-raspberry-pi-4">QUAD SATA KIT</a>으로
-SSD(SATA3 인터페이스)를 라즈베리파이 4에 마운트했다.</p>
-
-<p>SD카드는 16GB를 사도 될뻔 했다. 문서, 음악 등 덩치파일들은 물려놓은 SSD에 옮겨놓은 덕도 있지만,
-라즈비안에 이짓저짓을 다해놨는데도 SD카드 사용량은 4GB가 되지 않는다.</p>
-
-<p>Elfin EW11 이하 제품들은 모두 IoT를 위한 장비들이다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>기기</th>
-      <th>가격</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>라즈베리파이 4</td>
-      <td>82,500원</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>SD카드 32GB</td>
-      <td>23,000원</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>SSD <a href="http://prod.danawa.com/info/?pcode=5834230">삼성 860 EVO 1TB</a></td>
-      <td>207,540원</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><a href="https://shop.allnetchina.cn/products/quad-sata-hat-case-for-raspberry-pi-4">QUAD SATA KIT</a></td>
-      <td>$115</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><a href="https://ko.aliexpress.com/item/32926395786.html?spm=a2g0s.9042311.0.0.3cb54c4doQKd6C">Elfin EW11</a></td>
-      <td>$14.8</td>
-      <td>RS485 Serial to WiFi Socket converter</td>
-    </tr>
-    <tr>
-      <td><a href="http://www.ti.com/tool/LAUNCHXL-CC1352P#buy">TI LAUNCHXL-CC1352P-2</a></td>
-      <td>$56.98</td>
-      <td>ZigBee Coordinator</td>
-    </tr>
-    <tr>
-      <td><a href="https://ko.aliexpress.com/item/32851970258.html?spm=a2g0s.9042311.0.0.3cb54c4doQKd6C">Dlenp 2.4 GHz 안테나</a></td>
-      <td>$2.44</td>
-      <td>CC1352P-2에 붙일 안테나</td>
-    </tr>
-    <tr>
-      <td><a href="https://www.aliexpress.com/item/4000439492385.html?spm=a2g0s.9042311.0.0.40604c4de0n1iq">CC2531 + CC Debugger + 안테나</a></td>
-      <td>$20.57</td>
-      <td>ZigBee Coordinator</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="장비들은-어여-일해">장비들은 어여 일해!</h2>
-
-<p>OS는 <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite</a>로 IOT 허브(Home Assistant), 광고 차단(Pi-Hole), 리버스 프록시(traefik) 등을 이용할 계획으로 세팅했다.
-구체적인 설치 방법은 웹에 많으니 생략. 개략적인 내 설정방법은 <a href="https://gist.github.com/jihunroh/d93340e5eb70d2a03d2daaf21b73bc70">이 곳</a>에.</p>
-
-<p><img src="/assets/images/2020/05/rome.png" alt="Rome Schema" /></p>
-
-<h2 id="역시-잘-샀어-자화자찬">역시 잘 샀어. 자화자찬</h2>
-
-<p>다른 장비야 워낙 세간에 잘 알려져 있어, QUAD SATA KIT의 사용감이 중요할 것 같다.
-<a href="https://youtu.be/xz-AhmjiTu8">유튜브에 조립 방법이 잘 나와있는데 조립하는 재미는 덤이다.</a>
-나사가 들어가기에 너무 뻑뻑함 등은 중국제이니 용서가 된다.</p>
-
-<p>외모가 훌륭하다. 딴딴한 철제로 되어 있어 플라스틱 특유의 싼마이 느낌이 들지 않는다.
-라즈베리파이4를 날것으로 꺼내놓고 쓰며 들었던 찝찝한 느낌도 해소됐다.</p>
-
-<p>방열판을 달아놓았던 라즈베리파이4에 팬이 달리다보니, 방열판으로는 CPU 온도가 60도 넘어로 올라가곤 했는데 지금은 40도 중반으로 유지되고 있다.
-팬 소음이 좀 있지만, 안보이는 곳에 숨겨놓아 신경쓰이는 수준은 아니다.</p>
-
-<p>NAS의 종착지는 시놀로지라는 통념을 거부하며(?), 사서 고생하는 취미를 가진 분들께 권하고 싶다.</p>]]></content><author><name>노지훈</name></author><category term="IoT" /><category term="RaspberryPi" /><summary type="html"><![CDATA[단순 저장소로만 시놀로지 DS216J를 써온 터라, 큰 무리가 없겠거니 싶어 라즈베리파이4 기반으로 IoT 허브 + 자작 NAS를 만들었다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200531.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200531.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><strong>이게 바로 자동화다.</strong> 👨‍🎓</p>]]></content><author><name>노지훈</name></author><category term="Reef" /><summary type="html"><![CDATA[해수어항을 곁에 두면 환수보다는 보충수통 채우는 데 손이 자주 간다. 내가 쓰는 어항은 물이 250L 들어가는데, 여름철이면 하루에 2L 가까이 자연 증발되나 보다. 보충수 탱크는 11L 정도인데 물을 1주일에 한번 채워줘야 한다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jihunroh.github.io/assets/images/covers/20200726.jpg" /><media:content medium="image" url="https://jihunroh.github.io/assets/images/covers/20200726.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
