@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2022-10-16T12:59:49+09:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">댕댕이 위치나 재실 여부 추적하기</title><link href="https://jihunroh.github.io/2022/10/16/%EA%B0%95%EC%95%84%EC%A7%80-%EC%9C%84%EC%B9%98%EB%82%98-%EC%9E%AC%EC%8B%A4%EC%97%AC%EB%B6%80-%EC%B6%94%EC%A0%81%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="댕댕이 위치나 재실 여부 추적하기" /><published>2022-10-16T00:00:00+09:00</published><updated>2022-10-16T00:00:00+09:00</updated><id>https://jihunroh.github.io/2022/10/16/%EA%B0%95%EC%95%84%EC%A7%80%20%EC%9C%84%EC%B9%98%EB%82%98%20%EC%9E%AC%EC%8B%A4%EC%97%AC%EB%B6%80%20%EC%B6%94%EC%A0%81%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2022/10/16/%EA%B0%95%EC%95%84%EC%A7%80-%EC%9C%84%EC%B9%98%EB%82%98-%EC%9E%AC%EC%8B%A4%EC%97%AC%EB%B6%80-%EC%B6%94%EC%A0%81%ED%95%98%EA%B8%B0/"><![CDATA[<p>사람이 집을 들락날락 하는 건 센싱할 방법이 많다. 사람 몸에 사실상 붙어있는 스마트폰 덕분이다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://jihunroh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jihunroh.github.io/" rel="alternate" type="text/html" /><updated>2024-10-13T23:31:06+09:00</updated><id>https://jihunroh.github.io/feed.xml</id><title type="html">JiHun Roh</title><author><name>노지훈</name></author><entry><title type="html">댕댕이 위치나 재실 여부 추적하기</title><link href="https://jihunroh.github.io/2022/10/16/%EA%B0%95%EC%95%84%EC%A7%80-%EC%9C%84%EC%B9%98%EB%82%98-%EC%9E%AC%EC%8B%A4%EC%97%AC%EB%B6%80-%EC%B6%94%EC%A0%81%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="댕댕이 위치나 재실 여부 추적하기" /><published>2022-10-16T00:00:00+09:00</published><updated>2022-10-16T00:00:00+09:00</updated><id>https://jihunroh.github.io/2022/10/16/%EA%B0%95%EC%95%84%EC%A7%80%20%EC%9C%84%EC%B9%98%EB%82%98%20%EC%9E%AC%EC%8B%A4%EC%97%AC%EB%B6%80%20%EC%B6%94%EC%A0%81%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://jihunroh.github.io/2022/10/16/%EA%B0%95%EC%95%84%EC%A7%80-%EC%9C%84%EC%B9%98%EB%82%98-%EC%9E%AC%EC%8B%A4%EC%97%AC%EB%B6%80-%EC%B6%94%EC%A0%81%ED%95%98%EA%B8%B0/"><![CDATA[<p>사람이 집을 들락날락 하는 건 센싱할 방법이 많다. 사람 몸에 사실상 붙어있는 스마트폰 덕분이다.
 스마트폰이 실내 Wi-Fi 라우터에 연결되었는지, 블루투스 어댑터에서 스캔이 되는지, GPS 위치는 어떻게 찍히는지는 직관적으로 알 수 있다.
 물론 스마트폰에 의존하지 않는 현관문 개폐 센서, 레이저 센서도 출시되어 있다.</p>
 
@@ -143,7 +143,7 @@ MQTT Broker와 각 Beacon을 트래킹하도록 설정하였다.</p>
   <span class="n">sensors</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">sensors</span><span class="p">.</span><span class="n">requestTemperatures</span><span class="p">();</span>
   <span class="kt">float</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">round</span><span class="p">(</span><span class="n">sensors</span><span class="p">.</span><span class="n">getTempCByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
@@ -190,7 +190,7 @@ MQTT Broker와 각 Beacon을 트래킹하도록 설정하였다.</p>
   <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">display</span><span class="p">.</span><span class="n">clearDisplay</span><span class="p">();</span>
   <span class="n">display</span><span class="p">.</span><span class="n">setTextSize</span><span class="p">(</span><span class="mf">1.5</span><span class="p">);</span>
@@ -279,21 +279,21 @@ Arduino Uno WiFi Rev2의 보드명은 <code class="language-plaintext highlighte
 <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">lastSentAt</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
 <span class="n">byte</span> <span class="n">mac</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0x00</span><span class="p">,</span> <span class="s">"&lt;MAC&gt;"</span><span class="p">,</span> <span class="s">"&lt;주소&gt;"</span><span class="p">,</span> <span class="s">"&lt;16진수로&gt;"</span><span class="p">,</span> <span class="s">"&lt;넣기&gt;"</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">};</span>
 
-<span class="n">OneWire</span> <span class="n">oneWire</span><span class="p">(</span><span class="n">ONE_WIRE_BUS</span><span class="p">);</span>
-<span class="n">DallasTemperature</span> <span class="n">sensors</span><span class="p">(</span><span class="o">&amp;</span><span class="n">oneWire</span><span class="p">);</span>
-<span class="n">Adafruit_SSD1306</span> <span class="n">display</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Wire</span><span class="p">,</span> <span class="n">OLED_RESET</span><span class="p">);</span>
+<span class="n">OneWire</span> <span class="nf">oneWire</span><span class="p">(</span><span class="n">ONE_WIRE_BUS</span><span class="p">);</span>
+<span class="n">DallasTemperature</span> <span class="nf">sensors</span><span class="p">(</span><span class="o">&amp;</span><span class="n">oneWire</span><span class="p">);</span>
+<span class="n">Adafruit_SSD1306</span> <span class="nf">display</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Wire</span><span class="p">,</span> <span class="n">OLED_RESET</span><span class="p">);</span>
 <span class="n">WiFiClient</span> <span class="n">client</span><span class="p">;</span>
-<span class="n">HADevice</span> <span class="n">device</span><span class="p">(</span><span class="n">mac</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">mac</span><span class="p">));</span>
-<span class="n">HAMqtt</span> <span class="n">mqtt</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">device</span><span class="p">);</span>
-<span class="n">HASensor</span> <span class="n">temperature_sensor</span><span class="p">(</span><span class="s">"reefer_temperature"</span><span class="p">);</span>
+<span class="n">HADevice</span> <span class="nf">device</span><span class="p">(</span><span class="n">mac</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">mac</span><span class="p">));</span>
+<span class="n">HAMqtt</span> <span class="nf">mqtt</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">device</span><span class="p">);</span>
+<span class="n">HASensor</span> <span class="nf">temperature_sensor</span><span class="p">(</span><span class="s">"reefer_temperature"</span><span class="p">);</span>
 
-<span class="kt">float</span> <span class="n">measure_temperature</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">float</span> <span class="nf">measure_temperature</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">sensors</span><span class="p">.</span><span class="n">requestTemperatures</span><span class="p">();</span>
   <span class="kt">float</span> <span class="n">temperature</span> <span class="o">=</span> <span class="p">(</span><span class="n">round</span><span class="p">(</span><span class="n">sensors</span><span class="p">.</span><span class="n">getTempCByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
   <span class="k">return</span> <span class="n">temperature</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">print_display</span><span class="p">(</span><span class="kt">float</span> <span class="n">temperature</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="nf">print_display</span><span class="p">(</span><span class="kt">float</span> <span class="n">temperature</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">display</span><span class="p">.</span><span class="n">clearDisplay</span><span class="p">();</span>
   <span class="n">display</span><span class="p">.</span><span class="n">setTextSize</span><span class="p">(</span><span class="mf">1.5</span><span class="p">);</span>
   <span class="n">display</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
@@ -321,7 +321,7 @@ Arduino Uno WiFi Rev2의 보드명은 <code class="language-plaintext highlighte
   <span class="n">display</span><span class="p">.</span><span class="n">display</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
   <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"[0] Serial Initiated..."</span><span class="p">);</span>
   
@@ -352,7 +352,7 @@ Arduino Uno WiFi Rev2의 보드명은 <code class="language-plaintext highlighte
   <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"[4] MQTT Connected..."</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">sensors</span><span class="p">.</span><span class="n">requestTemperatures</span><span class="p">();</span>
   <span class="kt">float</span> <span class="n">temperature</span> <span class="o">=</span> <span class="n">measure_temperature</span><span class="p">();</span>
   <span class="n">print_display</span><span class="p">(</span><span class="n">temperature</span><span class="p">);</span>
@@ -722,7 +722,7 @@ $M$이 $p$에 비하여 상대적으로 크다면 잔금을 무시할 수 있을
 
 <p>이 조건을 충족하는 주식은 무엇이 있을까? Python에서 <a href="https://github.com/sharebook-kr/pykrx"><code class="language-plaintext highlighter-rouge">pykrx</code></a> 라이브러리를 이용했다. <strong>2021년 3월 19일 기준으로 KOSPI만 고려한다.</strong></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pykrx</span> <span class="kn">import</span> <span class="n">stock</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">pykrx</span> <span class="kn">import</span> <span class="n">stock</span>
 
 <span class="k">def</span> <span class="nf">get_ticksize</span><span class="p">(</span><span class="n">price</span><span class="p">):</span>
 
@@ -742,14 +742,14 @@ $M$이 $p$에 비하여 상대적으로 크다면 잔금을 무시할 수 있을
     <span class="n">ticksize</span> <span class="o">=</span> <span class="mi">1000</span>
   <span class="k">return</span> <span class="n">ticksize</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">stock</span><span class="p">.</span><span class="n">get_market_ohlcv_by_ticker</span><span class="p">(</span><span class="s">"20210319"</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">stock</span><span class="p">.</span><span class="nf">get_market_ohlcv_by_ticker</span><span class="p">(</span><span class="sh">"</span><span class="s">20210319</span><span class="sh">"</span><span class="p">)</span>
 
-<span class="n">df</span><span class="p">[</span><span class="s">'종목명'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">index</span>
-<span class="n">df</span><span class="p">[</span><span class="s">'종목명'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'종목명'</span><span class="p">].</span><span class="n">transform</span><span class="p">(</span><span class="n">stock</span><span class="p">.</span><span class="n">get_market_ticker_name</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s">'호가단위'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'종가'</span><span class="p">].</span><span class="n">transform</span><span class="p">(</span><span class="n">get_ticksize</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s">'p배율'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'종가'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s">'호가단위'</span><span class="p">]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'거래대금'</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
-<span class="n">df</span><span class="p">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s">'result.xlsx'</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">종목명</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">index</span>
+<span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">종목명</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">종목명</span><span class="sh">'</span><span class="p">].</span><span class="nf">transform</span><span class="p">(</span><span class="n">stock</span><span class="p">.</span><span class="n">get_market_ticker_name</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">호가단위</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">종가</span><span class="sh">'</span><span class="p">].</span><span class="nf">transform</span><span class="p">(</span><span class="n">get_ticksize</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">p배율</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">종가</span><span class="sh">'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">호가단위</span><span class="sh">'</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="nf">sort_values</span><span class="p">(</span><span class="sh">'</span><span class="s">거래대금</span><span class="sh">'</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="nf">to_excel</span><span class="p">(</span><span class="sh">'</span><span class="s">result.xlsx</span><span class="sh">'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>결과를 엑셀로 잘 정리해 거래대금 순서로 30위까지 나열한다.</p>
