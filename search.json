@@ -1,6 +1,30 @@
 [
   
     {
+      "title"    : "제주와 휴가, 라이딩",
+      "category" : "",
+      "tags"     : "운동, and 자전거",
+      "url"      : "/2024/10/06/%EC%A0%9C%EC%A3%BC%EC%99%80-%ED%9C%B4%EA%B0%80,-%EB%9D%BC%EC%9D%B4%EB%94%A9/",
+      "date"     : "2024년 10월 06일"
+    } ,
+  
+    {
+      "title"    : "자전거, 돈, 업힐",
+      "category" : "",
+      "tags"     : "운동, and 자전거",
+      "url"      : "/2024/09/12/%EC%9E%90%EC%A0%84%EA%B1%B0,-%EB%8F%88,-%EC%97%85%ED%9E%90/",
+      "date"     : "2024년 09월 12일"
+    } ,
+  
+    {
+      "title"    : "운동을 사탕같이 녹여먹으려 한다",
+      "category" : "",
+      "tags"     : "운동",
+      "url"      : "/2024/06/26/%EC%9A%B4%EB%8F%99%EC%9D%84-%EC%82%AC%ED%83%95%EA%B0%99%EC%9D%B4-%EB%85%B9%EC%97%AC%EB%A8%B9%EC%9C%BC%EB%A0%A4-%ED%95%9C%EB%8B%A4/",
+      "date"     : "2024년 06월 26일"
+    } ,
+  
+    {
       "title"    : "댕댕이 위치나 재실 여부 추적하기",
       "category" : "",
       "tags"     : "IoT and Puppy",
