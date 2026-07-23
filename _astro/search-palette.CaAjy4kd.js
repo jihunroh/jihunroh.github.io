@@ -1,0 +1,14 @@
+let h=null;function f(s){return s.toLocaleLowerCase().trim()}function y(){const s=document.getElementById("search-palette-data");if(!s?.textContent)return[];try{const e=JSON.parse(s.textContent);return Array.isArray(e)?e:[]}catch{return[]}}function L(s,e){if(!e)return 1;const r=f(s.title),c=f(s.category),u=f(s.description),m=`${r} ${c} ${u}`;return r===e?100:r.startsWith(e)?80:r.includes(e)?60:c.includes(e)?40:u.includes(e)?20:e.split(/\s+/).every(n=>m.includes(n))?10:0}function d(s){return s.replace(/[&<>"']/g,e=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[e])}function A(s=document){const e=s.querySelector("[data-search-palette]");if(!(e instanceof HTMLDialogElement)||e.dataset.ready==="true")return;e.dataset.ready="true";const r=e.querySelector("[data-search-palette-input]"),c=e.querySelector("[data-search-palette-results]"),u=e.querySelector("[data-search-palette-close]");if(!(r instanceof HTMLInputElement)||!(c instanceof HTMLElement))return;const m=y();let n=0,i=[];const g=()=>{c.querySelectorAll("[data-search-palette-item]").forEach(a=>{a.classList.toggle("is-active",Number(a.dataset.index||0)===n)})},p=()=>{const a=f(r.value);if(i=m.map(t=>({item:t,score:L(t,a)})).filter(({score:t})=>t>0).sort((t,o)=>o.score-t.score).slice(0,6).map(({item:t})=>t),n=Math.min(n,Math.max(i.length-1,0)),i.length===0){c.innerHTML='<p class="search-palette-empty">No matching posts.</p>';return}c.innerHTML=i.map((t,o)=>`
+          <a
+            class="search-palette-item${o===n?" is-active":""}"
+            href="${d(t.href)}"
+            data-search-palette-item
+            data-index="${o}"
+          >
+            <span class="search-palette-item-main">
+              <span class="search-palette-item-title">${d(t.title)}</span>
+              <span class="search-palette-item-desc">${d(t.description)}</span>
+            </span>
+            <span class="search-palette-item-meta">${d(t.category)}</span>
+          </a>
+        `).join("")},E=()=>{if(e.open){requestAnimationFrame(()=>r.focus());return}e.showModal(),r.value="",n=0,p(),requestAnimationFrame(()=>r.focus())},l=()=>{e.open&&e.close()};document.addEventListener("keydown",a=>{const t=a.target,o=t instanceof HTMLElement&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.isContentEditable);if(!(!e.open||o&&t!==r)){if(a.key==="Escape"){l();return}if(a.key==="ArrowDown"){a.preventDefault(),n=Math.min(n+1,i.length-1),p();return}if(a.key==="ArrowUp"){a.preventDefault(),n=Math.max(n-1,0),p();return}a.key==="Enter"&&i[n]&&(a.preventDefault(),window.location.href=i[n].href)}}),r.addEventListener("input",()=>{n=0,p()}),u?.addEventListener("click",()=>{l()}),c.addEventListener("mouseover",a=>{const t=a.target.closest("[data-search-palette-item]");t&&(n=Number(t.dataset.index||0),g())}),e.addEventListener("cancel",()=>{l()}),e.addEventListener("click",a=>{a.target===e&&l()}),h={open:E,close:l}}function M(){h?.open()}export{A as mountSearchPalette,M as openSearchPalette};

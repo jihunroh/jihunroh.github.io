@@ -1,1 +1,4 @@
-Sitemap: https://jihunroh.github.io/sitemap.xml
+User-agent: *
+Allow: /
+
+Sitemap: https://jihunroh.github.io/sitemap-index.xml
