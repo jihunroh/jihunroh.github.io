@@ -1,2 +1,1 @@
-# POST 요청(댓글 제출)은 제외하고, 일반 접속(GET)만 GitHub Pages로 301 이동
-/*   https://jihunroh.github.io/:splat   301!   Method=GET
+/*   https://jihunroh.github.io/:splat   301!
